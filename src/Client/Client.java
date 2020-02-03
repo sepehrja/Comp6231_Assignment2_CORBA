@@ -24,6 +24,9 @@ public class Client {
     public static final int SERVER_SHERBROOKE = 2965;
     public static final int SERVER_QUEBEC = 2966;
     public static final String EVENT_MANAGEMENT_REGISTERED_NAME = "EVENT_MANAGEMENT";
+    public static final String CONFERENCES = "Conferences";
+    public static final String SEMINARS = "Seminars";
+    public static final String TRADE_SHOWS = "Trade Shows";
 
     static Scanner input;
 
@@ -192,11 +195,11 @@ public class Client {
         System.out.println("3.Trade Shows");
         switch (input.nextInt()) {
             case 1:
-                return "Conferences";
+                return CONFERENCES;
             case 2:
-                return "Seminars";
+                return SEMINARS;
             case 3:
-                return "Trade Shows";
+                return TRADE_SHOWS;
         }
         return promptForEventType();
     }
@@ -206,10 +209,17 @@ public class Client {
         System.out.println("Please enter the EventID (e.g MTLM190120)");
         String eventID = input.next().trim().toUpperCase();
         if (eventID.length() == 10) {
-            return eventID;
-        } else {
-            return promptForEventID();
+            if (eventID.substring(0, 3).equalsIgnoreCase("MTL") ||
+                    eventID.substring(0, 3).equalsIgnoreCase("SHE") ||
+                    eventID.substring(0, 3).equalsIgnoreCase("QUE")) {
+                if (eventID.substring(3, 4).equalsIgnoreCase("M") ||
+                        eventID.substring(3, 4).equalsIgnoreCase("A") ||
+                        eventID.substring(3, 4).equalsIgnoreCase("E")) {
+                    return eventID;
+                }
+            }
         }
+        return promptForEventID();
     }
 
     private static int promptForCapacity() {
