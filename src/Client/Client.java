@@ -33,7 +33,7 @@ public class Client {
 
     public static void init() {
         input = new Scanner(System.in);
-        String userID = "";
+        String userID;
         System.out.println("Please Enter your UserID:");
         userID = input.next().trim().toUpperCase();
         System.out.println("Login successful (" + userID + ")");
@@ -121,7 +121,7 @@ public class Client {
         EventManagement remoteObject = (EventManagement) registry.lookup(EVENT_MANAGEMENT_REGISTERED_NAME);
         boolean repeat = true;
         printMenu(USER_TYPE_MANAGER);
-        String customerID = "";
+        String customerID;
         int menuSelection = input.nextInt();
         switch (menuSelection) {
             case MANAGER_ADD_EVENT:
