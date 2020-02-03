@@ -1,13 +1,30 @@
 package ServerInterface;
 
+import DataModel.EventModel;
 import Interface.EventManagementInterface;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.HashMap;
 
 public class EventManagement extends UnicastRemoteObject implements EventManagementInterface {
-    protected EventManagement() throws RemoteException {
+    public static final int Montreal_Server_Port = 8888;
+    public static final int Quebec_Server_Port = 7777;
+    public static final int Sherbrooke_Server_Port = 6666;
+    private String server;
+    private HashMap<String, HashMap<String, EventModel>> allEvents;
+    private HashMap<String, HashMap<String, EventModel>> clientEvents;
+
+    public EventManagement(String server) throws RemoteException {
         super();
+        this.server = server;
+//        addSomeTestData();
+        allEvents = new HashMap<>();
+        clientEvents = new HashMap<>();
+    }
+
+    private void addSomeTestData() {
+
     }
 
     @Override
