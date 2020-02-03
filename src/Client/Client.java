@@ -35,7 +35,7 @@ public class Client {
         input = new Scanner(System.in);
         String userID = "";
         System.out.println("Please Enter your UserID:");
-        userID = input.next().toUpperCase();
+        userID = input.next().trim().toUpperCase();
         System.out.println("Login successful (" + userID + ")");
         switch (checkUserType(userID)) {
             case USER_TYPE_CUSTOMER:
@@ -157,7 +157,7 @@ public class Client {
 
     private static String askForCustomerIDFromManager(String server) {
         System.out.println("Please enter a customerID(Within " + server + " Server):");
-        String userID = input.next().toUpperCase();
+        String userID = input.next().trim().toUpperCase();
         if (checkUserType(userID) != USER_TYPE_CUSTOMER) {
             return askForCustomerIDFromManager(server);
         } else {
@@ -185,14 +185,36 @@ public class Client {
     }
 
     private static String promptForEventType() {
-        return null;
+        System.out.println("*************************************");
+        System.out.println("Please choose an eventType below:");
+        System.out.println("1.Conferences");
+        System.out.println("2.Seminars");
+        System.out.println("3.Trade Shows");
+        switch (input.nextInt()) {
+            case 1:
+                return "Conferences";
+            case 2:
+                return "Seminars";
+            case 3:
+                return "Trade Shows";
+        }
+        return promptForEventType();
     }
 
     private static String promptForEventID() {
-        return null;
+        System.out.println("*************************************");
+        System.out.println("Please enter the EventID (e.g MTLM190120)");
+        String eventID = input.next().trim().toUpperCase();
+        if (eventID.length() == 10) {
+            return eventID;
+        } else {
+            return promptForEventID();
+        }
     }
 
     private static int promptForCapacity() {
-        return 0;
+        System.out.println("*************************************");
+        System.out.println("Please enter the booking capacity:");
+        return input.nextInt();
     }
 }
