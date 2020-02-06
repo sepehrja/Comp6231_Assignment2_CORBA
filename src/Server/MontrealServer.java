@@ -30,7 +30,7 @@ public class MontrealServer {
         try {
             aSocket = new DatagramSocket(EventManagement.Montreal_Server_Port);
             byte[] buffer = new byte[1000];
-            System.out.println("Montreal UDP Server Started at port " + aSocket.getPort() + " ............");
+            System.out.println("Montreal UDP Server Started at port " + aSocket.getLocalPort() + " ............");
             while (true) {
                 DatagramPacket request = new DatagramPacket(buffer, buffer.length);
                 aSocket.receive(request);

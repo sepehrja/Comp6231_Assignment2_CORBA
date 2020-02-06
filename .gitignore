@@ -1,0 +1,9 @@
+/out/production/COMP6231/Client/Client.class
+/out/production/COMP6231/DataModel/ClientModel.class
+/out/production/COMP6231/DataModel/EventModel.class
+/out/production/COMP6231/Interface/EventManagementInterface.class
+/out/production/COMP6231/Logger/Logger.class
+/out/production/COMP6231/Server/MontrealServer.class
+/out/production/COMP6231/Server/QuebecServer.class
+/out/production/COMP6231/Server/SherbrookeServer.class
+/out/production/COMP6231/ServerInterface/EventManagement.class

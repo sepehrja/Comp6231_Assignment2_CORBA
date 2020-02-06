@@ -30,7 +30,7 @@ public class QuebecServer {
         try {
             aSocket = new DatagramSocket(EventManagement.Quebec_Server_Port);
             byte[] buffer = new byte[1000];
-            System.out.println("Quebec UDP Server Started at port " + aSocket.getPort() + " ............");
+            System.out.println("Quebec UDP Server Started at port " + aSocket.getLocalPort() + " ............");
             while (true) {
                 DatagramPacket request = new DatagramPacket(buffer, buffer.length);
                 aSocket.receive(request);

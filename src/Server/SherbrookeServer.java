@@ -31,7 +31,7 @@ public class SherbrookeServer {
         try {
             aSocket = new DatagramSocket(EventManagement.Sherbrooke_Server_Port);
             byte[] buffer = new byte[1000];
-            System.out.println("Sherbrooke UDP Server Started at port " + aSocket.getPort() + " ............");
+            System.out.println("Sherbrooke UDP Server Started at port " + aSocket.getLocalPort() + " ............");
             while (true) {
                 DatagramPacket request = new DatagramPacket(buffer, buffer.length);
                 aSocket.receive(request);
