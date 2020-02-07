@@ -1,5 +1,6 @@
 package ServerInterface;
 
+import DataModel.ClientModel;
 import DataModel.EventModel;
 import Interface.EventManagementInterface;
 
@@ -10,22 +11,41 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class EventManagement extends UnicastRemoteObject implements EventManagementInterface {
     public static final int Montreal_Server_Port = 8888;
     public static final int Quebec_Server_Port = 7777;
     public static final int Sherbrooke_Server_Port = 6666;
-    private String server;
+    private String serverID;
+    private String serverName;
     private HashMap<String, HashMap<String, EventModel>> allEvents;
-    private HashMap<String, HashMap<String, EventModel>> clientEvents;
+    private HashMap<String, HashMap<String, List<String>>> clientEvents;
+    private HashMap<String, ClientModel> serverClients;
 
     public EventManagement(String server) throws RemoteException {
         super();
-        this.server = server;
+        this.serverID = server;
+        switch (server) {
+            case "MTL":
+                serverName = EventModel.EVENT_SERVER_MONTREAL;
+                break;
+            case "QUE":
+                serverName = EventModel.EVENT_SERVER_QUEBEC;
+                break;
+            case "SHE":
+                serverName = EventModel.EVENT_SERVER_SHERBROOK;
+                break;
+        }
 //        addSomeTestData();
         allEvents = new HashMap<>();
+        allEvents.put(EventModel.CONFERENCES, new HashMap<>());
+        allEvents.put(EventModel.SEMINARS, new HashMap<>());
+        allEvents.put(EventModel.TRADE_SHOWS, new HashMap<>());
         clientEvents = new HashMap<>();
+        serverClients = new HashMap<>();
     }
 
     private void addSomeTestData() {
@@ -34,32 +54,108 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
 
     @Override
     public String addEvent(String eventID, String eventType, int bookingCapacity) throws RemoteException {
-        return "false";
+        //TODO: check for event existence
+        if (EventModel.detectEventServer(eventID).equals(serverName)) {
+            EventModel event = new EventModel(eventType, eventID, bookingCapacity);
+            HashMap<String, EventModel> eventHashMap = new HashMap<>();
+            eventHashMap.put(eventID, event);
+            allEvents.put(eventType, eventHashMap);
+            return "event " + eventID + "added successfully";
+        } else {
+            //TODO: contact the needed server
+            return "server response";
+        }
     }
 
     @Override
-    public String removeEvent(String EventID, String eventType) throws RemoteException {
-        return "false";
+    public String removeEvent(String eventID, String eventType) throws RemoteException {
+        if (EventModel.detectEventServer(eventID).equals(serverName)) {
+            if (allEvents.get(eventType).remove(eventID) != null) {
+                //TODO:re-arrange clients that were registered
+                return "event removed successfully";
+            } else {
+                return "event " + eventID + " does not exist";
+            }
+        } else {
+            //TODO: contact the needed server
+            return "server response";
+        }
     }
 
     @Override
     public String listEventAvailability(String eventType) throws RemoteException {
-        return "false";
+        //TODO: it must be from all servers ?!
+        //TODO: if yes we must gather from other servers also
+        HashMap<String, EventModel> events = allEvents.get(eventType);
+        if (events.size() == 0) {
+            return "No events of type " + eventType;
+        }
+        StringBuilder builder = new StringBuilder();
+        for (EventModel event :
+                events.values()) {
+            builder.append(event.toString() + " || ");
+        }
+        return builder.toString();
     }
 
     @Override
     public String bookEvent(String customerID, String eventID, String eventType) throws RemoteException {
-        return "false";
+        if (EventModel.detectEventServer(eventID).equals(serverName)) {
+            EventModel bookedEvent = allEvents.get(eventType).get(eventID);
+            if (clientEvents.containsKey(customerID)) {
+                if (clientEvents.get(customerID).containsKey(eventType)) {
+                    if (!clientEvents.get(customerID).get(eventType).contains(eventID)) {
+                        clientEvents.get(customerID).get(eventType).add(eventID);
+                    } else {
+                        return "Event " + eventID + " Already Booked";
+                    }
+                } else {
+                    List<String> temp = new ArrayList<>();
+                    temp.add(eventID);
+                    clientEvents.get(customerID).put(eventType, temp);
+                }
+            } else {
+                HashMap<String, List<String>> temp = new HashMap<>();
+                List<String> temp2 = new ArrayList<>();
+                temp2.add(eventID);
+                temp.put(eventType, temp2);
+                clientEvents.put(customerID, temp);
+            }
+            return "Event " + eventID + " Booked Successfully";
+        } else {
+            //TODO: contact the needed server
+            return "server response";
+        }
     }
 
     @Override
     public String getBookingSchedule(String customerID) throws RemoteException {
-        return "false";
+        HashMap<String, List<String>> events = clientEvents.get(customerID);
+        if (events.size() == 0) {
+            return "No scheduled event is booked for " + customerID;
+        }
+        StringBuilder builder = new StringBuilder();
+        for (String eventType :
+                events.keySet()) {
+            builder.append(eventType + ": ");
+            for (String eventID :
+                    events.get(eventType)) {
+                builder.append(eventID + " ||");
+            }
+            builder.append("\n");
+        }
+        return builder.toString();
     }
 
     @Override
     public String cancelEvent(String customerID, String eventID, String eventType) throws RemoteException {
-        return "false";
+        //TODO
+        if (EventModel.detectEventServer(eventID).equals(serverName)) {
+            return "false";
+        } else {
+            //TODO: contact the needed server
+            return "server response";
+        }
     }
 
     private static String sendUDPMessage(int serverPort, String method, String customerID, String eventType, String eventId) {
@@ -97,7 +193,11 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
         return allEvents;
     }
 
-    public HashMap<String, HashMap<String, EventModel>> getClientEvents() {
+    public HashMap<String, HashMap<String, List<String>>> getClientEvents() {
         return clientEvents;
+    }
+
+    public HashMap<String, ClientModel> getServerClients() {
+        return serverClients;
     }
 }
