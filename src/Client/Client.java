@@ -1,5 +1,6 @@
 package Client;
 
+import DataModel.EventModel;
 import ServerInterface.EventManagement;
 
 import java.rmi.registry.LocateRegistry;
@@ -24,9 +25,6 @@ public class Client {
     public static final int SERVER_SHERBROOKE = 2965;
     public static final int SERVER_QUEBEC = 2966;
     public static final String EVENT_MANAGEMENT_REGISTERED_NAME = "EVENT_MANAGEMENT";
-    public static final String CONFERENCES = "Conferences";
-    public static final String SEMINARS = "Seminars";
-    public static final String TRADE_SHOWS = "Trade Shows";
 
     static Scanner input;
 
@@ -195,11 +193,11 @@ public class Client {
         System.out.println("3.Trade Shows");
         switch (input.nextInt()) {
             case 1:
-                return CONFERENCES;
+                return EventModel.CONFERENCES;
             case 2:
-                return SEMINARS;
+                return EventModel.SEMINARS;
             case 3:
-                return TRADE_SHOWS;
+                return EventModel.TRADE_SHOWS;
         }
         return promptForEventType();
     }

@@ -1,5 +1,8 @@
 package DataModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EventModel {
     public static final String EVENT_TIME_MORNING = "SEMINARS";
     public static final String EVENT_TIME_AFTERNOON = "CONFERENCES";
@@ -7,23 +10,28 @@ public class EventModel {
     public static final String EVENT_SERVER_SHERBROOK = "SHERBROOK";
     public static final String EVENT_SERVER_QUEBEC = "QUEBEC";
     public static final String EVENT_SERVER_MONTREAL = "MONTREAL";
+    public static final String CONFERENCES = "Conferences";
+    public static final String SEMINARS = "Seminars";
+    public static final String TRADE_SHOWS = "Trade Shows";
     private String eventType;
     private String eventID;
     private String eventServer;
     private int eventCapacity;
     private String eventDate;
     private String eventTimeSlot;
+    private List<String> registeredClients;
 
     public EventModel(String eventType, String eventID, int eventCapacity) {
         this.eventID = eventID;
         this.eventType = eventType;
         this.eventCapacity = eventCapacity;
-        this.eventTimeSlot = detectEventTimeSlot();
-        this.eventServer = detectEventServer();
-        this.eventDate = eventID.substring(4, 6) + "/" + eventID.substring(6, 8) + "/20" + eventID.substring(8, 10);
+        this.eventTimeSlot = detectEventTimeSlot(eventID);
+        this.eventServer = detectEventServer(eventID);
+        this.eventDate = detectEventDate(eventID);
+        registeredClients = new ArrayList<>();
     }
 
-    private String detectEventServer() {
+    public static String detectEventServer(String eventID) {
         if (eventID.substring(0, 3).equalsIgnoreCase("MTL")) {
             return EVENT_SERVER_MONTREAL;
         } else if (eventID.substring(0, 3).equalsIgnoreCase("QUE")) {
@@ -33,7 +41,7 @@ public class EventModel {
         }
     }
 
-    private String detectEventTimeSlot() {
+    public static String detectEventTimeSlot(String eventID) {
         if (eventID.substring(3, 4).equalsIgnoreCase("M")) {
             return EVENT_TIME_MORNING;
         } else if (eventID.substring(3, 4).equalsIgnoreCase("A")) {
@@ -41,6 +49,10 @@ public class EventModel {
         } else {
             return EVENT_TIME_EVENING;
         }
+    }
+
+    public static String detectEventDate(String eventID) {
+        return eventID.substring(4, 6) + "/" + eventID.substring(6, 8) + "/20" + eventID.substring(8, 10);
     }
 
     public String getEventType() {
@@ -75,18 +87,22 @@ public class EventModel {
         this.eventCapacity = eventCapacity;
     }
 
-    public void incrementEventCapacity() {
-        this.eventCapacity++;
+    public int getEventRemainCapacity() {
+        return eventCapacity - registeredClients.size();
     }
 
-    public boolean decrementEventCapacity() {
-        if (!isFull()) {
-            this.eventCapacity--;
-            return true;
-        } else {
-            return false;
-        }
-    }
+//    public void incrementEventCapacity() {
+//        this.eventCapacity++;
+//    }
+//
+//    public boolean decrementEventCapacity() {
+//        if (!isFull()) {
+//            this.eventCapacity--;
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
     public String getEventDate() {
         return eventDate;
@@ -105,11 +121,36 @@ public class EventModel {
     }
 
     public boolean isFull() {
-        return getEventCapacity() == 0;
+        return getEventCapacity() == registeredClients.size();
+    }
+
+    public List<String> getRegisteredClientIDs() {
+        return registeredClients;
+    }
+
+    public void setRegisteredClientsIDs(List<String> registeredClientsIDs) {
+        this.registeredClients = registeredClientsIDs;
+    }
+
+    public boolean addRegisteredClientID(String registeredClientID) {
+        if (!isFull()) {
+            if (registeredClients.contains(registeredClientID)) {
+                return false;
+            } else {
+                registeredClients.add(registeredClientID);
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public boolean removeRegisteredClientID(String registeredClientID) {
+        return registeredClients.remove(registeredClientID);
     }
 
     @Override
     public String toString() {
-        return getEventType() + "(" + getEventID() + ") in the " + getEventTimeSlot() + " of " + getEventDate();
+        return getEventType() + " (" + getEventID() + ") in the " + getEventTimeSlot() + " of " + getEventDate();
     }
 }
