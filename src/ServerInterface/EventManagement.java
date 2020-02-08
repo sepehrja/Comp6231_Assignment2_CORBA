@@ -21,8 +21,11 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
     public static final int Sherbrooke_Server_Port = 6666;
     private String serverID;
     private String serverName;
+    // HashMap<EventType, HashMap <EventID, Event>>
     private HashMap<String, HashMap<String, EventModel>> allEvents;
+    // HashMap<CustomerID, HashMap <EventType, List<EventID>>>
     private HashMap<String, HashMap<String, List<String>>> clientEvents;
+    // HashMap<ClientType, Client>
     private HashMap<String, ClientModel> serverClients;
 
     public EventManagement(String server) throws RemoteException {
@@ -39,22 +42,46 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
                 serverName = EventModel.EVENT_SERVER_SHERBROOK;
                 break;
         }
-//        addSomeTestData();
         allEvents = new HashMap<>();
         allEvents.put(EventModel.CONFERENCES, new HashMap<>());
         allEvents.put(EventModel.SEMINARS, new HashMap<>());
         allEvents.put(EventModel.TRADE_SHOWS, new HashMap<>());
         clientEvents = new HashMap<>();
         serverClients = new HashMap<>();
+        addTestData();
     }
 
-    private void addSomeTestData() {
+    private void addTestData() {
+        ClientModel testManager = new ClientModel(serverID + "M1111");
+        ClientModel testCustomer = new ClientModel(serverID + "C1111");
+        serverClients.put(testManager.getClientID(), testManager);
+        serverClients.put(testCustomer.getClientID(), testCustomer);
+        clientEvents.put(testCustomer.getClientID(), new HashMap<>());
 
+        EventModel sampleConf = new EventModel(EventModel.CONFERENCES, serverID + "M01012020", 5);
+        sampleConf.addRegisteredClientID(testCustomer.getClientID());
+        clientEvents.get(testCustomer.getClientID()).put(sampleConf.getEventType(), new ArrayList<>());
+        clientEvents.get(testCustomer.getClientID()).get(sampleConf.getEventType()).add(sampleConf.getEventID());
+
+        EventModel sampleTrade = new EventModel(EventModel.TRADE_SHOWS, serverID + "A02022020", 15);
+        sampleTrade.addRegisteredClientID(testCustomer.getClientID());
+        clientEvents.get(testCustomer.getClientID()).put(sampleTrade.getEventType(), new ArrayList<>());
+        clientEvents.get(testCustomer.getClientID()).get(sampleTrade.getEventType()).add(sampleTrade.getEventID());
+
+        EventModel sampleSemi = new EventModel(EventModel.SEMINARS, serverID + "E03032020", 20);
+        sampleSemi.addRegisteredClientID(testCustomer.getClientID());
+        clientEvents.get(testCustomer.getClientID()).put(sampleSemi.getEventType(), new ArrayList<>());
+        clientEvents.get(testCustomer.getClientID()).get(sampleSemi.getEventType()).add(sampleSemi.getEventID());
+
+        allEvents.get(EventModel.CONFERENCES).put(sampleConf.getEventID(), sampleConf);
+        allEvents.get(EventModel.TRADE_SHOWS).put(sampleTrade.getEventID(), sampleTrade);
+        allEvents.get(EventModel.SEMINARS).put(sampleSemi.getEventID(), sampleSemi);
     }
 
     @Override
     public String addEvent(String eventID, String eventType, int bookingCapacity) throws RemoteException {
         //TODO: check for event existence
+        //TODO: check for client existence
         if (EventModel.detectEventServer(eventID).equals(serverName)) {
             EventModel event = new EventModel(eventType, eventID, bookingCapacity);
             HashMap<String, EventModel> eventHashMap = new HashMap<>();
@@ -69,6 +96,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
 
     @Override
     public String removeEvent(String eventID, String eventType) throws RemoteException {
+        //TODO: check for client existence
         if (EventModel.detectEventServer(eventID).equals(serverName)) {
             if (allEvents.get(eventType).remove(eventID) != null) {
                 //TODO:re-arrange clients that were registered
@@ -84,6 +112,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
 
     @Override
     public String listEventAvailability(String eventType) throws RemoteException {
+        //TODO: check for client existence
         //TODO: it must be from all servers ?!
         //TODO: if yes we must gather from other servers also
         HashMap<String, EventModel> events = allEvents.get(eventType);
@@ -100,6 +129,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
 
     @Override
     public String bookEvent(String customerID, String eventID, String eventType) throws RemoteException {
+        //TODO: check for client existence
         if (EventModel.detectEventServer(eventID).equals(serverName)) {
             EventModel bookedEvent = allEvents.get(eventType).get(eventID);
             if (clientEvents.containsKey(customerID)) {
@@ -130,6 +160,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
 
     @Override
     public String getBookingSchedule(String customerID) throws RemoteException {
+        //TODO: check for client existence
         HashMap<String, List<String>> events = clientEvents.get(customerID);
         if (events.size() == 0) {
             return "No scheduled event is booked for " + customerID;
@@ -150,6 +181,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
     @Override
     public String cancelEvent(String customerID, String eventID, String eventType) throws RemoteException {
         //TODO
+        //TODO: check for client existence
         if (EventModel.detectEventServer(eventID).equals(serverName)) {
             return "false";
         } else {
@@ -199,5 +231,9 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
 
     public HashMap<String, ClientModel> getServerClients() {
         return serverClients;
+    }
+
+    private void initCustomer(String customerID) {
+
     }
 }
