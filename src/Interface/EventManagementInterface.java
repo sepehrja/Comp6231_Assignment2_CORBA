@@ -9,7 +9,7 @@ public interface EventManagementInterface extends Remote {
      */
     String addEvent(String eventID, String eventType, int bookingCapacity) throws RemoteException;
 
-    String removeEvent(String EventID, String eventType) throws RemoteException;
+    String removeEvent(String eventID, String eventType) throws RemoteException;
 
     String listEventAvailability(String eventType) throws RemoteException;
 
@@ -21,4 +21,10 @@ public interface EventManagementInterface extends Remote {
     String getBookingSchedule(String customerID) throws RemoteException;
 
     String cancelEvent(String customerID, String eventID, String eventType) throws RemoteException;
+
+    /**
+     * For server - server interactions
+     */
+
+    String removeEvent(String newEventID, String eventType, String customerID) throws RemoteException;
 }

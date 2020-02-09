@@ -43,7 +43,7 @@ public class SherbrookeServer {
                 String eventType = parts[2];
                 String eventID = parts[3];
                 if (method.equalsIgnoreCase("removeEvent")) {
-                    String result = obj.removeEvent(eventID, eventType);
+                    String result = obj.removeEvent(eventID, eventType, customerID);
                     sendingResult = result + ";";
                 } else if (method.equalsIgnoreCase("listEventAvailability")) {
                     String result = obj.listEventAvailability(eventType);
