@@ -11,9 +11,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class EventManagement extends UnicastRemoteObject implements EventManagementInterface {
     public static final int Montreal_Server_Port = 8888;
@@ -83,9 +81,9 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
         if (allEvents.get(eventType).containsKey(eventID)) {
             if (allEvents.get(eventType).get(eventID).getEventCapacity() <= bookingCapacity) {
                 allEvents.get(eventType).get(eventID).setEventCapacity(bookingCapacity);
-                return "Event " + eventID + " Capacity increased to " + bookingCapacity;
+                return "Success: Event " + eventID + " Capacity increased to " + bookingCapacity;
             } else {
-                return "Event Already Exists, Cannot Decrease Booking Capacity";
+                return "Failed: Event Already Exists, Cannot Decrease Booking Capacity";
             }
         }
         if (EventModel.detectEventServer(eventID).equals(serverName)) {
@@ -93,9 +91,9 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
             HashMap<String, EventModel> eventHashMap = new HashMap<>();
             eventHashMap.put(eventID, event);
             allEvents.put(eventType, eventHashMap);
-            return "Event " + eventID + " added successfully";
+            return "Success: Event " + eventID + " added successfully";
         } else {
-            return "Cannot Add Event to servers other than " + serverName;
+            return "Failed: Cannot Add Event to servers other than " + serverName;
         }
     }
 
@@ -106,12 +104,12 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
                 List<String> registeredClients = allEvents.get(eventType).get(eventID).getRegisteredClientIDs();
                 addCustomersToNextSameEvent(eventID, eventType, registeredClients);
                 allEvents.get(eventType).remove(eventID);
-                return "Event Removed Successfully";
+                return "Success: Event Removed Successfully";
             } else {
-                return "Event " + eventID + " Does Not Exist";
+                return "Failed: Event " + eventID + " Does Not Exist";
             }
         } else {
-            return "Cannot Remove Event from servers other than " + serverName;
+            return "Failed: Cannot Remove Event from servers other than " + serverName;
         }
     }
 
@@ -120,7 +118,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
         //TODO:we must gather from other servers also
         HashMap<String, EventModel> events = allEvents.get(eventType);
         if (events.size() == 0) {
-            return "No events of type " + eventType;
+            return "No Events of Type " + eventType;
         }
         StringBuilder builder = new StringBuilder();
         builder.append(serverName + " Server " + eventType + ":\n");
@@ -139,32 +137,37 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
                 addNewCustomerToClients(customerID);
             }
             EventModel bookedEvent = allEvents.get(eventType).get(eventID);
-            if (clientEvents.containsKey(customerID)) {
-                if (clientEvents.get(customerID).containsKey(eventType)) {
-                    if (!clientEvents.get(customerID).get(eventType).contains(eventID)) {
-                        clientEvents.get(customerID).get(eventType).add(eventID);
+            if (!bookedEvent.isFull()) {
+                if (clientEvents.containsKey(customerID)) {
+                    if (clientEvents.get(customerID).containsKey(eventType)) {
+                        if (!clientEvents.get(customerID).get(eventType).contains(eventID)) {
+                            clientEvents.get(customerID).get(eventType).add(eventID);
+                        } else {
+                            return "Failed: Event " + eventID + " Already Booked";
+                        }
                     } else {
-                        return "Event " + eventID + " Already Booked";
+                        List<String> temp = new ArrayList<>();
+                        temp.add(eventID);
+                        clientEvents.get(customerID).put(eventType, temp);
                     }
                 } else {
-                    List<String> temp = new ArrayList<>();
-                    temp.add(eventID);
-                    clientEvents.get(customerID).put(eventType, temp);
+                    HashMap<String, List<String>> temp = new HashMap<>();
+                    List<String> temp2 = new ArrayList<>();
+                    temp2.add(eventID);
+                    temp.put(eventType, temp2);
+                    clientEvents.put(customerID, temp);
                 }
+                allEvents.get(eventType).get(eventID).addRegisteredClientID(customerID);
+                return "Success: Event " + eventID + " Booked Successfully";
             } else {
-                HashMap<String, List<String>> temp = new HashMap<>();
-                List<String> temp2 = new ArrayList<>();
-                temp2.add(eventID);
-                temp.put(eventType, temp2);
-                clientEvents.put(customerID, temp);
+                return "Failed: Event " + eventID + " is Full";
             }
-            return "Event " + eventID + " Booked Successfully";
         } else {
             if (!exceedWeeklyLimit(customerID, eventID.substring(4))) {
                 //TODO: contact the needed server
                 return "server response";
             } else {
-                return "You Cannot Book Event in Other Servers For This Week(Max Weekly Limit = 3)";
+                return "Failed: You Cannot Book Event in Other Servers For This Week(Max Weekly Limit = 3)";
             }
         }
     }
@@ -198,27 +201,27 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
             if (customerID.substring(0, 3).equals(serverID)) {
                 if (!serverClients.containsKey(customerID)) {
                     addNewCustomerToClients(customerID);
-                    return "You " + customerID + " Are Not Registered in " + eventID;
+                    return "Failed: You " + customerID + " Are Not Registered in " + eventID;
                 } else {
                     if (clientEvents.get(customerID).get(eventType).remove(eventID)) {
                         allEvents.get(eventType).get(eventID).removeRegisteredClientID(customerID);
-                        return "Event " + eventID + " Canceled for " + customerID;
+                        return "Success: Event " + eventID + " Canceled for " + customerID;
                     } else {
-                        return "You " + customerID + " Are Not Registered in " + eventID;
+                        return "Failed: You " + customerID + " Are Not Registered in " + eventID;
                     }
                 }
             } else {
                 if (allEvents.get(eventType).get(eventID).removeRegisteredClientID(customerID)) {
-                    return "Event " + eventID + " Canceled for " + customerID;
+                    return "Success: Event " + eventID + " Canceled for " + customerID;
                 } else {
-                    return "You " + customerID + " Are Not Registered in " + eventID;
+                    return "Failed: You " + customerID + " Are Not Registered in " + eventID;
                 }
             }
         } else {
             if (customerID.substring(0, 3).equals(serverID)) {
                 if (!serverClients.containsKey(customerID)) {
                     addNewCustomerToClients(customerID);
-                    return "You " + customerID + " Are Not Registered in " + eventID;
+                    return "Failed: You " + customerID + " Are Not Registered in " + eventID;
                 } else {
                     clientEvents.get(customerID).get(eventType).remove(eventID);
                 }
@@ -229,9 +232,17 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
     }
 
     @Override
-    public String removeEvent(String newEventID, String eventType, String customerID) throws RemoteException {
-        //TODO: update client events list for the client that was registered in a removed event
-        return "Client Events Updated";
+    public String removedEvent(String oldEventID, String eventType, String customerID) throws RemoteException {
+        if (!serverClients.containsKey(customerID)) {
+            addNewCustomerToClients(customerID);
+            return "Failed: You " + customerID + " Are Not Registered in " + oldEventID;
+        } else {
+            if (clientEvents.get(customerID).get(eventType).remove(oldEventID)) {
+                return "Success: Event " + oldEventID + " Was Removed from " + customerID + " Schedule";
+            } else {
+                return "Failed: You " + customerID + " Are Not Registered in " + oldEventID;
+            }
+        }
     }
 
     private static String sendUDPMessage(int serverPort, String method, String customerID, String eventType, String eventId) {
@@ -271,9 +282,31 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
         clientEvents.put(newCustomer.getClientID(), new HashMap<>());
     }
 
-    private void addCustomersToNextSameEvent(String eventID, String eventType, List<String> registeredClients) {
-        //TODO: implement this
-        //TODO update clientEvents of this and other servers
+    private void addCustomersToNextSameEvent(String eventID, String eventType, List<String> registeredClients) throws RemoteException {
+        for (String customerID :
+                registeredClients) {
+            if (customerID.substring(0, 3).equals(serverID)) {
+                if (getNextSameEvent(allEvents.get(eventType).keySet(), eventType).equals("Failed")) {
+                    return;
+                } else {
+                    bookEvent(customerID, getNextSameEvent(allEvents.get(eventType).keySet(), eventType), eventType);
+                }
+            } else {
+                //TODO: call other server
+            }
+        }
+    }
+
+    private String getNextSameEvent(Set<String> keySet, String eventType) {
+        List<String> sortedIDs = new ArrayList<String>(keySet);
+        Collections.sort(sortedIDs);
+        for (String eventID :
+                sortedIDs) {
+            if (!allEvents.get(eventType).get(eventID).isFull()) {
+                return eventID;
+            }
+        }
+        return "Failed";
     }
 
     private boolean exceedWeeklyLimit(String customerID, String eventDate) {

@@ -26,5 +26,5 @@ public interface EventManagementInterface extends Remote {
      * For server - server interactions
      */
 
-    String removeEvent(String newEventID, String eventType, String customerID) throws RemoteException;
+    String removedEvent(String oldEventID, String eventType, String customerID) throws RemoteException;
 }
