@@ -1,7 +1,7 @@
 package Client;
 
 import DataModel.EventModel;
-import ServerInterface.EventManagement;
+import Interface.EventManagementInterface;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -90,7 +90,7 @@ public class Client {
             return;
         }
         Registry registry = LocateRegistry.getRegistry(serverPort);
-        EventManagement remoteObject = (EventManagement) registry.lookup(EVENT_MANAGEMENT_REGISTERED_NAME);
+        EventManagementInterface remoteObject = (EventManagementInterface) registry.lookup(EVENT_MANAGEMENT_REGISTERED_NAME);
         boolean repeat = true;
         printMenu(USER_TYPE_CUSTOMER);
         int menuSelection = input.nextInt();
@@ -119,7 +119,7 @@ public class Client {
             return;
         }
         Registry registry = LocateRegistry.getRegistry(serverPort);
-        EventManagement remoteObject = (EventManagement) registry.lookup(EVENT_MANAGEMENT_REGISTERED_NAME);
+        EventManagementInterface remoteObject = (EventManagementInterface) registry.lookup(EVENT_MANAGEMENT_REGISTERED_NAME);
         boolean repeat = true;
         printMenu(USER_TYPE_MANAGER);
         String customerID;
