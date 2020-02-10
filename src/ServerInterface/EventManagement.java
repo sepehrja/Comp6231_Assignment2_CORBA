@@ -113,20 +113,66 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
         }
     }
 
+    private static int getServerPort(String branchAcronym) {
+        if (branchAcronym.equalsIgnoreCase("MTL")) {
+            return Montreal_Server_Port;
+        } else if (branchAcronym.equalsIgnoreCase("SHE")) {
+            return Sherbrooke_Server_Port;
+        } else if (branchAcronym.equalsIgnoreCase("QUE")) {
+            return Quebec_Server_Port;
+        }
+        return 1;
+    }
+
     @Override
     public String listEventAvailability(String eventType) throws RemoteException {
-        //TODO:we must gather from other servers also
         HashMap<String, EventModel> events = allEvents.get(eventType);
-        if (events.size() == 0) {
-            return "No Events of Type " + eventType;
-        }
         StringBuilder builder = new StringBuilder();
         builder.append(serverName + " Server " + eventType + ":\n");
-        for (EventModel event :
-                events.values()) {
-            builder.append(event.toString() + " || ");
+        if (events.size() == 0) {
+            builder.append("No Events of Type " + eventType);
+        } else {
+            for (EventModel event :
+                    events.values()) {
+                builder.append(event.toString() + " || ");
+            }
+            builder.append("=====================================\n");
         }
-        builder.append("=====================================\n");
+        String otherServer1, otherServer2;
+        if (serverID.equals("MTL")) {
+            otherServer1 = sendUDPMessage(Sherbrooke_Server_Port, "listEventAvailability", "null", eventType, "null");
+            otherServer2 = sendUDPMessage(Quebec_Server_Port, "listEventAvailability", "null", eventType, "null");
+        } else if (serverID.equals("SHE")) {
+            otherServer1 = sendUDPMessage(Quebec_Server_Port, "listEventAvailability", "null", eventType, "null");
+            otherServer2 = sendUDPMessage(Montreal_Server_Port, "listEventAvailability", "null", eventType, "null");
+        } else {
+            otherServer1 = sendUDPMessage(Montreal_Server_Port, "listEventAvailability", "null", eventType, "null");
+            otherServer2 = sendUDPMessage(Sherbrooke_Server_Port, "listEventAvailability", "null", eventType, "null");
+        }
+        builder.append(otherServer1).append(otherServer2);
+        return builder.toString();
+    }
+
+    @Override
+    public String getBookingSchedule(String customerID) throws RemoteException {
+        if (!serverClients.containsKey(customerID)) {
+            addNewCustomerToClients(customerID);
+            return "Booking Schedule Empty For " + customerID;
+        }
+        HashMap<String, List<String>> events = clientEvents.get(customerID);
+        if (events.size() == 0) {
+            return "Booking Schedule Empty For " + customerID;
+        }
+        StringBuilder builder = new StringBuilder();
+        for (String eventType :
+                events.keySet()) {
+            builder.append(eventType + ":\n");
+            for (String eventID :
+                    events.get(eventType)) {
+                builder.append(eventID + " ||");
+            }
+            builder.append("=====================================\n");
+        }
         return builder.toString();
     }
 
@@ -164,35 +210,21 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
             }
         } else {
             if (!exceedWeeklyLimit(customerID, eventID.substring(4))) {
-                //TODO: contact the needed server
-                return "server response";
+                String serverResponse = sendUDPMessage(getServerPort(eventID.substring(0, 3)), "bookEvent", customerID, eventType, eventID);
+                if (serverResponse.startsWith("Success:")) {
+                    if (clientEvents.get(customerID).containsKey(eventType)) {
+                        clientEvents.get(customerID).get(eventType).add(eventID);
+                    } else {
+                        List<String> temp = new ArrayList<>();
+                        temp.add(eventID);
+                        clientEvents.get(customerID).put(eventType, temp);
+                    }
+                }
+                return serverResponse;
             } else {
                 return "Failed: You Cannot Book Event in Other Servers For This Week(Max Weekly Limit = 3)";
             }
         }
-    }
-
-    @Override
-    public String getBookingSchedule(String customerID) throws RemoteException {
-        if (!serverClients.containsKey(customerID)) {
-            addNewCustomerToClients(customerID);
-            return "Booking Schedule Empty For " + customerID;
-        }
-        HashMap<String, List<String>> events = clientEvents.get(customerID);
-        if (events.size() == 0) {
-            return "Booking Schedule Empty For " + customerID;
-        }
-        StringBuilder builder = new StringBuilder();
-        for (String eventType :
-                events.keySet()) {
-            builder.append(eventType + ":\n");
-            for (String eventID :
-                    events.get(eventType)) {
-                builder.append(eventID + " ||");
-            }
-            builder.append("=====================================\n");
-        }
-        return builder.toString();
     }
 
     @Override
@@ -221,18 +253,25 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
             if (customerID.substring(0, 3).equals(serverID)) {
                 if (!serverClients.containsKey(customerID)) {
                     addNewCustomerToClients(customerID);
-                    return "Failed: You " + customerID + " Are Not Registered in " + eventID;
+//                    return "Failed: You " + customerID + " Are Not Registered in " + eventID;
                 } else {
                     clientEvents.get(customerID).get(eventType).remove(eventID);
                 }
             }
-            //TODO: contact the needed server
-            return "server response";
+            return sendUDPMessage(getServerPort(customerID.substring(0, 3)), "cancelEvent", customerID, eventType, eventID);
         }
     }
 
-    @Override
-    public String removedEvent(String oldEventID, String eventType, String customerID) throws RemoteException {
+    /**
+     * for udp calls only
+     *
+     * @param oldEventID
+     * @param eventType
+     * @param customerID
+     * @return
+     * @throws RemoteException
+     */
+    public String removeEventUDP(String oldEventID, String eventType, String customerID) throws RemoteException {
         if (!serverClients.containsKey(customerID)) {
             addNewCustomerToClients(customerID);
             return "Failed: You " + customerID + " Are Not Registered in " + oldEventID;
@@ -244,6 +283,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
             }
         }
     }
+
 
     private static String sendUDPMessage(int serverPort, String method, String customerID, String eventType, String eventId) {
         DatagramSocket aSocket = null;
@@ -282,19 +322,27 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
         clientEvents.put(newCustomer.getClientID(), new HashMap<>());
     }
 
-    private void addCustomersToNextSameEvent(String eventID, String eventType, List<String> registeredClients) throws RemoteException {
-        for (String customerID :
-                registeredClients) {
-            if (customerID.substring(0, 3).equals(serverID)) {
-                if (getNextSameEvent(allEvents.get(eventType).keySet(), eventType).equals("Failed")) {
-                    return;
-                } else {
-                    bookEvent(customerID, getNextSameEvent(allEvents.get(eventType).keySet(), eventType), eventType);
-                }
-            } else {
-                //TODO: call other server
+    /**
+     * for UDP calls only
+     *
+     * @param eventType
+     * @return
+     * @throws RemoteException
+     */
+    public String listEventAvailabilityUDP(String eventType) throws RemoteException {
+        HashMap<String, EventModel> events = allEvents.get(eventType);
+        StringBuilder builder = new StringBuilder();
+        builder.append(serverName + " Server " + eventType + ":\n");
+        if (events.size() == 0) {
+            builder.append("No Events of Type " + eventType);
+        } else {
+            for (EventModel event :
+                    events.values()) {
+                builder.append(event.toString() + " || ");
             }
         }
+        builder.append("=====================================\n");
+        return builder.toString();
     }
 
     private String getNextSameEvent(Set<String> keySet, String eventType) {
@@ -339,6 +387,21 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
             }
         }
         return false;
+    }
+
+    private void addCustomersToNextSameEvent(String eventID, String eventType, List<String> registeredClients) throws RemoteException {
+        for (String customerID :
+                registeredClients) {
+            if (customerID.substring(0, 3).equals(serverID)) {
+                if (getNextSameEvent(allEvents.get(eventType).keySet(), eventType).equals("Failed")) {
+                    return;
+                } else {
+                    bookEvent(customerID, getNextSameEvent(allEvents.get(eventType).keySet(), eventType), eventType);
+                }
+            } else {
+                sendUDPMessage(getServerPort(customerID.substring(0, 3)), "removeEvent", customerID, eventType, eventID);
+            }
+        }
     }
 
     public HashMap<String, HashMap<String, EventModel>> getAllEvents() {

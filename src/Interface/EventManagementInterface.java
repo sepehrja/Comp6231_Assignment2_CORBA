@@ -21,10 +21,4 @@ public interface EventManagementInterface extends Remote {
     String getBookingSchedule(String customerID) throws RemoteException;
 
     String cancelEvent(String customerID, String eventID, String eventType) throws RemoteException;
-
-    /**
-     * For server - server interactions
-     */
-
-    String removedEvent(String oldEventID, String eventType, String customerID) throws RemoteException;
 }
