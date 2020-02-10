@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EventModel {
-    public static final String EVENT_TIME_MORNING = "SEMINARS";
-    public static final String EVENT_TIME_AFTERNOON = "CONFERENCES";
-    public static final String EVENT_TIME_EVENING = "TRADE_SHOWS";
+    public static final String EVENT_TIME_MORNING = "Morning";
+    public static final String EVENT_TIME_AFTERNOON = "Afternoon";
+    public static final String EVENT_TIME_EVENING = "Evening";
     public static final String EVENT_SERVER_SHERBROOK = "SHERBROOK";
     public static final String EVENT_SERVER_QUEBEC = "QUEBEC";
     public static final String EVENT_SERVER_MONTREAL = "MONTREAL";
@@ -151,6 +151,6 @@ public class EventModel {
 
     @Override
     public String toString() {
-        return getEventType() + " (" + getEventID() + ") in the " + getEventTimeSlot() + " of " + getEventDate();
+        return " (" + getEventID() + ") in the " + getEventTimeSlot() + " of " + getEventDate();
     }
 }
