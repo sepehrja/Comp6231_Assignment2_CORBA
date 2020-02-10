@@ -27,11 +27,11 @@ public class Logger {
         printWriter.close();
     }
 
-    public static void serverLog(String serverID, String clientID, String requestType, String requestParams, String requestResult, String serverResponse) throws IOException {
+    public static void serverLog(String serverID, String clientID, String requestType, String requestParams, String serverResponse) throws IOException {
 
         FileWriter fileWriter = new FileWriter(getFileName(serverID, LOG_TYPE_SERVER), true);
         PrintWriter printWriter = new PrintWriter(fileWriter);
-        printWriter.println("DATE: " + getFormattedDate() + " ClientID: " + clientID + " | RequestType: " + requestType + " | RequestParameters: " + requestParams + " | RequestResult: " + requestResult + " | ServerResponse: " + serverResponse);
+        printWriter.println("DATE: " + getFormattedDate() + " ClientID: " + clientID + " | RequestType: " + requestType + " | RequestParameters: " + requestParams + " | ServerResponse: " + serverResponse);
 
         printWriter.close();
     }

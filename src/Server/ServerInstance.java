@@ -1,6 +1,7 @@
 package Server;
 
 import Client.Client;
+import Logger.Logger;
 import ServerInterface.EventManagement;
 
 import java.io.IOException;
@@ -42,20 +43,22 @@ public class ServerInstance {
         registry.bind(Client.EVENT_MANAGEMENT_REGISTERED_NAME, remoteObject);
 
         System.out.println(serverName + " Server is Up & Running");
+        Logger.serverLog(serverID, " Server is Up & Running");
         Runnable task = () -> {
-            listenForRequest(remoteObject, serverUdpPort, serverName);
+            listenForRequest(remoteObject, serverUdpPort, serverName, serverID);
         };
         Thread thread = new Thread(task);
         thread.start();
     }
 
-    private static void listenForRequest(EventManagement obj, int serverUdpPort, String serverName) {
+    private static void listenForRequest(EventManagement obj, int serverUdpPort, String serverName, String serverID) {
         DatagramSocket aSocket = null;
         String sendingResult = "";
         try {
             aSocket = new DatagramSocket(serverUdpPort);
             byte[] buffer = new byte[1000];
             System.out.println(serverName + " UDP Server Started at port " + aSocket.getLocalPort() + " ............");
+            Logger.serverLog(serverID, " UDP Server Started at port " + aSocket.getLocalPort());
             while (true) {
                 DatagramPacket request = new DatagramPacket(buffer, buffer.length);
                 aSocket.receive(request);
@@ -67,15 +70,19 @@ public class ServerInstance {
                 String eventType = parts[2];
                 String eventID = parts[3];
                 if (method.equalsIgnoreCase("removeEvent")) {
+                    Logger.serverLog(serverID, customerID, " UDP request received " + method + " ", " eventID: " + eventID + " eventType: " + eventType + " ", " ...");
                     String result = obj.removeEventUDP(eventID, eventType, customerID);
                     sendingResult = result + ";";
                 } else if (method.equalsIgnoreCase("listEventAvailability")) {
+                    Logger.serverLog(serverID, customerID, " UDP request received " + method + " ", " eventType: " + eventType + " ", " ...");
                     String result = obj.listEventAvailabilityUDP(eventType);
                     sendingResult = result + ";";
                 } else if (method.equalsIgnoreCase("bookEvent")) {
+                    Logger.serverLog(serverID, customerID, " UDP request received " + method + " ", " eventID: " + eventID + " eventType: " + eventType + " ", " ...");
                     String result = obj.bookEvent(customerID, eventID, eventType);
                     sendingResult = result + ";";
                 } else if (method.equalsIgnoreCase("cancelEvent")) {
+                    Logger.serverLog(serverID, customerID, " UDP request received " + method + " ", " eventID: " + eventID + " eventType: " + eventType + " ", " ...");
                     String result = obj.cancelEvent(customerID, eventID, eventType);
                     sendingResult = result + ";";
                 }
@@ -83,6 +90,7 @@ public class ServerInstance {
                 DatagramPacket reply = new DatagramPacket(sendData, sendingResult.length(), request.getAddress(),
                         request.getPort());
                 aSocket.send(reply);
+                Logger.serverLog(serverID, customerID, " UDP reply sent " + method + " ", " eventID: " + eventID + " eventType: " + eventType + " ", sendingResult);
             }
         } catch (SocketException e) {
             System.out.println("SocketException: " + e.getMessage());
