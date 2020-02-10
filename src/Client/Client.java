@@ -37,10 +37,10 @@ public class Client {
         String userID;
         System.out.println("Please Enter your UserID:");
         userID = input.next().trim().toUpperCase();
-        System.out.println("Login successful (" + userID + ")");
         switch (checkUserType(userID)) {
             case USER_TYPE_CUSTOMER:
                 try {
+                    System.out.println("Customer Login successful (" + userID + ")");
                     customer(userID, getServerPort(userID.substring(0, 3)));
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -48,6 +48,7 @@ public class Client {
                 break;
             case USER_TYPE_MANAGER:
                 try {
+                    System.out.println("Manager Login successful (" + userID + ")");
                     manager(userID, getServerPort(userID.substring(0, 3)));
                 } catch (Exception e) {
                     e.printStackTrace();

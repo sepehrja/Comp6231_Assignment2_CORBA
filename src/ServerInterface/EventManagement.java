@@ -12,6 +12,7 @@ import java.net.SocketException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class EventManagement extends UnicastRemoteObject implements EventManagementInterface {
     public static final int Montreal_Server_Port = 8888;
@@ -23,22 +24,22 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
     private String serverID;
     private String serverName;
     // HashMap<EventType, HashMap <EventID, Event>>
-    private HashMap<String, HashMap<String, EventModel>> allEvents;
+    private Map<String, Map<String, EventModel>> allEvents;
     // HashMap<CustomerID, HashMap <EventType, List<EventID>>>
-    private HashMap<String, HashMap<String, List<String>>> clientEvents;
+    private Map<String, Map<String, List<String>>> clientEvents;
     // HashMap<ClientID, Client>
-    private HashMap<String, ClientModel> serverClients;
+    private Map<String, ClientModel> serverClients;
 
     public EventManagement(String serverID, String serverName) throws RemoteException {
         super();
         this.serverID = serverID;
         this.serverName = serverName;
-        allEvents = new HashMap<>();
-        allEvents.put(EventModel.CONFERENCES, new HashMap<>());
-        allEvents.put(EventModel.SEMINARS, new HashMap<>());
-        allEvents.put(EventModel.TRADE_SHOWS, new HashMap<>());
-        clientEvents = new HashMap<>();
-        serverClients = new HashMap<>();
+        allEvents = new ConcurrentHashMap<>();
+        allEvents.put(EventModel.CONFERENCES, new ConcurrentHashMap<>());
+        allEvents.put(EventModel.SEMINARS, new ConcurrentHashMap<>());
+        allEvents.put(EventModel.TRADE_SHOWS, new ConcurrentHashMap<>());
+        clientEvents = new ConcurrentHashMap<>();
+        serverClients = new ConcurrentHashMap<>();
         addTestData();
     }
 
@@ -47,19 +48,19 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
         ClientModel testCustomer = new ClientModel(serverID + "C1111");
 //        serverClients.put(testManager.getClientID(), testManager);
         serverClients.put(testCustomer.getClientID(), testCustomer);
-        clientEvents.put(testCustomer.getClientID(), new HashMap<>());
+        clientEvents.put(testCustomer.getClientID(), new ConcurrentHashMap<>());
 
-        EventModel sampleConf = new EventModel(EventModel.CONFERENCES, serverID + "M01012020", 5);
+        EventModel sampleConf = new EventModel(EventModel.CONFERENCES, serverID + "M010120", 5);
         sampleConf.addRegisteredClientID(testCustomer.getClientID());
         clientEvents.get(testCustomer.getClientID()).put(sampleConf.getEventType(), new ArrayList<>());
         clientEvents.get(testCustomer.getClientID()).get(sampleConf.getEventType()).add(sampleConf.getEventID());
 
-        EventModel sampleTrade = new EventModel(EventModel.TRADE_SHOWS, serverID + "A02022020", 15);
+        EventModel sampleTrade = new EventModel(EventModel.TRADE_SHOWS, serverID + "A020220", 15);
         sampleTrade.addRegisteredClientID(testCustomer.getClientID());
         clientEvents.get(testCustomer.getClientID()).put(sampleTrade.getEventType(), new ArrayList<>());
         clientEvents.get(testCustomer.getClientID()).get(sampleTrade.getEventType()).add(sampleTrade.getEventID());
 
-        EventModel sampleSemi = new EventModel(EventModel.SEMINARS, serverID + "E03032020", 20);
+        EventModel sampleSemi = new EventModel(EventModel.SEMINARS, serverID + "E030320", 20);
         sampleSemi.addRegisteredClientID(testCustomer.getClientID());
         clientEvents.get(testCustomer.getClientID()).put(sampleSemi.getEventType(), new ArrayList<>());
         clientEvents.get(testCustomer.getClientID()).get(sampleSemi.getEventType()).add(sampleSemi.getEventID());
@@ -81,7 +82,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
         }
         if (EventModel.detectEventServer(eventID).equals(serverName)) {
             EventModel event = new EventModel(eventType, eventID, bookingCapacity);
-            HashMap<String, EventModel> eventHashMap = new HashMap<>();
+            Map<String, EventModel> eventHashMap = allEvents.get(eventType);
             eventHashMap.put(eventID, event);
             allEvents.put(eventType, eventHashMap);
             return "Success: Event " + eventID + " added successfully";
@@ -119,7 +120,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
 
     @Override
     public String listEventAvailability(String eventType) throws RemoteException {
-        HashMap<String, EventModel> events = allEvents.get(eventType);
+        Map<String, EventModel> events = allEvents.get(eventType);
         StringBuilder builder = new StringBuilder();
         builder.append(serverName + " Server " + eventType + ":\n");
         if (events.size() == 0) {
@@ -152,7 +153,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
             addNewCustomerToClients(customerID);
             return "Booking Schedule Empty For " + customerID;
         }
-        HashMap<String, List<String>> events = clientEvents.get(customerID);
+        Map<String, List<String>> events = clientEvents.get(customerID);
         if (events.size() == 0) {
             return "Booking Schedule Empty For " + customerID;
         }
@@ -190,7 +191,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
                         clientEvents.get(customerID).put(eventType, temp);
                     }
                 } else {
-                    HashMap<String, List<String>> temp = new HashMap<>();
+                    Map<String, List<String>> temp = new ConcurrentHashMap<>();
                     List<String> temp2 = new ArrayList<>();
                     temp2.add(eventID);
                     temp.put(eventType, temp2);
@@ -312,7 +313,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
     private void addNewCustomerToClients(String customerID) {
         ClientModel newCustomer = new ClientModel(customerID);
         serverClients.put(newCustomer.getClientID(), newCustomer);
-        clientEvents.put(newCustomer.getClientID(), new HashMap<>());
+        clientEvents.put(newCustomer.getClientID(), new ConcurrentHashMap<>());
     }
 
     /**
@@ -323,7 +324,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
      * @throws RemoteException
      */
     public String listEventAvailabilityUDP(String eventType) throws RemoteException {
-        HashMap<String, EventModel> events = allEvents.get(eventType);
+        Map<String, EventModel> events = allEvents.get(eventType);
         StringBuilder builder = new StringBuilder();
         builder.append(serverName + " Server " + eventType + ":\n");
         if (events.size() == 0) {
@@ -397,15 +398,15 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
         }
     }
 
-    public HashMap<String, HashMap<String, EventModel>> getAllEvents() {
+    public Map<String, Map<String, EventModel>> getAllEvents() {
         return allEvents;
     }
 
-    public HashMap<String, HashMap<String, List<String>>> getClientEvents() {
+    public Map<String, Map<String, List<String>>> getClientEvents() {
         return clientEvents;
     }
 
-    public HashMap<String, ClientModel> getServerClients() {
+    public Map<String, ClientModel> getServerClients() {
         return serverClients;
     }
 
