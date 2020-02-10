@@ -200,48 +200,6 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
     }
 
     @Override
-    public String getBookingSchedule(String customerID) throws RemoteException {
-        String response;
-        if (!serverClients.containsKey(customerID)) {
-            addNewCustomerToClients(customerID);
-            response = "Booking Schedule Empty For " + customerID;
-            try {
-                Logger.serverLog(serverID, customerID, " RMI getBookingSchedule ", "null", response);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return response;
-        }
-        Map<String, List<String>> events = clientEvents.get(customerID);
-        if (events.size() == 0) {
-            response = "Booking Schedule Empty For " + customerID;
-            try {
-                Logger.serverLog(serverID, customerID, " RMI getBookingSchedule ", "null", response);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return response;
-        }
-        StringBuilder builder = new StringBuilder();
-        for (String eventType :
-                events.keySet()) {
-            builder.append(eventType + ":\n");
-            for (String eventID :
-                    events.get(eventType)) {
-                builder.append(eventID + " ||");
-            }
-            builder.append("\n=====================================\n");
-        }
-        response = builder.toString();
-        try {
-            Logger.serverLog(serverID, customerID, " RMI getBookingSchedule ", "null", response);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return response;
-    }
-
-    @Override
     public String bookEvent(String customerID, String eventID, String eventType) throws RemoteException {
         String response;
         if (EventModel.detectEventServer(eventID).equals(serverName)) {
@@ -322,26 +280,46 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
         }
     }
 
-    /**
-     * for udp calls only
-     *
-     * @param oldEventID
-     * @param eventType
-     * @param customerID
-     * @return
-     * @throws RemoteException
-     */
-    public String removeEventUDP(String oldEventID, String eventType, String customerID) throws RemoteException {
+    @Override
+    public String getBookingSchedule(String customerID) throws RemoteException {
+        String response;
         if (!serverClients.containsKey(customerID)) {
             addNewCustomerToClients(customerID);
-            return "Failed: You " + customerID + " Are Not Registered in " + oldEventID;
-        } else {
-            if (clientEvents.get(customerID).get(eventType).remove(oldEventID)) {
-                return "Success: Event " + oldEventID + " Was Removed from " + customerID + " Schedule";
-            } else {
-                return "Failed: You " + customerID + " Are Not Registered in " + oldEventID;
+            response = "Booking Schedule Empty For " + customerID;
+            try {
+                Logger.serverLog(serverID, customerID, " RMI getBookingSchedule ", "null", response);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+            return response;
         }
+        Map<String, List<String>> events = clientEvents.get(customerID);
+        if (events.size() == 0) {
+            response = "Booking Schedule Empty For " + customerID;
+            try {
+                Logger.serverLog(serverID, customerID, " RMI getBookingSchedule ", "null", response);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return response;
+        }
+        StringBuilder builder = new StringBuilder();
+        for (String eventType :
+                events.keySet()) {
+            builder.append(eventType + ":\n");
+            for (String eventID :
+                    events.get(eventType)) {
+                builder.append(eventID + " ||");
+            }
+            builder.append("\n=====================================\n");
+        }
+        response = builder.toString();
+        try {
+            Logger.serverLog(serverID, customerID, " RMI getBookingSchedule ", "null", response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return response;
     }
 
     @Override
@@ -407,6 +385,28 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
                 }
             }
             return sendUDPMessage(getServerPort(customerID.substring(0, 3)), "cancelEvent", customerID, eventType, eventID);
+        }
+    }
+
+    /**
+     * for udp calls only
+     *
+     * @param oldEventID
+     * @param eventType
+     * @param customerID
+     * @return
+     * @throws RemoteException
+     */
+    public String removeEventUDP(String oldEventID, String eventType, String customerID) throws RemoteException {
+        if (!serverClients.containsKey(customerID)) {
+            addNewCustomerToClients(customerID);
+            return "Failed: You " + customerID + " Are Not Registered in " + oldEventID;
+        } else {
+            if (clientEvents.get(customerID).get(eventType).remove(oldEventID)) {
+                return "Success: Event " + oldEventID + " Was Removed from " + customerID + " Schedule";
+            } else {
+                return "Failed: You " + customerID + " Are Not Registered in " + oldEventID;
+            }
         }
     }
 
