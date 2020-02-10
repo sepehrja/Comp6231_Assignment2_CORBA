@@ -515,10 +515,10 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
             for (String eventID :
                     registeredIDs) {
                 if (eventID.substring(6, 8).equals(eventDate.substring(2, 4)) && eventID.substring(8, 10).equals(eventDate.substring(4, 6))) {
-                    int day1 = Integer.parseInt(eventID.substring(4, 6));
-                    int day2 = Integer.parseInt(eventDate.substring(0, 2));
-                    int diff = Math.abs(day2 - day1);
-                    if (diff < 6) {
+                    int week1 = Integer.parseInt(eventID.substring(4, 6)) / 7;
+                    int week2 = Integer.parseInt(eventDate.substring(0, 2)) / 7;
+//                    int diff = Math.abs(day2 - day1);
+                    if (week1 == week2) {
                         limit++;
                     }
                 }
