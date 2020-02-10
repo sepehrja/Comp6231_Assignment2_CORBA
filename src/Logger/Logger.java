@@ -11,20 +11,27 @@ public class Logger {
     public static final int LOG_TYPE_SERVER = 1;
     public static final int LOG_TYPE_CLIENT = 0;
 
-    public static void clientLog(String clientID, String action, String response) throws IOException {
+    public static void clientLog(String clientID, String action, String requestParams, String response) throws IOException {
         FileWriter fileWriter = new FileWriter(getFileName(clientID, LOG_TYPE_CLIENT), true);
         PrintWriter printWriter = new PrintWriter(fileWriter);
-        printWriter.println("DATE: " + getFormattedDate() + "Client Action: " + action + " | Server Response: " + response);
+        printWriter.println("DATE: " + getFormattedDate() + " Client Action: " + action + " | RequestParameters: " + requestParams + " | Server Response: " + response);
 
         printWriter.close();
     }
 
+    public static void clientLog(String clientID, String msg) throws IOException {
+        FileWriter fileWriter = new FileWriter(getFileName(clientID, LOG_TYPE_CLIENT), true);
+        PrintWriter printWriter = new PrintWriter(fileWriter);
+        printWriter.println("DATE: " + getFormattedDate() + " " + msg);
+
+        printWriter.close();
+    }
 
     public static void serverLog(String serverID, String clientID, String requestType, String requestParams, String requestResult, String serverResponse) throws IOException {
 
         FileWriter fileWriter = new FileWriter(getFileName(serverID, LOG_TYPE_SERVER), true);
         PrintWriter printWriter = new PrintWriter(fileWriter);
-        printWriter.println("DATE: " + getFormattedDate() + "ClientID: " + clientID + " | RequestType: " + requestType + " | RequestParameters: " + requestParams + " | RequestResult: " + requestResult + " | ServerResponse: " + serverResponse);
+        printWriter.println("DATE: " + getFormattedDate() + " ClientID: " + clientID + " | RequestType: " + requestType + " | RequestParameters: " + requestParams + " | RequestResult: " + requestResult + " | ServerResponse: " + serverResponse);
 
         printWriter.close();
     }
@@ -33,7 +40,7 @@ public class Logger {
 
         FileWriter fileWriter = new FileWriter(getFileName(serverID, LOG_TYPE_SERVER), true);
         PrintWriter printWriter = new PrintWriter(fileWriter);
-        printWriter.println("DATE: " + getFormattedDate() + "Msg: " + msg);
+        printWriter.println("DATE: " + getFormattedDate() + " " + msg);
 
         printWriter.close();
     }

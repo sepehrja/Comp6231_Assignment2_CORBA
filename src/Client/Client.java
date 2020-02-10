@@ -2,7 +2,9 @@ package Client;
 
 import DataModel.EventModel;
 import Interface.EventManagementInterface;
+import Logger.Logger;
 
+import java.io.IOException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Scanner;
@@ -32,15 +34,17 @@ public class Client {
         init();
     }
 
-    public static void init() {
+    public static void init() throws IOException {
         input = new Scanner(System.in);
         String userID;
         System.out.println("Please Enter your UserID:");
         userID = input.next().trim().toUpperCase();
+        Logger.clientLog(userID, " login attempt");
         switch (checkUserType(userID)) {
             case USER_TYPE_CUSTOMER:
                 try {
                     System.out.println("Customer Login successful (" + userID + ")");
+                    Logger.clientLog(userID, " Customer Login successful");
                     customer(userID, getServerPort(userID.substring(0, 3)));
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -49,6 +53,7 @@ public class Client {
             case USER_TYPE_MANAGER:
                 try {
                     System.out.println("Manager Login successful (" + userID + ")");
+                    Logger.clientLog(userID, " Manager Login successful");
                     manager(userID, getServerPort(userID.substring(0, 3)));
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -56,6 +61,7 @@ public class Client {
                 break;
             default:
                 System.out.println("!!UserID is not in correct format");
+                Logger.clientLog(userID, " UserID is not in correct format");
                 init();
         }
     }
@@ -95,18 +101,35 @@ public class Client {
         boolean repeat = true;
         printMenu(USER_TYPE_CUSTOMER);
         int menuSelection = input.nextInt();
+        String eventType;
+        String eventID;
+        String serverResponse;
         switch (menuSelection) {
             case CUSTOMER_BOOK_EVENT:
-                System.out.println(remoteObject.bookEvent(customerID, promptForEventID(), promptForEventType()));
+                eventType = promptForEventType();
+                eventID = promptForEventID();
+                Logger.clientLog(customerID, " attempting to bookEvent");
+                serverResponse = remoteObject.bookEvent(customerID, eventID, eventType);
+                System.out.println(serverResponse);
+                Logger.clientLog(customerID, " bookEvent", " eventID: " + eventID + " eventType: " + eventType + " ", serverResponse);
                 break;
             case CUSTOMER_GET_BOOKING_SCHEDULE:
-                System.out.println(remoteObject.getBookingSchedule(customerID));
+                Logger.clientLog(customerID, " attempting to getBookingSchedule");
+                serverResponse = remoteObject.getBookingSchedule(customerID);
+                System.out.println(serverResponse);
+                Logger.clientLog(customerID, " bookEvent", " null ", serverResponse);
                 break;
             case CUSTOMER_CANCEL_EVENT:
-                System.out.println(remoteObject.cancelEvent(customerID, promptForEventID(), promptForEventType()));
+                eventType = promptForEventType();
+                eventID = promptForEventID();
+                Logger.clientLog(customerID, " attempting to cancelEvent");
+                serverResponse = remoteObject.cancelEvent(customerID, eventID, eventType);
+                System.out.println(serverResponse);
+                Logger.clientLog(customerID, " bookEvent", " eventID: " + eventID + " eventType: " + eventType + " ", serverResponse);
                 break;
             case CUSTOMER_LOGOUT:
                 repeat = false;
+                Logger.clientLog(customerID, " attempting to Logout");
                 init();
                 break;
         }
@@ -124,31 +147,64 @@ public class Client {
         boolean repeat = true;
         printMenu(USER_TYPE_MANAGER);
         String customerID;
+        String eventType;
+        String eventID;
+        String serverResponse;
+        int capacity;
         int menuSelection = input.nextInt();
         switch (menuSelection) {
             case MANAGER_ADD_EVENT:
-                System.out.println(remoteObject.addEvent(promptForEventID(), promptForEventType(), promptForCapacity()));
+                eventType = promptForEventType();
+                eventID = promptForEventID();
+                capacity = promptForCapacity();
+                Logger.clientLog(eventManagerID, " attempting to addEvent");
+                serverResponse = remoteObject.addEvent(eventID, eventType, capacity);
+                System.out.println(serverResponse);
+                Logger.clientLog(eventManagerID, " addEvent", " eventID: " + eventID + " eventType: " + eventType + " eventCapacity: " + capacity + " ", serverResponse);
                 break;
             case MANAGER_REMOVE_EVENT:
-                System.out.println(remoteObject.removeEvent(promptForEventID(), promptForEventType()));
+                eventType = promptForEventType();
+                eventID = promptForEventID();
+                Logger.clientLog(eventManagerID, " attempting to removeEvent");
+                serverResponse = remoteObject.removeEvent(eventID, eventType);
+                System.out.println(serverResponse);
+                Logger.clientLog(eventManagerID, " removeEvent", " eventID: " + eventID + " eventType: " + eventType + " ", serverResponse);
                 break;
             case MANAGER_LIST_EVENT_AVAILABILITY:
-                System.out.println(remoteObject.listEventAvailability(promptForEventType()));
+                eventType = promptForEventType();
+                Logger.clientLog(eventManagerID, " attempting to listEventAvailability");
+                serverResponse = remoteObject.listEventAvailability(eventType);
+                System.out.println(serverResponse);
+                Logger.clientLog(eventManagerID, " listEventAvailability", " eventType: " + eventType + " ", serverResponse);
                 break;
             case MANAGER_BOOK_EVENT:
                 customerID = askForCustomerIDFromManager(eventManagerID.substring(0, 3));
-                System.out.println(remoteObject.bookEvent(customerID, promptForEventID(), promptForEventType()));
+                eventType = promptForEventType();
+                eventID = promptForEventID();
+                Logger.clientLog(eventManagerID, " attempting to bookEvent");
+                serverResponse = remoteObject.bookEvent(customerID, eventID, eventType);
+                System.out.println(serverResponse);
+                Logger.clientLog(eventManagerID, " bookEvent", " customerID: " + customerID + " eventID: " + eventID + " eventType: " + eventType + " ", serverResponse);
                 break;
             case MANAGER_GET_BOOKING_SCHEDULE:
                 customerID = askForCustomerIDFromManager(eventManagerID.substring(0, 3));
-                System.out.println(remoteObject.getBookingSchedule(customerID));
+                Logger.clientLog(eventManagerID, " attempting to getBookingSchedule");
+                serverResponse = remoteObject.getBookingSchedule(customerID);
+                System.out.println(serverResponse);
+                Logger.clientLog(eventManagerID, " getBookingSchedule", " customerID: " + customerID + " ", serverResponse);
                 break;
             case MANAGER_CANCEL_EVENT:
                 customerID = askForCustomerIDFromManager(eventManagerID.substring(0, 3));
-                System.out.println(remoteObject.cancelEvent(customerID, promptForEventID(), promptForEventType()));
+                eventType = promptForEventType();
+                eventID = promptForEventID();
+                Logger.clientLog(eventManagerID, " attempting to cancelEvent");
+                serverResponse = remoteObject.cancelEvent(customerID, eventType, eventID);
+                System.out.println(serverResponse);
+                Logger.clientLog(eventManagerID, " cancelEvent", " customerID: " + customerID + " eventID: " + eventID + " eventType: " + eventType + " ", serverResponse);
                 break;
             case MANAGER_LOGOUT:
                 repeat = false;
+                Logger.clientLog(eventManagerID, "attempting to Logout");
                 init();
                 break;
         }
