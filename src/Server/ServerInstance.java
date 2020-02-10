@@ -10,27 +10,52 @@ import java.net.SocketException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-public class QuebecServer {
-    public static void main(String[] args) throws Exception {
-        EventManagement remoteObject = new EventManagement("QUE");
-        Registry registry = LocateRegistry.createRegistry(Client.SERVER_QUEBEC);
+public class ServerInstance {
+
+    private String serverID;
+    private String serverName;
+    private int serverRegistryPort;
+    private int serverUdpPort;
+
+    public ServerInstance(String serverID) throws Exception {
+        this.serverID = serverID;
+        switch (serverID) {
+            case "MTL":
+                serverName = EventManagement.EVENT_SERVER_MONTREAL;
+                serverRegistryPort = Client.SERVER_MONTREAL;
+                serverUdpPort = EventManagement.Montreal_Server_Port;
+                break;
+            case "QUE":
+                serverName = EventManagement.EVENT_SERVER_QUEBEC;
+                serverRegistryPort = Client.SERVER_QUEBEC;
+                serverUdpPort = EventManagement.Quebec_Server_Port;
+                break;
+            case "SHE":
+                serverName = EventManagement.EVENT_SERVER_SHERBROOK;
+                serverRegistryPort = Client.SERVER_SHERBROOKE;
+                serverUdpPort = EventManagement.Sherbrooke_Server_Port;
+                break;
+        }
+
+        EventManagement remoteObject = new EventManagement(serverID, serverName);
+        Registry registry = LocateRegistry.createRegistry(serverRegistryPort);
         registry.bind(Client.EVENT_MANAGEMENT_REGISTERED_NAME, remoteObject);
 
-        System.out.println("Quebec Server is Up & Running");
+        System.out.println(serverName + " Server is Up & Running");
         Runnable task = () -> {
-            listenForRequest(remoteObject);
+            listenForRequest(remoteObject, serverUdpPort, serverName);
         };
         Thread thread = new Thread(task);
         thread.start();
     }
 
-    private static void listenForRequest(EventManagement obj) {
+    private static void listenForRequest(EventManagement obj, int serverUdpPort, String serverName) {
         DatagramSocket aSocket = null;
         String sendingResult = "";
         try {
-            aSocket = new DatagramSocket(EventManagement.Quebec_Server_Port);
+            aSocket = new DatagramSocket(serverUdpPort);
             byte[] buffer = new byte[1000];
-            System.out.println("Quebec UDP Server Started at port " + aSocket.getLocalPort() + " ............");
+            System.out.println(serverName + " UDP Server Started at port " + aSocket.getLocalPort() + " ............");
             while (true) {
                 DatagramPacket request = new DatagramPacket(buffer, buffer.length);
                 aSocket.receive(request);

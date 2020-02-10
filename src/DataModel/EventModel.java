@@ -3,13 +3,12 @@ package DataModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ServerInterface.EventManagement.*;
+
 public class EventModel {
     public static final String EVENT_TIME_MORNING = "Morning";
     public static final String EVENT_TIME_AFTERNOON = "Afternoon";
     public static final String EVENT_TIME_EVENING = "Evening";
-    public static final String EVENT_SERVER_SHERBROOK = "SHERBROOK";
-    public static final String EVENT_SERVER_QUEBEC = "QUEBEC";
-    public static final String EVENT_SERVER_MONTREAL = "MONTREAL";
     public static final String CONFERENCES = "Conferences";
     public static final String SEMINARS = "Seminars";
     public static final String TRADE_SHOWS = "Trade Shows";

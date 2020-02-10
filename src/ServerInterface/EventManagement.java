@@ -17,6 +17,9 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
     public static final int Montreal_Server_Port = 8888;
     public static final int Quebec_Server_Port = 7777;
     public static final int Sherbrooke_Server_Port = 6666;
+    public static final String EVENT_SERVER_SHERBROOK = "SHERBROOK";
+    public static final String EVENT_SERVER_QUEBEC = "QUEBEC";
+    public static final String EVENT_SERVER_MONTREAL = "MONTREAL";
     private String serverID;
     private String serverName;
     // HashMap<EventType, HashMap <EventID, Event>>
@@ -26,20 +29,10 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
     // HashMap<ClientID, Client>
     private HashMap<String, ClientModel> serverClients;
 
-    public EventManagement(String server) throws RemoteException {
+    public EventManagement(String serverID, String serverName) throws RemoteException {
         super();
-        this.serverID = server;
-        switch (server) {
-            case "MTL":
-                serverName = EventModel.EVENT_SERVER_MONTREAL;
-                break;
-            case "QUE":
-                serverName = EventModel.EVENT_SERVER_QUEBEC;
-                break;
-            case "SHE":
-                serverName = EventModel.EVENT_SERVER_SHERBROOK;
-                break;
-        }
+        this.serverID = serverID;
+        this.serverName = serverName;
         allEvents = new HashMap<>();
         allEvents.put(EventModel.CONFERENCES, new HashMap<>());
         allEvents.put(EventModel.SEMINARS, new HashMap<>());
@@ -136,7 +129,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
                     events.values()) {
                 builder.append(event.toString() + " || ");
             }
-            builder.append("=====================================\n");
+            builder.append("\n=====================================\n");
         }
         String otherServer1, otherServer2;
         if (serverID.equals("MTL")) {
@@ -341,7 +334,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
                 builder.append(event.toString() + " || ");
             }
         }
-        builder.append("=====================================\n");
+        builder.append("\n=====================================\n");
         return builder.toString();
     }
 
