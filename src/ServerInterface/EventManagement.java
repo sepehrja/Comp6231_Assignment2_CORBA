@@ -96,8 +96,8 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
         if (EventModel.detectEventServer(eventID).equals(serverName)) {
             if (allEvents.get(eventType).containsKey(eventID)) {
                 List<String> registeredClients = allEvents.get(eventType).get(eventID).getRegisteredClientIDs();
-                addCustomersToNextSameEvent(eventID, eventType, registeredClients);
                 allEvents.get(eventType).remove(eventID);
+                addCustomersToNextSameEvent(eventID, eventType, registeredClients);
                 return "Success: Event Removed Successfully";
             } else {
                 return "Failed: Event " + eventID + " Does Not Exist";
@@ -165,7 +165,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
                     events.get(eventType)) {
                 builder.append(eventID + " ||");
             }
-            builder.append("=====================================\n");
+            builder.append("\n=====================================\n");
         }
         return builder.toString();
     }
@@ -341,7 +341,12 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
 
     private String getNextSameEvent(Set<String> keySet, String eventType) {
         List<String> sortedIDs = new ArrayList<String>(keySet);
-        Collections.sort(sortedIDs);
+        Collections.sort(sortedIDs, new Comparator<String>() {
+            @Override
+            public int compare(String ID1, String ID2) {
+                return ID1.substring(4).compareTo(ID2.substring(4));
+            }
+        });
         for (String eventID :
                 sortedIDs) {
             if (!allEvents.get(eventType).get(eventID).isFull()) {
@@ -387,6 +392,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
         for (String customerID :
                 registeredClients) {
             if (customerID.substring(0, 3).equals(serverID)) {
+                clientEvents.get(customerID).get(eventType).remove(eventID);
                 if (getNextSameEvent(allEvents.get(eventType).keySet(), eventType).equals("Failed")) {
                     return;
                 } else {
@@ -408,9 +414,5 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
 
     public Map<String, ClientModel> getServerClients() {
         return serverClients;
-    }
-
-    private void initCustomer(String customerID) {
-
     }
 }
