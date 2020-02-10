@@ -150,6 +150,6 @@ public class EventModel {
 
     @Override
     public String toString() {
-        return " (" + getEventID() + ") in the " + getEventTimeSlot() + " of " + getEventDate();
+        return " (" + getEventID() + ") in the " + getEventTimeSlot() + " of " + getEventDate() + " Total[Remaining] Capacity: " + getEventCapacity() + "[" + getEventRemainCapacity() + "]";
     }
 }
