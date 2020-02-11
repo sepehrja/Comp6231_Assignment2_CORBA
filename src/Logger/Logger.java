@@ -1,5 +1,6 @@
 package Logger;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -43,6 +44,13 @@ public class Logger {
         printWriter.println("DATE: " + getFormattedDate() + " " + msg);
 
         printWriter.close();
+    }
+
+    public static void deleteALogFile(String ID) throws IOException {
+
+        String fileName = getFileName(ID, LOG_TYPE_CLIENT);
+        File file = new File(fileName);
+        file.delete();
     }
 
     private static String getFileName(String ID, int logType) {

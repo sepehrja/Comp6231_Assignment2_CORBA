@@ -62,6 +62,7 @@ public class Client {
             default:
                 System.out.println("!!UserID is not in correct format");
                 Logger.clientLog(userID, " UserID is not in correct format");
+                Logger.deleteALogFile(userID);
                 init();
         }
     }

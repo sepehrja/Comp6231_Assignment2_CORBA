@@ -1,0 +1,3 @@
+DATE: 2020-02-11 12:59:57 PM  login attempt
+DATE: 2020-02-11 12:59:57 PM  Manager Login successful
+DATE: 2020-02-11 01:08:47 PM attempting to Logout
