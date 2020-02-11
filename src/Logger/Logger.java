@@ -50,11 +50,11 @@ public class Logger {
         String fileName = dir;
         if (logType == LOG_TYPE_SERVER) {
             if (ID.equalsIgnoreCase("MTL")) {
-                fileName = dir + "\\src\\Log\\Server\\Montreal.txt";
+                fileName = dir + "\\src\\Logs\\Server\\Montreal.txt";
             } else if (ID.equalsIgnoreCase("SHE")) {
-                fileName = dir + "\\src\\Log\\Server\\Sherbrooke.txt";
+                fileName = dir + "\\src\\Logs\\Server\\Sherbrooke.txt";
             } else if (ID.equalsIgnoreCase("QUE")) {
-                fileName = dir + "\\src\\Log\\Server\\Quebec.txt";
+                fileName = dir + "\\src\\Logs\\Server\\Quebec.txt";
             }
         } else {
             fileName = dir + "\\src\\Logs\\Client\\" + ID + ".txt";
