@@ -233,8 +233,13 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
                     temp.put(eventType, temp2);
                     clientEvents.put(customerID, temp);
                 }
-                allEvents.get(eventType).get(eventID).addRegisteredClientID(customerID);
-                response = "Success: Event " + eventID + " Booked Successfully";
+                if (allEvents.get(eventType).get(eventID).addRegisteredClientID(customerID) == EventModel.ADD_SUCCESS) {
+                    response = "Success: Event " + eventID + " Booked Successfully";
+                } else if (allEvents.get(eventType).get(eventID).addRegisteredClientID(customerID) == EventModel.EVENT_FULL) {
+                    response = "Failed: Event " + eventID + " is Full";
+                } else {
+                    response = "Failed: Cannot Add You To Event " + eventID;
+                }
                 try {
                     Logger.serverLog(serverID, customerID, " RMI bookEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
                 } catch (IOException e) {

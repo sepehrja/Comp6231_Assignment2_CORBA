@@ -12,6 +12,9 @@ public class EventModel {
     public static final String CONFERENCES = "Conferences";
     public static final String SEMINARS = "Seminars";
     public static final String TRADE_SHOWS = "Trade Shows";
+    public static final int EVENT_FULL = -1;
+    public static final int ALREADY_REGISTERED = 0;
+    public static final int ADD_SUCCESS = 1;
     private String eventType;
     private String eventID;
     private String eventServer;
@@ -131,16 +134,16 @@ public class EventModel {
         this.registeredClients = registeredClientsIDs;
     }
 
-    public boolean addRegisteredClientID(String registeredClientID) {
+    public int addRegisteredClientID(String registeredClientID) {
         if (!isFull()) {
             if (registeredClients.contains(registeredClientID)) {
-                return false;
+                return ALREADY_REGISTERED;
             } else {
                 registeredClients.add(registeredClientID);
-                return true;
+                return ADD_SUCCESS;
             }
         } else {
-            return false;
+            return EVENT_FULL;
         }
     }
 
