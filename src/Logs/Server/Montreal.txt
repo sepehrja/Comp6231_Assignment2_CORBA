@@ -2,3 +2,33 @@ DATE: 2020-02-11 12:56:04 PM  Server is Up & Running
 DATE: 2020-02-11 12:56:04 PM  UDP Server Started at port 8888
 DATE: 2020-02-11 12:56:10 PM  Server is Up & Running
 DATE: 2020-02-11 12:56:10 PM  UDP Server Started at port 8888
+DATE: 2020-02-11 01:11:07 PM ClientID: null | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-02-11 01:11:07 PM ClientID: null | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: SHERBROOK Server Conferences:
+ (SHEM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+
+DATE: 2020-02-11 01:11:07 PM ClientID: null | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-02-11 01:11:07 PM ClientID: null | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: QUEBEC Server Conferences:
+ (QUEM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+
+DATE: 2020-02-11 01:11:07 PM ClientID: null | RequestType:  RMI listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse: MONTREAL Server Conferences:
+ (MTLM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+SHERBROOK Server Conferences:
+ (SHEM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+QUEBEC Server Conferences:
+ (QUEM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+
+DATE: 2020-02-11 01:11:30 PM ClientID: MTLC1111 | RequestType:  RMI getBookingSchedule  | RequestParameters: null | ServerResponse: Seminars:
+MTLE030320 ||
+=====================================
+Conferences:
+MTLM010120 ||
+=====================================
+Trade Shows:
+MTLA020220 ||
+=====================================
+

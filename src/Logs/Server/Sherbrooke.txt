@@ -2,3 +2,8 @@ DATE: 2020-02-11 12:56:04 PM  Server is Up & Running
 DATE: 2020-02-11 12:56:04 PM  UDP Server Started at port 6666
 DATE: 2020-02-11 12:56:10 PM  Server is Up & Running
 DATE: 2020-02-11 12:56:10 PM  UDP Server Started at port 6666
+DATE: 2020-02-11 01:11:07 PM ClientID: null | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-02-11 01:11:07 PM ClientID: null | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: SHERBROOK Server Conferences:
+ (SHEM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+;

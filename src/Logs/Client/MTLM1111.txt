@@ -1,3 +1,28 @@
 DATE: 2020-02-11 12:59:57 PM  login attempt
 DATE: 2020-02-11 12:59:57 PM  Manager Login successful
 DATE: 2020-02-11 01:08:47 PM attempting to Logout
+DATE: 2020-02-11 01:10:56 PM  login attempt
+DATE: 2020-02-11 01:10:56 PM  Manager Login successful
+DATE: 2020-02-11 01:11:07 PM  attempting to listEventAvailability
+DATE: 2020-02-11 01:11:07 PM Client Action:  listEventAvailability | RequestParameters:  eventType: Conferences  | Server Response: MONTREAL Server Conferences:
+ (MTLM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+SHERBROOK Server Conferences:
+ (SHEM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+QUEBEC Server Conferences:
+ (QUEM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+
+DATE: 2020-02-11 01:11:30 PM  attempting to getBookingSchedule
+DATE: 2020-02-11 01:11:30 PM Client Action:  getBookingSchedule | RequestParameters:  customerID: MTLC1111  | Server Response: Seminars:
+MTLE030320 ||
+=====================================
+Conferences:
+MTLM010120 ||
+=====================================
+Trade Shows:
+MTLA020220 ||
+=====================================
+
+DATE: 2020-02-11 01:13:20 PM attempting to Logout
