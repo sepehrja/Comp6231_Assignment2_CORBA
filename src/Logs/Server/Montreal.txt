@@ -319,3 +319,31 @@ DATE: 2020-02-11 10:22:11 PM  UDP Server Started at port 8888
 DATE: 2020-02-11 10:22:34 PM ClientID: SHEC1111 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | ServerResponse:  ...
 DATE: 2020-02-11 10:22:34 PM ClientID: SHEC1111 | RequestType:  RMI bookEvent  | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | ServerResponse: Success: Event MTLM010120 Booked Successfully
 DATE: 2020-02-11 10:22:34 PM ClientID: SHEC1111 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | ServerResponse: Success: Event MTLM010120 Booked Successfully;
+DATE: 2020-02-11 10:29:12 PM  Server is Up & Running
+DATE: 2020-02-11 10:29:12 PM  UDP Server Started at port 8888
+DATE: 2020-02-11 10:29:36 PM ClientID: SHEC1111 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-02-11 10:29:36 PM ClientID: SHEC1111 | RequestType:  RMI bookEvent  | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | ServerResponse: Success: Event MTLM010120 Booked Successfully
+DATE: 2020-02-11 10:29:36 PM ClientID: SHEC1111 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | ServerResponse: Success: Event MTLM010120 Booked Successfully;
+DATE: 2020-02-11 10:29:47 PM ClientID: SHEC1111 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-02-11 10:29:47 PM ClientID: SHEC1111 | RequestType:  RMI cancelEvent  | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | ServerResponse: Success: Event MTLM010120 Canceled for SHEC1111
+DATE: 2020-02-11 10:29:47 PM ClientID: SHEC1111 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | ServerResponse: Success: Event MTLM010120 Canceled for SHEC1111;
+DATE: 2020-02-11 10:30:00 PM ClientID: null | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-02-11 10:30:00 PM ClientID: null | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: SHERBROOK Server Conferences:
+ (SHEM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+
+DATE: 2020-02-11 10:30:00 PM ClientID: null | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-02-11 10:30:00 PM ClientID: null | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: QUEBEC Server Conferences:
+ (QUEM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+
+DATE: 2020-02-11 10:30:00 PM ClientID: null | RequestType:  RMI listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse: MONTREAL Server Conferences:
+ (MTLM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+SHERBROOK Server Conferences:
+ (SHEM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+QUEBEC Server Conferences:
+ (QUEM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+

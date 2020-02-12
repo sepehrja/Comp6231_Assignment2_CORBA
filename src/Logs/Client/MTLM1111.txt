@@ -192,3 +192,16 @@ QUEBEC Server Conferences:
 =====================================
 
 DATE: 2020-02-11 10:03:14 PM  attempting to cancelEvent
+DATE: 2020-02-11 10:29:56 PM  login attempt
+DATE: 2020-02-11 10:29:56 PM  Manager Login successful
+DATE: 2020-02-11 10:30:00 PM  attempting to listEventAvailability
+DATE: 2020-02-11 10:30:00 PM Client Action:  listEventAvailability | RequestParameters:  eventType: Conferences  | Server Response: MONTREAL Server Conferences:
+ (MTLM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+SHERBROOK Server Conferences:
+ (SHEM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+QUEBEC Server Conferences:
+ (QUEM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+

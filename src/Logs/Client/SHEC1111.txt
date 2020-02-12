@@ -137,3 +137,10 @@ DATE: 2020-02-11 10:22:24 PM  Customer Login successful
 DATE: 2020-02-11 10:22:31 PM  attempting to bookEvent
 DATE: 2020-02-11 10:22:34 PM Client Action:  bookEvent | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | Server Response: Success: Event MTLM010120 Booked Successfully
 DATE: 2020-02-11 10:22:48 PM  attempting to cancelEvent
+DATE: 2020-02-11 10:29:21 PM  login attempt
+DATE: 2020-02-11 10:29:21 PM  Customer Login successful
+DATE: 2020-02-11 10:29:36 PM  attempting to bookEvent
+DATE: 2020-02-11 10:29:36 PM Client Action:  bookEvent | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | Server Response: Success: Event MTLM010120 Booked Successfully
+DATE: 2020-02-11 10:29:47 PM  attempting to cancelEvent
+DATE: 2020-02-11 10:29:47 PM Client Action:  bookEvent | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | Server Response: Success: Event MTLM010120 Canceled for SHEC1111
+DATE: 2020-02-11 10:29:52 PM  attempting to Logout

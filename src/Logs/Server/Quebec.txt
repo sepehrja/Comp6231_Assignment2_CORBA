@@ -81,3 +81,10 @@ DATE: 2020-02-11 10:14:46 PM  Server is Up & Running
 DATE: 2020-02-11 10:14:46 PM  UDP Server Started at port 7777
 DATE: 2020-02-11 10:22:11 PM  Server is Up & Running
 DATE: 2020-02-11 10:22:11 PM  UDP Server Started at port 7777
+DATE: 2020-02-11 10:29:12 PM  Server is Up & Running
+DATE: 2020-02-11 10:29:12 PM  UDP Server Started at port 7777
+DATE: 2020-02-11 10:30:00 PM ClientID: null | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-02-11 10:30:00 PM ClientID: null | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: QUEBEC Server Conferences:
+ (QUEM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+;
