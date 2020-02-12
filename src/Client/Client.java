@@ -199,7 +199,7 @@ public class Client {
                 eventType = promptForEventType();
                 eventID = promptForEventID();
                 Logger.clientLog(eventManagerID, " attempting to cancelEvent");
-                serverResponse = remoteObject.cancelEvent(customerID, eventType, eventID);
+                serverResponse = remoteObject.cancelEvent(customerID, eventID, eventType);
                 System.out.println(serverResponse);
                 Logger.clientLog(eventManagerID, " cancelEvent", " customerID: " + customerID + " eventID: " + eventID + " eventType: " + eventType + " ", serverResponse);
                 break;
@@ -214,11 +214,11 @@ public class Client {
         }
     }
 
-    private static String askForCustomerIDFromManager(String server) {
-        System.out.println("Please enter a customerID(Within " + server + " Server):");
+    private static String askForCustomerIDFromManager(String branchAcronym) {
+        System.out.println("Please enter a customerID(Within " + branchAcronym + " Server):");
         String userID = input.next().trim().toUpperCase();
-        if (checkUserType(userID) != USER_TYPE_CUSTOMER) {
-            return askForCustomerIDFromManager(server);
+        if (checkUserType(userID) != USER_TYPE_CUSTOMER || !userID.substring(0, 3).equals(branchAcronym)) {
+            return askForCustomerIDFromManager(branchAcronym);
         } else {
             return userID;
         }

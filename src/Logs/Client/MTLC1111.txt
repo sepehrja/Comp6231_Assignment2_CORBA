@@ -1,0 +1,16 @@
+DATE: 2020-02-11 09:48:29 PM  login attempt
+DATE: 2020-02-11 09:48:29 PM  Customer Login successful
+DATE: 2020-02-11 09:48:31 PM  attempting to getBookingSchedule
+DATE: 2020-02-11 09:48:31 PM Client Action:  bookEvent | RequestParameters:  null  | Server Response: Seminars:
+MTLE030320 ||
+=====================================
+Conferences:
+MTLA010120 ||
+=====================================
+Trade Shows:
+MTLA020220 ||
+=====================================
+
+DATE: 2020-02-11 09:48:59 PM  attempting to cancelEvent
+DATE: 2020-02-11 09:49:47 PM Client Action:  bookEvent | RequestParameters:  eventID: MTLA020220 eventType: Trade Shows  | Server Response: Success: Event MTLA020220 Canceled for MTLC1111
+DATE: 2020-02-11 09:49:53 PM  attempting to Logout

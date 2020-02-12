@@ -1,0 +1,113 @@
+DATE: 2020-02-11 09:28:16 PM  login attempt
+DATE: 2020-02-11 09:28:16 PM  Customer Login successful
+DATE: 2020-02-11 09:28:46 PM  attempting to bookEvent
+DATE: 2020-02-11 09:28:46 PM Client Action:  bookEvent | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | Server Response: Success: Event MTLM010120 Booked Successfully
+DATE: 2020-02-11 09:28:50 PM  attempting to getBookingSchedule
+DATE: 2020-02-11 09:28:50 PM Client Action:  bookEvent | RequestParameters:  null  | Server Response: Seminars:
+SHEE030320 ||
+=====================================
+Conferences:
+SHEM010120 ||MTLM010120 ||
+=====================================
+Trade Shows:
+SHEA020220 ||
+=====================================
+
+DATE: 2020-02-11 09:36:32 PM  attempting to getBookingSchedule
+DATE: 2020-02-11 09:36:32 PM Client Action:  bookEvent | RequestParameters:  null  | Server Response: Seminars:
+SHEE030320 ||
+=====================================
+Conferences:
+SHEM010120 ||
+=====================================
+Trade Shows:
+SHEA020220 ||
+=====================================
+
+DATE: 2020-02-11 09:37:54 PM  attempting to bookEvent
+DATE: 2020-02-11 09:37:54 PM Client Action:  bookEvent | RequestParameters:  eventID: MTLM010119 eventType: Conferences  | Server Response: Success: Event MTLM010119 Booked Successfully
+DATE: 2020-02-11 09:38:00 PM  attempting to getBookingSchedule
+DATE: 2020-02-11 09:38:00 PM Client Action:  bookEvent | RequestParameters:  null  | Server Response: Seminars:
+SHEE030320 ||
+=====================================
+Conferences:
+SHEM010120 ||MTLM010119 ||
+=====================================
+Trade Shows:
+SHEA020220 ||
+=====================================
+
+DATE: 2020-02-11 09:40:54 PM  login attempt
+DATE: 2020-02-11 09:40:54 PM  Customer Login successful
+DATE: 2020-02-11 09:40:56 PM  attempting to getBookingSchedule
+DATE: 2020-02-11 09:40:56 PM Client Action:  bookEvent | RequestParameters:  null  | Server Response: Seminars:
+SHEE030320 ||
+=====================================
+Conferences:
+SHEM010120 ||MTLM010119 ||
+=====================================
+Trade Shows:
+SHEA020220 ||
+=====================================
+
+DATE: 2020-02-11 09:41:15 PM  attempting to cancelEvent
+DATE: 2020-02-11 09:44:15 PM  login attempt
+DATE: 2020-02-11 09:44:15 PM  Customer Login successful
+DATE: 2020-02-11 09:44:19 PM  attempting to getBookingSchedule
+DATE: 2020-02-11 09:44:19 PM Client Action:  bookEvent | RequestParameters:  null  | Server Response: Seminars:
+SHEE030320 ||
+=====================================
+Conferences:
+SHEM010120 ||
+=====================================
+Trade Shows:
+SHEA020220 ||
+=====================================
+
+DATE: 2020-02-11 09:44:32 PM  attempting to Logout
+DATE: 2020-02-11 09:46:37 PM  login attempt
+DATE: 2020-02-11 09:46:37 PM  Customer Login successful
+DATE: 2020-02-11 09:46:40 PM  attempting to Logout
+DATE: 2020-02-11 09:55:42 PM  login attempt
+DATE: 2020-02-11 09:55:42 PM  Customer Login successful
+DATE: 2020-02-11 09:55:46 PM  attempting to getBookingSchedule
+DATE: 2020-02-11 09:55:46 PM Client Action:  bookEvent | RequestParameters:  null  | Server Response: Seminars:
+SHEE030320 ||
+=====================================
+Conferences:
+SHEM010120 ||
+=====================================
+Trade Shows:
+SHEA020220 ||
+=====================================
+
+DATE: 2020-02-11 09:55:57 PM  attempting to bookEvent
+DATE: 2020-02-11 09:55:57 PM Client Action:  bookEvent | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | Server Response: Success: Event MTLM010120 Booked Successfully
+DATE: 2020-02-11 09:55:59 PM  attempting to getBookingSchedule
+DATE: 2020-02-11 09:55:59 PM Client Action:  bookEvent | RequestParameters:  null  | Server Response: Seminars:
+SHEE030320 ||
+=====================================
+Conferences:
+SHEM010120 ||MTLM010120 ||
+=====================================
+Trade Shows:
+SHEA020220 ||
+=====================================
+
+DATE: 2020-02-11 09:56:21 PM  attempting to cancelEvent
+DATE: 2020-02-11 09:58:05 PM  login attempt
+DATE: 2020-02-11 09:58:05 PM  Customer Login successful
+DATE: 2020-02-11 09:58:08 PM  attempting to getBookingSchedule
+DATE: 2020-02-11 09:58:08 PM Client Action:  bookEvent | RequestParameters:  null  | Server Response: Seminars:
+SHEE030320 ||
+=====================================
+Conferences:
+SHEM010120 ||
+=====================================
+Trade Shows:
+SHEA020220 ||
+=====================================
+
+DATE: 2020-02-11 09:58:27 PM  attempting to bookEvent
+DATE: 2020-02-11 09:58:27 PM Client Action:  bookEvent | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | Server Response: Success: Event MTLM010120 Booked Successfully
+DATE: 2020-02-11 09:58:34 PM  attempting to Logout

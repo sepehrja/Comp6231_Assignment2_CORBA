@@ -1,0 +1,14 @@
+DATE: 2020-02-11 09:46:44 PM  login attempt
+DATE: 2020-02-11 09:46:44 PM  Manager Login successful
+DATE: 2020-02-11 09:46:48 PM  attempting to listEventAvailability
+DATE: 2020-02-11 09:47:42 PM Client Action:  listEventAvailability | RequestParameters:  eventType: Conferences  | Server Response: SHERBROOK Server Conferences:
+ (SHEM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+QUEBEC Server Conferences:
+ (QUEM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
+=====================================
+MONTREAL Server Conferences:
+ (MTLE010120) in the Evening of 01/01/2020 Total[Remaining] Capacity: 1[1] ||  (MTLM010119) in the Morning of 01/01/2019 Total[Remaining] Capacity: 10[9] ||  (MTLA010120) in the Afternoon of 01/01/2020 Total[Remaining] Capacity: 20[19] ||  (MTLA200221) in the Afternoon of 20/02/2021 Total[Remaining] Capacity: 3[3] || 
+=====================================
+
+DATE: 2020-02-11 09:48:21 PM attempting to Logout
