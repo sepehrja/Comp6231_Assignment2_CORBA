@@ -30,6 +30,9 @@ public class Logger {
 
     public static void serverLog(String serverID, String clientID, String requestType, String requestParams, String serverResponse) throws IOException {
 
+        if (clientID.equals("null")) {
+            clientID = "Event Manager";
+        }
         FileWriter fileWriter = new FileWriter(getFileName(serverID, LOG_TYPE_SERVER), true);
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.println("DATE: " + getFormattedDate() + " ClientID: " + clientID + " | RequestType: " + requestType + " | RequestParameters: " + requestParams + " | ServerResponse: " + serverResponse);
