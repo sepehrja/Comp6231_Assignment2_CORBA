@@ -304,3 +304,18 @@ QUEBEC Server Conferences:
 =====================================
 
 DATE: 2020-02-11 10:04:06 PM ClientID: SHEC1111 | RequestType:  UDP request sent cancelEvent  | RequestParameters:  eventID: Conferences eventType: MTLM010120  | ServerResponse:  ... 
+DATE: 2020-02-11 10:13:18 PM  Server is Up & Running
+DATE: 2020-02-11 10:13:18 PM  UDP Server Started at port 8888
+DATE: 2020-02-11 10:13:41 PM ClientID: SHEC1111 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-02-11 10:13:41 PM ClientID: SHEC1111 | RequestType:  RMI bookEvent  | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | ServerResponse: Success: Event MTLM010120 Booked Successfully
+DATE: 2020-02-11 10:13:41 PM ClientID: SHEC1111 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | ServerResponse: Success: Event MTLM010120 Booked Successfully;
+DATE: 2020-02-11 10:14:46 PM  Server is Up & Running
+DATE: 2020-02-11 10:14:46 PM  UDP Server Started at port 8888
+DATE: 2020-02-11 10:15:48 PM ClientID: SHEC1111 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-02-11 10:15:48 PM ClientID: SHEC1111 | RequestType:  RMI bookEvent  | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | ServerResponse: Success: Event MTLM010120 Booked Successfully
+DATE: 2020-02-11 10:15:48 PM ClientID: SHEC1111 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | ServerResponse: Success: Event MTLM010120 Booked Successfully;
+DATE: 2020-02-11 10:22:11 PM  Server is Up & Running
+DATE: 2020-02-11 10:22:11 PM  UDP Server Started at port 8888
+DATE: 2020-02-11 10:22:34 PM ClientID: SHEC1111 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-02-11 10:22:34 PM ClientID: SHEC1111 | RequestType:  RMI bookEvent  | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | ServerResponse: Success: Event MTLM010120 Booked Successfully
+DATE: 2020-02-11 10:22:34 PM ClientID: SHEC1111 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: MTLM010120 eventType: Conferences  | ServerResponse: Success: Event MTLM010120 Booked Successfully;

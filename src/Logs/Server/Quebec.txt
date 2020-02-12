@@ -75,3 +75,9 @@ DATE: 2020-02-11 10:01:51 PM ClientID: null | RequestType:  UDP reply sent listE
  (QUEM010120) in the Morning of 01/01/2020 Total[Remaining] Capacity: 5[4] || 
 =====================================
 ;
+DATE: 2020-02-11 10:13:18 PM  Server is Up & Running
+DATE: 2020-02-11 10:13:18 PM  UDP Server Started at port 7777
+DATE: 2020-02-11 10:14:46 PM  Server is Up & Running
+DATE: 2020-02-11 10:14:46 PM  UDP Server Started at port 7777
+DATE: 2020-02-11 10:22:11 PM  Server is Up & Running
+DATE: 2020-02-11 10:22:11 PM  UDP Server Started at port 7777

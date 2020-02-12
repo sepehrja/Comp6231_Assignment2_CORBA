@@ -384,12 +384,13 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
             if (customerID.substring(0, 3).equals(serverID)) {
                 if (!serverClients.containsKey(customerID)) {
                     addNewCustomerToClients(customerID);
-//                    return "Failed: You " + customerID + " Are Not Registered in " + eventID;
                 } else {
-                    clientEvents.get(customerID).get(eventType).remove(eventID);
+                    if (clientEvents.get(customerID).get(eventType).remove(eventID)) {
+                        return sendUDPMessage(getServerPort(eventID.substring(0, 3)), "cancelEvent", customerID, eventType, eventID);
+                    }
                 }
             }
-            return sendUDPMessage(getServerPort(customerID.substring(0, 3)), "cancelEvent", customerID, eventType, eventID);
+            return "Failed: You " + customerID + " Are Not Registered in " + eventID;
         }
     }
 
