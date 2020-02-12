@@ -485,18 +485,51 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
         clientEvents.put(newCustomer.getClientID(), new ConcurrentHashMap<>());
     }
 
-    private String getNextSameEvent(Set<String> keySet, String eventType) {
+    private String getNextSameEvent(Set<String> keySet, String eventType, String oldEventID) {
         List<String> sortedIDs = new ArrayList<String>(keySet);
+        sortedIDs.add(oldEventID);
         Collections.sort(sortedIDs, new Comparator<String>() {
             @Override
             public int compare(String ID1, String ID2) {
-                return ID1.substring(4).compareTo(ID2.substring(4));
+                Integer timeSlot1 = 0;
+                switch (ID1.substring(3, 4).toUpperCase()) {
+                    case "M":
+                        timeSlot1 = 1;
+                        break;
+                    case "A":
+                        timeSlot1 = 2;
+                        break;
+                    case "E":
+                        timeSlot1 = 3;
+                        break;
+                }
+                Integer timeSlot2 = 0;
+                switch (ID2.substring(3, 4).toUpperCase()) {
+                    case "M":
+                        timeSlot2 = 1;
+                        break;
+                    case "A":
+                        timeSlot2 = 2;
+                        break;
+                    case "E":
+                        timeSlot2 = 3;
+                        break;
+                }
+                Integer date1 = Integer.parseInt(ID1.substring(8, 10) + ID1.substring(6, 8) + ID1.substring(4, 6));
+                Integer date2 = Integer.parseInt(ID2.substring(8, 10) + ID2.substring(6, 8) + ID2.substring(4, 6));
+                int dateCompare = date1.compareTo(date2);
+                int timeSlotCompare = timeSlot1.compareTo(timeSlot2);
+                if (dateCompare == 0) {
+                    return ((timeSlotCompare == 0) ? dateCompare : timeSlotCompare);
+                } else {
+                    return dateCompare;
+                }
             }
         });
-        for (String eventID :
-                sortedIDs) {
-            if (!allEvents.get(eventType).get(eventID).isFull()) {
-                return eventID;
+        int index = sortedIDs.indexOf(oldEventID) + 1;
+        for (int i = index; i < sortedIDs.size(); i++) {
+            if (!allEvents.get(eventType).get(sortedIDs.get(i)).isFull()) {
+                return sortedIDs.get(i);
             }
         }
         return "Failed";
@@ -534,18 +567,19 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
         return false;
     }
 
-    private void addCustomersToNextSameEvent(String eventID, String eventType, List<String> registeredClients) throws RemoteException {
+    private void addCustomersToNextSameEvent(String oldEventID, String eventType, List<String> registeredClients) throws RemoteException {
         for (String customerID :
                 registeredClients) {
             if (customerID.substring(0, 3).equals(serverID)) {
-                clientEvents.get(customerID).get(eventType).remove(eventID);
-                if (getNextSameEvent(allEvents.get(eventType).keySet(), eventType).equals("Failed")) {
+                clientEvents.get(customerID).get(eventType).remove(oldEventID);
+                String nextSameEventResult = getNextSameEvent(allEvents.get(eventType).keySet(), eventType, oldEventID);
+                if (nextSameEventResult.equals("Failed")) {
                     return;
                 } else {
-                    bookEvent(customerID, getNextSameEvent(allEvents.get(eventType).keySet(), eventType), eventType);
+                    bookEvent(customerID, nextSameEventResult, eventType);
                 }
             } else {
-                sendUDPMessage(getServerPort(customerID.substring(0, 3)), "removeEvent", customerID, eventType, eventID);
+                sendUDPMessage(getServerPort(customerID.substring(0, 3)), "removeEvent", customerID, eventType, oldEventID);
             }
         }
     }
