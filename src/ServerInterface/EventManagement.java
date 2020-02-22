@@ -41,7 +41,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
         allEvents.put(EventModel.TRADE_SHOWS, new ConcurrentHashMap<>());
         clientEvents = new ConcurrentHashMap<>();
         serverClients = new ConcurrentHashMap<>();
-        addTestData();
+//        addTestData();
     }
 
     private void addTestData() {
