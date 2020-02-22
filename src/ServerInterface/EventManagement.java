@@ -480,12 +480,6 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
 
     }
 
-    private void addNewCustomerToClients(String customerID) {
-        ClientModel newCustomer = new ClientModel(customerID);
-        serverClients.put(newCustomer.getClientID(), newCustomer);
-        clientEvents.put(newCustomer.getClientID(), new ConcurrentHashMap<>());
-    }
-
     private String getNextSameEvent(Set<String> keySet, String eventType, String oldEventID) {
         List<String> sortedIDs = new ArrayList<String>(keySet);
         sortedIDs.add(oldEventID);
@@ -595,5 +589,16 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
 
     public Map<String, ClientModel> getServerClients() {
         return serverClients;
+    }
+
+    public void addNewEvent(String eventID, String eventType, int capacity) {
+        EventModel sampleConf = new EventModel(eventType, eventID, capacity);
+        allEvents.get(eventType).put(eventID, sampleConf);
+    }
+
+    public void addNewCustomerToClients(String customerID) {
+        ClientModel newCustomer = new ClientModel(customerID);
+        serverClients.put(newCustomer.getClientID(), newCustomer);
+        clientEvents.put(newCustomer.getClientID(), new ConcurrentHashMap<>());
     }
 }
