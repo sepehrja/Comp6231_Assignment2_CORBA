@@ -202,10 +202,10 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
     @Override
     public String bookEvent(String customerID, String eventID, String eventType) throws RemoteException {
         String response;
+        if (!serverClients.containsKey(customerID)) {
+            addNewCustomerToClients(customerID);
+        }
         if (EventModel.detectEventServer(eventID).equals(serverName)) {
-            if (!serverClients.containsKey(customerID)) {
-                addNewCustomerToClients(customerID);
-            }
             EventModel bookedEvent = allEvents.get(eventType).get(eventID);
             if (!bookedEvent.isFull()) {
                 if (clientEvents.containsKey(customerID)) {
