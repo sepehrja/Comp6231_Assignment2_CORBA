@@ -1,6 +1,7 @@
 package Server;
 
 import Client.Client;
+import DataModel.EventModel;
 import Logger.Logger;
 import ServerInterface.EventManagement;
 
@@ -44,11 +45,31 @@ public class ServerInstance {
 
         System.out.println(serverName + " Server is Up & Running");
         Logger.serverLog(serverID, " Server is Up & Running");
+        addTestData(remoteObject);
         Runnable task = () -> {
             listenForRequest(remoteObject, serverUdpPort, serverName, serverID);
         };
         Thread thread = new Thread(task);
         thread.start();
+    }
+
+    private void addTestData(EventManagement remoteObject) {
+        switch (serverID) {
+            case "MTL":
+                remoteObject.addNewEvent("MTLA090620", EventModel.CONFERENCES, 2);
+                remoteObject.addNewEvent("MTLA080620", EventModel.TRADE_SHOWS, 2);
+                remoteObject.addNewEvent("MTLE230620", EventModel.SEMINARS, 1);
+                remoteObject.addNewEvent("MTLA150620", EventModel.TRADE_SHOWS, 12);
+                break;
+            case "QUE":
+                remoteObject.addNewCustomerToClients("QUEC1234");
+                remoteObject.addNewCustomerToClients("QUEC4114");
+                break;
+            case "SHE":
+                remoteObject.addNewEvent("SHEE110620", EventModel.CONFERENCES, 1);
+                remoteObject.addNewEvent("SHEE080620", EventModel.CONFERENCES, 1);
+                break;
+        }
     }
 
     private static void listenForRequest(EventManagement obj, int serverUdpPort, String serverName, String serverID) {

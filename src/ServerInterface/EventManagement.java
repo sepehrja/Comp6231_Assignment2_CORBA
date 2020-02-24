@@ -536,13 +536,19 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
             List<String> registeredIDs = new ArrayList<>();
             switch (i) {
                 case 0:
-                    registeredIDs = clientEvents.get(customerID).get(EventModel.CONFERENCES);
+                    if (clientEvents.get(customerID).containsKey(EventModel.CONFERENCES)) {
+                        registeredIDs = clientEvents.get(customerID).get(EventModel.CONFERENCES);
+                    }
                     break;
                 case 1:
-                    registeredIDs = clientEvents.get(customerID).get(EventModel.SEMINARS);
+                    if (clientEvents.get(customerID).containsKey(EventModel.SEMINARS)) {
+                        registeredIDs = clientEvents.get(customerID).get(EventModel.SEMINARS);
+                    }
                     break;
                 case 2:
-                    registeredIDs = clientEvents.get(customerID).get(EventModel.TRADE_SHOWS);
+                    if (clientEvents.get(customerID).containsKey(EventModel.TRADE_SHOWS)) {
+                        registeredIDs = clientEvents.get(customerID).get(EventModel.TRADE_SHOWS);
+                    }
                     break;
             }
             for (String eventID :
