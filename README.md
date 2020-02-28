@@ -1,2 +1,2 @@
 # Distributed Event Management System (DEMS)
-Comp6231 Assignment1 - Winter 2020 - Concordia University
+Comp6231 Assignment2(CORBA) - Winter 2020 - Concordia University
