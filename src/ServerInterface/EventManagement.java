@@ -2,20 +2,20 @@ package ServerInterface;
 
 import DataModel.ClientModel;
 import DataModel.EventModel;
-import Interface.EventManagementInterface;
 import Logger.Logger;
+import ServerObjectInterfaceApp.ServerObjectInterfacePOA;
+import org.omg.CORBA.ORB;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class EventManagement extends UnicastRemoteObject implements EventManagementInterface {
+public class EventManagement extends ServerObjectInterfacePOA {
+    private ORB orb;
     public static final int Montreal_Server_Port = 8888;
     public static final int Quebec_Server_Port = 7777;
     public static final int Sherbrooke_Server_Port = 6666;
@@ -31,7 +31,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
     // HashMap<ClientID, Client>
     private Map<String, ClientModel> serverClients;
 
-    public EventManagement(String serverID, String serverName) throws RemoteException {
+    public EventManagement(String serverID, String serverName) {
         super();
         this.serverID = serverID;
         this.serverName = serverName;
@@ -42,6 +42,10 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
         clientEvents = new ConcurrentHashMap<>();
         serverClients = new ConcurrentHashMap<>();
 //        addTestData();
+    }
+
+    public void setORB(ORB orb_val) {
+        orb = orb_val;
     }
 
     private void addTestData() {
@@ -83,7 +87,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
     }
 
     @Override
-    public String addEvent(String eventID, String eventType, int bookingCapacity) throws RemoteException {
+    public String addEvent(String eventID, String eventType, int bookingCapacity) {
         String response;
         if (allEvents.get(eventType).containsKey(eventID)) {
             if (allEvents.get(eventType).get(eventID).getEventCapacity() <= bookingCapacity) {
@@ -129,7 +133,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
     }
 
     @Override
-    public String removeEvent(String eventID, String eventType) throws RemoteException {
+    public String removeEvent(String eventID, String eventType) {
         String response;
         if (EventModel.detectEventServer(eventID).equals(serverName)) {
             if (allEvents.get(eventType).containsKey(eventID)) {
@@ -164,20 +168,20 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
     }
 
     @Override
-    public String listEventAvailability(String eventType) throws RemoteException {
+    public String listEventAvailability(String eventType) {
         String response;
         Map<String, EventModel> events = allEvents.get(eventType);
         StringBuilder builder = new StringBuilder();
         builder.append(serverName + " Server " + eventType + ":\n");
         if (events.size() == 0) {
-            builder.append("No Events of Type " + eventType);
+            builder.append("No Events of Type " + eventType + "\n");
         } else {
             for (EventModel event :
                     events.values()) {
                 builder.append(event.toString() + " || ");
             }
-            builder.append("\n=====================================\n");
         }
+        builder.append("\n=====================================\n");
         String otherServer1, otherServer2;
         if (serverID.equals("MTL")) {
             otherServer1 = sendUDPMessage(Sherbrooke_Server_Port, "listEventAvailability", "null", eventType, "null");
@@ -200,7 +204,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
     }
 
     @Override
-    public String bookEvent(String customerID, String eventID, String eventType) throws RemoteException {
+    public String bookEvent(String customerID, String eventID, String eventType) {
         String response;
         if (!serverClients.containsKey(customerID)) {
             addNewCustomerToClients(customerID);
@@ -286,7 +290,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
     }
 
     @Override
-    public String getBookingSchedule(String customerID) throws RemoteException {
+    public String getBookingSchedule(String customerID) {
         String response;
         if (!serverClients.containsKey(customerID)) {
             addNewCustomerToClients(customerID);
@@ -328,7 +332,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
     }
 
     @Override
-    public String cancelEvent(String customerID, String eventID, String eventType) throws RemoteException {
+    public String cancelEvent(String customerID, String eventID, String eventType) {
         String response;
         if (EventModel.detectEventServer(eventID).equals(serverName)) {
             if (customerID.substring(0, 3).equals(serverID)) {
@@ -394,6 +398,16 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
         }
     }
 
+    @Override
+    public String swapEvent(String customerID, String newEventID, String newEventType, String oldEventID, String oldEventType) {
+        return null;
+    }
+
+    @Override
+    public void shutdown() {
+        orb.shutdown(false);
+    }
+
     /**
      * for udp calls only
      *
@@ -401,9 +415,8 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
      * @param eventType
      * @param customerID
      * @return
-     * @throws RemoteException
      */
-    public String removeEventUDP(String oldEventID, String eventType, String customerID) throws RemoteException {
+    public String removeEventUDP(String oldEventID, String eventType, String customerID) {
         if (!serverClients.containsKey(customerID)) {
             addNewCustomerToClients(customerID);
             return "Failed: You " + customerID + " Are Not Registered in " + oldEventID;
@@ -421,9 +434,8 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
      *
      * @param eventType
      * @return
-     * @throws RemoteException
      */
-    public String listEventAvailabilityUDP(String eventType) throws RemoteException {
+    public String listEventAvailabilityUDP(String eventType) {
         Map<String, EventModel> events = allEvents.get(eventType);
         StringBuilder builder = new StringBuilder();
         builder.append(serverName + " Server " + eventType + ":\n");
@@ -568,7 +580,7 @@ public class EventManagement extends UnicastRemoteObject implements EventManagem
         return false;
     }
 
-    private void addCustomersToNextSameEvent(String oldEventID, String eventType, List<String> registeredClients) throws RemoteException {
+    private void addCustomersToNextSameEvent(String oldEventID, String eventType, List<String> registeredClients) {
         for (String customerID :
                 registeredClients) {
             if (customerID.substring(0, 3).equals(serverID)) {

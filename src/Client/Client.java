@@ -1,12 +1,14 @@
 package Client;
 
 import DataModel.EventModel;
-import Interface.EventManagementInterface;
 import Logger.Logger;
+import ServerObjectInterfaceApp.ServerObjectInterface;
+import ServerObjectInterfaceApp.ServerObjectInterfaceHelper;
+import org.omg.CORBA.ORB;
+import org.omg.CosNaming.NamingContextExt;
+import org.omg.CosNaming.NamingContextExtHelper;
 
 import java.io.IOException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 import java.util.Scanner;
 
 public class Client {
@@ -23,18 +25,27 @@ public class Client {
     public static final int MANAGER_GET_BOOKING_SCHEDULE = 5;
     public static final int MANAGER_CANCEL_EVENT = 6;
     public static final int MANAGER_LOGOUT = 7;
-    public static final int SERVER_MONTREAL = 2964;
-    public static final int SERVER_SHERBROOKE = 2965;
-    public static final int SERVER_QUEBEC = 2966;
+    //    public static final int SERVER_MONTREAL = 2964;
+//    public static final int SERVER_SHERBROOKE = 2965;
+//    public static final int SERVER_QUEBEC = 2966;
     public static final String EVENT_MANAGEMENT_REGISTERED_NAME = "EVENT_MANAGEMENT";
 
     static Scanner input;
 
     public static void main(String[] args) throws Exception {
-        init();
+        try {
+            ORB orb = ORB.init(args, null);
+            // -ORBInitialPort 1050 -ORBInitialHost localhost
+            org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
+            NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
+            init(ncRef);
+        } catch (Exception e) {
+            System.out.println("Client ORB init exception: " + e);
+            e.printStackTrace();
+        }
     }
 
-    public static void init() throws IOException {
+    public static void init(NamingContextExt ncRef) throws IOException {
         input = new Scanner(System.in);
         String userID;
         System.out.println("Please Enter your UserID:");
@@ -45,7 +56,7 @@ public class Client {
                 try {
                     System.out.println("Customer Login successful (" + userID + ")");
                     Logger.clientLog(userID, " Customer Login successful");
-                    customer(userID, getServerPort(userID.substring(0, 3)));
+                    customer(userID, getServerID(userID), ncRef);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -54,7 +65,7 @@ public class Client {
                 try {
                     System.out.println("Manager Login successful (" + userID + ")");
                     Logger.clientLog(userID, " Manager Login successful");
-                    manager(userID, getServerPort(userID.substring(0, 3)));
+                    manager(userID, getServerID(userID), ncRef);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -63,19 +74,20 @@ public class Client {
                 System.out.println("!!UserID is not in correct format");
                 Logger.clientLog(userID, " UserID is not in correct format");
                 Logger.deleteALogFile(userID);
-                init();
+                init(ncRef);
         }
     }
 
-    private static int getServerPort(String branchAcronym) {
+    private static String getServerID(String userID) {
+        String branchAcronym = userID.substring(0, 3);
         if (branchAcronym.equalsIgnoreCase("MTL")) {
-            return SERVER_MONTREAL;
+            return branchAcronym;
         } else if (branchAcronym.equalsIgnoreCase("SHE")) {
-            return SERVER_SHERBROOKE;
+            return branchAcronym;
         } else if (branchAcronym.equalsIgnoreCase("QUE")) {
-            return SERVER_QUEBEC;
+            return branchAcronym;
         }
-        return 1;
+        return "1";
     }
 
     private static int checkUserType(String userID) {
@@ -93,12 +105,11 @@ public class Client {
         return 0;
     }
 
-    private static void customer(String customerID, int serverPort) throws Exception {
-        if (serverPort == 1) {
-            return;
+    private static void customer(String customerID, String serverID, NamingContextExt ncRef) throws Exception {
+        if (serverID.equals("1")) {
+            init(ncRef);
         }
-        Registry registry = LocateRegistry.getRegistry(serverPort);
-        EventManagementInterface remoteObject = (EventManagementInterface) registry.lookup(EVENT_MANAGEMENT_REGISTERED_NAME);
+        ServerObjectInterface servant = ServerObjectInterfaceHelper.narrow(ncRef.resolve_str(serverID));
         boolean repeat = true;
         printMenu(USER_TYPE_CUSTOMER);
         int menuSelection = input.nextInt();
@@ -110,13 +121,13 @@ public class Client {
                 eventType = promptForEventType();
                 eventID = promptForEventID();
                 Logger.clientLog(customerID, " attempting to bookEvent");
-                serverResponse = remoteObject.bookEvent(customerID, eventID, eventType);
+                serverResponse = servant.bookEvent(customerID, eventID, eventType);
                 System.out.println(serverResponse);
                 Logger.clientLog(customerID, " bookEvent", " eventID: " + eventID + " eventType: " + eventType + " ", serverResponse);
                 break;
             case CUSTOMER_GET_BOOKING_SCHEDULE:
                 Logger.clientLog(customerID, " attempting to getBookingSchedule");
-                serverResponse = remoteObject.getBookingSchedule(customerID);
+                serverResponse = servant.getBookingSchedule(customerID);
                 System.out.println(serverResponse);
                 Logger.clientLog(customerID, " bookEvent", " null ", serverResponse);
                 break;
@@ -124,27 +135,26 @@ public class Client {
                 eventType = promptForEventType();
                 eventID = promptForEventID();
                 Logger.clientLog(customerID, " attempting to cancelEvent");
-                serverResponse = remoteObject.cancelEvent(customerID, eventID, eventType);
+                serverResponse = servant.cancelEvent(customerID, eventID, eventType);
                 System.out.println(serverResponse);
                 Logger.clientLog(customerID, " bookEvent", " eventID: " + eventID + " eventType: " + eventType + " ", serverResponse);
                 break;
             case CUSTOMER_LOGOUT:
                 repeat = false;
                 Logger.clientLog(customerID, " attempting to Logout");
-                init();
+                init(ncRef);
                 break;
         }
         if (repeat) {
-            customer(customerID, serverPort);
+            customer(customerID, serverID, ncRef);
         }
     }
 
-    private static void manager(String eventManagerID, int serverPort) throws Exception {
-        if (serverPort == 1) {
-            return;
+    private static void manager(String eventManagerID, String serverID, NamingContextExt ncRef) throws Exception {
+        if (serverID.equals("1")) {
+            init(ncRef);
         }
-        Registry registry = LocateRegistry.getRegistry(serverPort);
-        EventManagementInterface remoteObject = (EventManagementInterface) registry.lookup(EVENT_MANAGEMENT_REGISTERED_NAME);
+        ServerObjectInterface servant = ServerObjectInterfaceHelper.narrow(ncRef.resolve_str(serverID));
         boolean repeat = true;
         printMenu(USER_TYPE_MANAGER);
         String customerID;
@@ -159,7 +169,7 @@ public class Client {
                 eventID = promptForEventID();
                 capacity = promptForCapacity();
                 Logger.clientLog(eventManagerID, " attempting to addEvent");
-                serverResponse = remoteObject.addEvent(eventID, eventType, capacity);
+                serverResponse = servant.addEvent(eventID, eventType, capacity);
                 System.out.println(serverResponse);
                 Logger.clientLog(eventManagerID, " addEvent", " eventID: " + eventID + " eventType: " + eventType + " eventCapacity: " + capacity + " ", serverResponse);
                 break;
@@ -167,14 +177,14 @@ public class Client {
                 eventType = promptForEventType();
                 eventID = promptForEventID();
                 Logger.clientLog(eventManagerID, " attempting to removeEvent");
-                serverResponse = remoteObject.removeEvent(eventID, eventType);
+                serverResponse = servant.removeEvent(eventID, eventType);
                 System.out.println(serverResponse);
                 Logger.clientLog(eventManagerID, " removeEvent", " eventID: " + eventID + " eventType: " + eventType + " ", serverResponse);
                 break;
             case MANAGER_LIST_EVENT_AVAILABILITY:
                 eventType = promptForEventType();
                 Logger.clientLog(eventManagerID, " attempting to listEventAvailability");
-                serverResponse = remoteObject.listEventAvailability(eventType);
+                serverResponse = servant.listEventAvailability(eventType);
                 System.out.println(serverResponse);
                 Logger.clientLog(eventManagerID, " listEventAvailability", " eventType: " + eventType + " ", serverResponse);
                 break;
@@ -183,14 +193,14 @@ public class Client {
                 eventType = promptForEventType();
                 eventID = promptForEventID();
                 Logger.clientLog(eventManagerID, " attempting to bookEvent");
-                serverResponse = remoteObject.bookEvent(customerID, eventID, eventType);
+                serverResponse = servant.bookEvent(customerID, eventID, eventType);
                 System.out.println(serverResponse);
                 Logger.clientLog(eventManagerID, " bookEvent", " customerID: " + customerID + " eventID: " + eventID + " eventType: " + eventType + " ", serverResponse);
                 break;
             case MANAGER_GET_BOOKING_SCHEDULE:
                 customerID = askForCustomerIDFromManager(eventManagerID.substring(0, 3));
                 Logger.clientLog(eventManagerID, " attempting to getBookingSchedule");
-                serverResponse = remoteObject.getBookingSchedule(customerID);
+                serverResponse = servant.getBookingSchedule(customerID);
                 System.out.println(serverResponse);
                 Logger.clientLog(eventManagerID, " getBookingSchedule", " customerID: " + customerID + " ", serverResponse);
                 break;
@@ -199,18 +209,18 @@ public class Client {
                 eventType = promptForEventType();
                 eventID = promptForEventID();
                 Logger.clientLog(eventManagerID, " attempting to cancelEvent");
-                serverResponse = remoteObject.cancelEvent(customerID, eventID, eventType);
+                serverResponse = servant.cancelEvent(customerID, eventID, eventType);
                 System.out.println(serverResponse);
                 Logger.clientLog(eventManagerID, " cancelEvent", " customerID: " + customerID + " eventID: " + eventID + " eventType: " + eventType + " ", serverResponse);
                 break;
             case MANAGER_LOGOUT:
                 repeat = false;
                 Logger.clientLog(eventManagerID, "attempting to Logout");
-                init();
+                init(ncRef);
                 break;
         }
         if (repeat) {
-            manager(eventManagerID, serverPort);
+            manager(eventManagerID, serverID, ncRef);
         }
     }
 
