@@ -1,0 +1,2 @@
+DATE: 2020-02-29 12:51:54 AM  login attempt
+DATE: 2020-02-29 12:51:54 AM  Manager Login successful

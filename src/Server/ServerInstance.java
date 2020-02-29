@@ -76,7 +76,7 @@ public class ServerInstance {
                 orb.run();
             }
         } catch (Exception e) {
-            System.err.println("Exception: " + e);
+//            System.err.println("Exception: " + e);
             e.printStackTrace(System.out);
             Logger.serverLog(serverID, "Exception: " + e);
         }

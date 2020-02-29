@@ -94,7 +94,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
                 allEvents.get(eventType).get(eventID).setEventCapacity(bookingCapacity);
                 response = "Success: Event " + eventID + " Capacity increased to " + bookingCapacity;
                 try {
-                    Logger.serverLog(serverID, "null", " RMI addEvent ", " eventID: " + eventID + " eventType: " + eventType + " bookingCapacity " + bookingCapacity + " ", response);
+                    Logger.serverLog(serverID, "null", " CORBA addEvent ", " eventID: " + eventID + " eventType: " + eventType + " bookingCapacity " + bookingCapacity + " ", response);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -102,7 +102,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
             } else {
                 response = "Failed: Event Already Exists, Cannot Decrease Booking Capacity";
                 try {
-                    Logger.serverLog(serverID, "null", " RMI addEvent ", " eventID: " + eventID + " eventType: " + eventType + " bookingCapacity " + bookingCapacity + " ", response);
+                    Logger.serverLog(serverID, "null", " CORBA addEvent ", " eventID: " + eventID + " eventType: " + eventType + " bookingCapacity " + bookingCapacity + " ", response);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -116,7 +116,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
             allEvents.put(eventType, eventHashMap);
             response = "Success: Event " + eventID + " added successfully";
             try {
-                Logger.serverLog(serverID, "null", " RMI addEvent ", " eventID: " + eventID + " eventType: " + eventType + " bookingCapacity " + bookingCapacity + " ", response);
+                Logger.serverLog(serverID, "null", " CORBA addEvent ", " eventID: " + eventID + " eventType: " + eventType + " bookingCapacity " + bookingCapacity + " ", response);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -124,7 +124,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
         } else {
             response = "Failed: Cannot Add Event to servers other than " + serverName;
             try {
-                Logger.serverLog(serverID, "null", " RMI addEvent ", " eventID: " + eventID + " eventType: " + eventType + " bookingCapacity " + bookingCapacity + " ", response);
+                Logger.serverLog(serverID, "null", " CORBA addEvent ", " eventID: " + eventID + " eventType: " + eventType + " bookingCapacity " + bookingCapacity + " ", response);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -142,7 +142,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
                 addCustomersToNextSameEvent(eventID, eventType, registeredClients);
                 response = "Success: Event Removed Successfully";
                 try {
-                    Logger.serverLog(serverID, "null", " RMI removeEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
+                    Logger.serverLog(serverID, "null", " CORBA removeEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -150,7 +150,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
             } else {
                 response = "Failed: Event " + eventID + " Does Not Exist";
                 try {
-                    Logger.serverLog(serverID, "null", " RMI removeEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
+                    Logger.serverLog(serverID, "null", " CORBA removeEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -159,7 +159,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
         } else {
             response = "Failed: Cannot Remove Event from servers other than " + serverName;
             try {
-                Logger.serverLog(serverID, "null", " RMI removeEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
+                Logger.serverLog(serverID, "null", " CORBA removeEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -196,7 +196,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
         builder.append(otherServer1).append(otherServer2);
         response = builder.toString();
         try {
-            Logger.serverLog(serverID, "null", " RMI listEventAvailability ", " eventType: " + eventType + " ", response);
+            Logger.serverLog(serverID, "null", " CORBA listEventAvailability ", " eventType: " + eventType + " ", response);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -219,7 +219,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
                         } else {
                             response = "Failed: Event " + eventID + " Already Booked";
                             try {
-                                Logger.serverLog(serverID, customerID, " RMI bookEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
+                                Logger.serverLog(serverID, customerID, " CORBA bookEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -245,7 +245,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
                     response = "Failed: Cannot Add You To Event " + eventID;
                 }
                 try {
-                    Logger.serverLog(serverID, customerID, " RMI bookEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
+                    Logger.serverLog(serverID, customerID, " CORBA bookEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -253,7 +253,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
             } else {
                 response = "Failed: Event " + eventID + " is Full";
                 try {
-                    Logger.serverLog(serverID, customerID, " RMI bookEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
+                    Logger.serverLog(serverID, customerID, " CORBA bookEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -272,7 +272,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
                     }
                 }
                 try {
-                    Logger.serverLog(serverID, customerID, " RMI bookEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", serverResponse);
+                    Logger.serverLog(serverID, customerID, " CORBA bookEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", serverResponse);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -280,7 +280,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
             } else {
                 response = "Failed: You Cannot Book Event in Other Servers For This Week(Max Weekly Limit = 3)";
                 try {
-                    Logger.serverLog(serverID, customerID, " RMI bookEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
+                    Logger.serverLog(serverID, customerID, " CORBA bookEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -296,7 +296,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
             addNewCustomerToClients(customerID);
             response = "Booking Schedule Empty For " + customerID;
             try {
-                Logger.serverLog(serverID, customerID, " RMI getBookingSchedule ", "null", response);
+                Logger.serverLog(serverID, customerID, " CORBA getBookingSchedule ", "null", response);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -306,7 +306,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
         if (events.size() == 0) {
             response = "Booking Schedule Empty For " + customerID;
             try {
-                Logger.serverLog(serverID, customerID, " RMI getBookingSchedule ", "null", response);
+                Logger.serverLog(serverID, customerID, " CORBA getBookingSchedule ", "null", response);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -324,7 +324,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
         }
         response = builder.toString();
         try {
-            Logger.serverLog(serverID, customerID, " RMI getBookingSchedule ", "null", response);
+            Logger.serverLog(serverID, customerID, " CORBA getBookingSchedule ", "null", response);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -340,7 +340,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
                     addNewCustomerToClients(customerID);
                     response = "Failed: You " + customerID + " Are Not Registered in " + eventID;
                     try {
-                        Logger.serverLog(serverID, customerID, " RMI cancelEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
+                        Logger.serverLog(serverID, customerID, " CORBA cancelEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -350,7 +350,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
                         allEvents.get(eventType).get(eventID).removeRegisteredClientID(customerID);
                         response = "Success: Event " + eventID + " Canceled for " + customerID;
                         try {
-                            Logger.serverLog(serverID, customerID, " RMI cancelEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
+                            Logger.serverLog(serverID, customerID, " CORBA cancelEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -358,7 +358,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
                     } else {
                         response = "Failed: You " + customerID + " Are Not Registered in " + eventID;
                         try {
-                            Logger.serverLog(serverID, customerID, " RMI cancelEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
+                            Logger.serverLog(serverID, customerID, " CORBA cancelEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -369,7 +369,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
                 if (allEvents.get(eventType).get(eventID).removeRegisteredClientID(customerID)) {
                     response = "Success: Event " + eventID + " Canceled for " + customerID;
                     try {
-                        Logger.serverLog(serverID, customerID, " RMI cancelEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
+                        Logger.serverLog(serverID, customerID, " CORBA cancelEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -377,7 +377,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
                 } else {
                     response = "Failed: You " + customerID + " Are Not Registered in " + eventID;
                     try {
-                        Logger.serverLog(serverID, customerID, " RMI cancelEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
+                        Logger.serverLog(serverID, customerID, " CORBA cancelEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
