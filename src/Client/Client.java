@@ -27,11 +27,6 @@ public class Client {
     public static final int MANAGER_SWAP_EVENT = 7;
     public static final int MANAGER_LOGOUT = 8;
     public static final int SHUTDOWN = 0;
-    public static final int CONCURRENT_TEST = 123;
-    //    public static final int SERVER_MONTREAL = 2964;
-//    public static final int SERVER_SHERBROOKE = 2965;
-//    public static final int SERVER_QUEBEC = 2966;
-    public static final String EVENT_MANAGEMENT_REGISTERED_NAME = "EVENT_MANAGEMENT";
 
     static Scanner input;
 

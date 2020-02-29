@@ -147,11 +147,9 @@ public class ServerInstance {
                 Logger.serverLog(serverID, customerID, " UDP reply sent " + method + " ", " eventID: " + eventID + " eventType: " + eventType + " ", sendingResult);
             }
         } catch (SocketException e) {
-//            System.out.println("SocketException: " + e.getMessage());
             System.err.println("SocketException: " + e);
             e.printStackTrace(System.out);
         } catch (IOException e) {
-//            System.out.println("IOException: " + e.getMessage());
             System.err.println("IOException: " + e);
             e.printStackTrace(System.out);
         } finally {
