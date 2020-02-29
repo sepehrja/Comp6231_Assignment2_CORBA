@@ -8,7 +8,6 @@ import org.omg.CORBA.ORB;
 import org.omg.CosNaming.NamingContextExt;
 import org.omg.CosNaming.NamingContextExtHelper;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Client {
@@ -17,14 +16,18 @@ public class Client {
     public static final int CUSTOMER_BOOK_EVENT = 1;
     public static final int CUSTOMER_GET_BOOKING_SCHEDULE = 2;
     public static final int CUSTOMER_CANCEL_EVENT = 3;
-    public static final int CUSTOMER_LOGOUT = 4;
+    public static final int CUSTOMER_SWAP_EVENT = 4;
+    public static final int CUSTOMER_LOGOUT = 5;
     public static final int MANAGER_ADD_EVENT = 1;
     public static final int MANAGER_REMOVE_EVENT = 2;
     public static final int MANAGER_LIST_EVENT_AVAILABILITY = 3;
     public static final int MANAGER_BOOK_EVENT = 4;
     public static final int MANAGER_GET_BOOKING_SCHEDULE = 5;
     public static final int MANAGER_CANCEL_EVENT = 6;
-    public static final int MANAGER_LOGOUT = 7;
+    public static final int MANAGER_SWAP_EVENT = 7;
+    public static final int MANAGER_LOGOUT = 8;
+    public static final int SHUTDOWN = 0;
+    public static final int CONCURRENT_TEST = 123;
     //    public static final int SERVER_MONTREAL = 2964;
 //    public static final int SERVER_SHERBROOKE = 2965;
 //    public static final int SERVER_QUEBEC = 2966;
@@ -45,37 +48,79 @@ public class Client {
         }
     }
 
-    public static void init(NamingContextExt ncRef) throws IOException {
+    public static void init(NamingContextExt ncRef) throws Exception {
         input = new Scanner(System.in);
         String userID;
-        System.out.println("Please Enter your UserID:");
+        System.out.println("Please Enter your UserID(For Concurrency test enter 'ConTest'):");
         userID = input.next().trim().toUpperCase();
-        Logger.clientLog(userID, " login attempt");
-        switch (checkUserType(userID)) {
-            case USER_TYPE_CUSTOMER:
-                try {
-                    System.out.println("Customer Login successful (" + userID + ")");
-                    Logger.clientLog(userID, " Customer Login successful");
-                    customer(userID, getServerID(userID), ncRef);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                break;
-            case USER_TYPE_MANAGER:
-                try {
-                    System.out.println("Manager Login successful (" + userID + ")");
-                    Logger.clientLog(userID, " Manager Login successful");
-                    manager(userID, getServerID(userID), ncRef);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                break;
-            default:
-                System.out.println("!!UserID is not in correct format");
-                Logger.clientLog(userID, " UserID is not in correct format");
-                Logger.deleteALogFile(userID);
-                init(ncRef);
+        if (userID.equalsIgnoreCase("ConTest")) {
+            startConcurrencyTest(ncRef);
+        } else {
+            Logger.clientLog(userID, " login attempt");
+            switch (checkUserType(userID)) {
+                case USER_TYPE_CUSTOMER:
+                    try {
+                        System.out.println("Customer Login successful (" + userID + ")");
+                        Logger.clientLog(userID, " Customer Login successful");
+                        customer(userID, ncRef);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case USER_TYPE_MANAGER:
+                    try {
+                        System.out.println("Manager Login successful (" + userID + ")");
+                        Logger.clientLog(userID, " Manager Login successful");
+                        manager(userID, ncRef);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                default:
+                    System.out.println("!!UserID is not in correct format");
+                    Logger.clientLog(userID, " UserID is not in correct format");
+                    Logger.deleteALogFile(userID);
+                    init(ncRef);
+            }
         }
+    }
+
+    private static void startConcurrencyTest(NamingContextExt ncRef) throws Exception {
+        System.out.println("Concurrency Test Starting for BookEvent");
+        System.out.println("Connecting Montreal Server...");
+        String eventType = EventModel.CONFERENCES;
+        String eventID = "MTLE101020";
+        ServerObjectInterface servant = ServerObjectInterfaceHelper.narrow(ncRef.resolve_str("MTL"));
+        System.out.println("adding " + eventID + " " + eventType + " with capacity 2 to Montreal Server...");
+        String response = servant.addEvent(eventID, eventType, 2);
+        System.out.println(response);
+        Runnable task1 = () -> {
+            String customerID = "MTLC2345";
+            System.out.println("Connecting Montreal Server for " + customerID);
+            String res = servant.bookEvent(customerID, eventID, eventType);
+            System.out.println("Booking response for " + customerID + " " + res);
+        };
+        Runnable task2 = () -> {
+            String customerID = "MTLC3456";
+            System.out.println("Connecting Montreal Server for " + customerID);
+            String res = servant.bookEvent(customerID, eventID, eventType);
+            System.out.println("Booking response for " + customerID + " " + res);
+        };
+        Runnable task3 = () -> {
+            String customerID = "MTLC4567";
+            System.out.println("Connecting Montreal Server for " + customerID);
+            String res = servant.bookEvent(customerID, eventID, eventType);
+            System.out.println("Booking response for " + customerID + " " + res);
+        };
+
+        Thread thread1 = new Thread(task1);
+        Thread thread2 = new Thread(task2);
+        Thread thread3 = new Thread(task3);
+        thread1.start();
+        thread2.start();
+        thread3.start();
+        System.out.println("Concurrency Test Finished for BookEvent");
+        init(ncRef);
     }
 
     private static String getServerID(String userID) {
@@ -105,7 +150,8 @@ public class Client {
         return 0;
     }
 
-    private static void customer(String customerID, String serverID, NamingContextExt ncRef) throws Exception {
+    private static void customer(String customerID, NamingContextExt ncRef) throws Exception {
+        String serverID = getServerID(customerID);
         if (serverID.equals("1")) {
             init(ncRef);
         }
@@ -139,6 +185,23 @@ public class Client {
                 System.out.println(serverResponse);
                 Logger.clientLog(customerID, " bookEvent", " eventID: " + eventID + " eventType: " + eventType + " ", serverResponse);
                 break;
+            case CUSTOMER_SWAP_EVENT:
+                System.out.println("Please Enter the OLD event to be replaced");
+                eventType = promptForEventType();
+                eventID = promptForEventID();
+                System.out.println("Please Enter the NEW event to be replaced");
+                String newEventType = promptForEventType();
+                String newEventID = promptForEventID();
+                Logger.clientLog(customerID, " attempting to swapEvent");
+                serverResponse = servant.swapEvent(customerID, newEventID, newEventType, eventID, eventType);
+                System.out.println(serverResponse);
+                Logger.clientLog(customerID, " swapEvent", " oldEventID: " + eventID + " oldEventType: " + eventType + " newEventID: " + newEventID + " newEventType: " + newEventType + " ", serverResponse);
+                break;
+            case SHUTDOWN:
+                Logger.clientLog(customerID, " attempting ORB shutdown");
+                servant.shutdown();
+                Logger.clientLog(customerID, " shutdown");
+                return;
             case CUSTOMER_LOGOUT:
                 repeat = false;
                 Logger.clientLog(customerID, " attempting to Logout");
@@ -146,11 +209,12 @@ public class Client {
                 break;
         }
         if (repeat) {
-            customer(customerID, serverID, ncRef);
+            customer(customerID, ncRef);
         }
     }
 
-    private static void manager(String eventManagerID, String serverID, NamingContextExt ncRef) throws Exception {
+    private static void manager(String eventManagerID, NamingContextExt ncRef) throws Exception {
+        String serverID = getServerID(eventManagerID);
         if (serverID.equals("1")) {
             init(ncRef);
         }
@@ -213,6 +277,24 @@ public class Client {
                 System.out.println(serverResponse);
                 Logger.clientLog(eventManagerID, " cancelEvent", " customerID: " + customerID + " eventID: " + eventID + " eventType: " + eventType + " ", serverResponse);
                 break;
+            case MANAGER_SWAP_EVENT:
+                customerID = askForCustomerIDFromManager(eventManagerID.substring(0, 3));
+                System.out.println("Please Enter the OLD event to be swapped");
+                eventType = promptForEventType();
+                eventID = promptForEventID();
+                System.out.println("Please Enter the NEW event to be swapped");
+                String newEventType = promptForEventType();
+                String newEventID = promptForEventID();
+                Logger.clientLog(eventManagerID, " attempting to swapEvent");
+                serverResponse = servant.swapEvent(customerID, newEventID, newEventType, eventID, eventType);
+                System.out.println(serverResponse);
+                Logger.clientLog(eventManagerID, " swapEvent", " customerID: " + customerID + " oldEventID: " + eventID + " oldEventType: " + eventType + " newEventID: " + newEventID + " newEventType: " + newEventType + " ", serverResponse);
+                break;
+            case SHUTDOWN:
+                Logger.clientLog(eventManagerID, " attempting ORB shutdown");
+                servant.shutdown();
+                Logger.clientLog(eventManagerID, " shutdown");
+                return;
             case MANAGER_LOGOUT:
                 repeat = false;
                 Logger.clientLog(eventManagerID, "attempting to Logout");
@@ -220,7 +302,7 @@ public class Client {
                 break;
         }
         if (repeat) {
-            manager(eventManagerID, serverID, ncRef);
+            manager(eventManagerID, ncRef);
         }
     }
 
@@ -241,7 +323,9 @@ public class Client {
             System.out.println("1.Book Event");
             System.out.println("2.Get Booking Schedule");
             System.out.println("3.Cancel Event");
-            System.out.println("4.Logout");
+            System.out.println("4.Swap Event");
+            System.out.println("5.Logout");
+            System.out.println("0.ShutDown");
         } else if (userType == USER_TYPE_MANAGER) {
             System.out.println("1.Add Event");
             System.out.println("2.Remove Event");
@@ -249,7 +333,9 @@ public class Client {
             System.out.println("4.Book Event");
             System.out.println("5.Get Booking Schedule");
             System.out.println("6.Cancel Event");
-            System.out.println("7.Logout");
+            System.out.println("7.Swap Event");
+            System.out.println("8.Logout");
+            System.out.println("0.ShutDown");
         }
     }
 

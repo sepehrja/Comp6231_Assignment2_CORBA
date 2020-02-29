@@ -72,7 +72,7 @@ public class ServerInstance {
             thread.start();
 
             // wait for invocations from clients
-            for (; ; ) {
+            while (true) {
                 orb.run();
             }
         } catch (Exception e) {
