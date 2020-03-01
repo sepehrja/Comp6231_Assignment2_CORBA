@@ -89,18 +89,32 @@ public class EventManagement extends ServerObjectInterfacePOA {
     @Override
     public String addEvent(String eventID, String eventType, int bookingCapacity) {
         String response;
-        if (allEvents.get(eventType).containsKey(eventID)) {
-            if (allEvents.get(eventType).get(eventID).getEventCapacity() <= bookingCapacity) {
-                allEvents.get(eventType).get(eventID).setEventCapacity(bookingCapacity);
-                response = "Success: Event " + eventID + " Capacity increased to " + bookingCapacity;
-                try {
-                    Logger.serverLog(serverID, "null", " CORBA addEvent ", " eventID: " + eventID + " eventType: " + eventType + " bookingCapacity " + bookingCapacity + " ", response);
-                } catch (IOException e) {
-                    e.printStackTrace();
+        if (eventOfThisServer(eventID)) {
+            if (eventExists(eventType, eventID)) {
+                if (allEvents.get(eventType).get(eventID).getEventCapacity() <= bookingCapacity) {
+                    allEvents.get(eventType).get(eventID).setEventCapacity(bookingCapacity);
+                    response = "Success: Event " + eventID + " Capacity increased to " + bookingCapacity;
+                    try {
+                        Logger.serverLog(serverID, "null", " CORBA addEvent ", " eventID: " + eventID + " eventType: " + eventType + " bookingCapacity " + bookingCapacity + " ", response);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    return response;
+                } else {
+                    response = "Failed: Event Already Exists, Cannot Decrease Booking Capacity";
+                    try {
+                        Logger.serverLog(serverID, "null", " CORBA addEvent ", " eventID: " + eventID + " eventType: " + eventType + " bookingCapacity " + bookingCapacity + " ", response);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    return response;
                 }
-                return response;
             } else {
-                response = "Failed: Event Already Exists, Cannot Decrease Booking Capacity";
+                EventModel event = new EventModel(eventType, eventID, bookingCapacity);
+                Map<String, EventModel> eventHashMap = allEvents.get(eventType);
+                eventHashMap.put(eventID, event);
+                allEvents.put(eventType, eventHashMap);
+                response = "Success: Event " + eventID + " added successfully";
                 try {
                     Logger.serverLog(serverID, "null", " CORBA addEvent ", " eventID: " + eventID + " eventType: " + eventType + " bookingCapacity " + bookingCapacity + " ", response);
                 } catch (IOException e) {
@@ -108,19 +122,6 @@ public class EventManagement extends ServerObjectInterfacePOA {
                 }
                 return response;
             }
-        }
-        if (EventModel.detectEventServer(eventID).equals(serverName)) {
-            EventModel event = new EventModel(eventType, eventID, bookingCapacity);
-            Map<String, EventModel> eventHashMap = allEvents.get(eventType);
-            eventHashMap.put(eventID, event);
-            allEvents.put(eventType, eventHashMap);
-            response = "Success: Event " + eventID + " added successfully";
-            try {
-                Logger.serverLog(serverID, "null", " CORBA addEvent ", " eventID: " + eventID + " eventType: " + eventType + " bookingCapacity " + bookingCapacity + " ", response);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return response;
         } else {
             response = "Failed: Cannot Add Event to servers other than " + serverName;
             try {
@@ -135,8 +136,8 @@ public class EventManagement extends ServerObjectInterfacePOA {
     @Override
     public String removeEvent(String eventID, String eventType) {
         String response;
-        if (EventModel.detectEventServer(eventID).equals(serverName)) {
-            if (allEvents.get(eventType).containsKey(eventID)) {
+        if (eventOfThisServer(eventID)) {
+            if (eventExists(eventType, eventID)) {
                 List<String> registeredClients = allEvents.get(eventType).get(eventID).getRegisteredClientIDs();
                 allEvents.get(eventType).remove(eventID);
                 addCustomersToNextSameEvent(eventID, eventType, registeredClients);
@@ -595,6 +596,14 @@ public class EventManagement extends ServerObjectInterfacePOA {
                 sendUDPMessage(getServerPort(customerID.substring(0, 3)), "removeEvent", customerID, eventType, oldEventID);
             }
         }
+    }
+
+    private synchronized boolean eventExists(String eventType, String eventID) {
+        return allEvents.get(eventType).containsKey(eventID);
+    }
+
+    private synchronized boolean eventOfThisServer(String eventID) {
+        return EventModel.detectEventServer(eventID).equals(serverName);
     }
 
     public Map<String, Map<String, EventModel>> getAllEvents() {
