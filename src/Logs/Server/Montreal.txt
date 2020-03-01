@@ -10,3 +10,5 @@ DATE: 2020-02-29 01:04:06 AM ClientID: Event Manager | RequestType:  CORBA addEv
 DATE: 2020-02-29 01:04:06 AM ClientID: MTLC4567 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Booked Successfully
 DATE: 2020-02-29 01:04:06 AM ClientID: MTLC3456 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Booked Successfully
 DATE: 2020-02-29 01:04:06 AM ClientID: MTLC2345 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: Event MTLE101020 is Full
+DATE: 2020-02-29 01:53:57 AM Exception: org.omg.CORBA.BAD_INV_ORDER:   vmcid: OMG  minor code: 4  completed: No
+DATE: 2020-02-29 01:53:57 AM  Server Shutting down

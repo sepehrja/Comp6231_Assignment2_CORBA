@@ -89,7 +89,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
     @Override
     public String addEvent(String eventID, String eventType, int bookingCapacity) {
         String response;
-        if (eventOfThisServer(eventID)) {
+        if (isEventOfThisServer(eventID)) {
             if (eventExists(eventType, eventID)) {
                 if (allEvents.get(eventType).get(eventID).getEventCapacity() <= bookingCapacity) {
                     allEvents.get(eventType).get(eventID).setEventCapacity(bookingCapacity);
@@ -136,7 +136,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
     @Override
     public String removeEvent(String eventID, String eventType) {
         String response;
-        if (eventOfThisServer(eventID)) {
+        if (isEventOfThisServer(eventID)) {
             if (eventExists(eventType, eventID)) {
                 List<String> registeredClients = allEvents.get(eventType).get(eventID).getRegisteredClientIDs();
                 allEvents.get(eventType).remove(eventID);
@@ -207,15 +207,13 @@ public class EventManagement extends ServerObjectInterfacePOA {
     @Override
     public String bookEvent(String customerID, String eventID, String eventType) {
         String response;
-        if (!serverClients.containsKey(customerID)) {
-            addNewCustomerToClients(customerID);
-        }
-        if (EventModel.detectEventServer(eventID).equals(serverName)) {
+        checkClientExists(customerID);
+        if (isEventOfThisServer(eventID)) {
             EventModel bookedEvent = allEvents.get(eventType).get(eventID);
             if (!bookedEvent.isFull()) {
                 if (clientEvents.containsKey(customerID)) {
                     if (clientEvents.get(customerID).containsKey(eventType)) {
-                        if (!clientEvents.get(customerID).get(eventType).contains(eventID)) {
+                        if (!clientHasEvent(customerID, eventType, eventID)) {
                             clientEvents.get(customerID).get(eventType).add(eventID);
                         } else {
                             response = "Failed: Event " + eventID + " Already Booked";
@@ -227,16 +225,10 @@ public class EventManagement extends ServerObjectInterfacePOA {
                             return response;
                         }
                     } else {
-                        List<String> temp = new ArrayList<>();
-                        temp.add(eventID);
-                        clientEvents.get(customerID).put(eventType, temp);
+                        addEventTypeAndEvent(customerID, eventType, eventID);
                     }
                 } else {
-                    Map<String, List<String>> temp = new ConcurrentHashMap<>();
-                    List<String> temp2 = new ArrayList<>();
-                    temp2.add(eventID);
-                    temp.put(eventType, temp2);
-                    clientEvents.put(customerID, temp);
+                    addCustomerAndEvent(customerID, eventType, eventID);
                 }
                 if (allEvents.get(eventType).get(eventID).addRegisteredClientID(customerID) == EventModel.ADD_SUCCESS) {
                     response = "Success: Event " + eventID + " Booked Successfully";
@@ -293,8 +285,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
     @Override
     public String getBookingSchedule(String customerID) {
         String response;
-        if (!serverClients.containsKey(customerID)) {
-            addNewCustomerToClients(customerID);
+        if (!checkClientExists(customerID)) {
             response = "Booking Schedule Empty For " + customerID;
             try {
                 Logger.serverLog(serverID, customerID, " CORBA getBookingSchedule ", "null", response);
@@ -335,10 +326,9 @@ public class EventManagement extends ServerObjectInterfacePOA {
     @Override
     public String cancelEvent(String customerID, String eventID, String eventType) {
         String response;
-        if (EventModel.detectEventServer(eventID).equals(serverName)) {
-            if (customerID.substring(0, 3).equals(serverID)) {
-                if (!serverClients.containsKey(customerID)) {
-                    addNewCustomerToClients(customerID);
+        if (isEventOfThisServer(eventID)) {
+            if (isCustomerOfThisServer(customerID)) {
+                if (!checkClientExists(customerID)) {
                     response = "Failed: You " + customerID + " Are Not Registered in " + eventID;
                     try {
                         Logger.serverLog(serverID, customerID, " CORBA cancelEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
@@ -386,22 +376,78 @@ public class EventManagement extends ServerObjectInterfacePOA {
                 }
             }
         } else {
-            if (customerID.substring(0, 3).equals(serverID)) {
-                if (!serverClients.containsKey(customerID)) {
-                    addNewCustomerToClients(customerID);
-                } else {
+            if (isCustomerOfThisServer(customerID)) {
+                if (checkClientExists(customerID)) {
                     if (clientEvents.get(customerID).get(eventType).remove(eventID)) {
-                        return sendUDPMessage(getServerPort(eventID.substring(0, 3)), "cancelEvent", customerID, eventType, eventID);
+                        response = sendUDPMessage(getServerPort(eventID.substring(0, 3)), "cancelEvent", customerID, eventType, eventID);
+                        try {
+                            Logger.serverLog(serverID, customerID, " CORBA cancelEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        return response;
                     }
                 }
             }
-            return "Failed: You " + customerID + " Are Not Registered in " + eventID;
+            response = "Failed: You " + customerID + " Are Not Registered in " + eventID;
+            try {
+                Logger.serverLog(serverID, customerID, " CORBA cancelEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return response;
         }
     }
 
     @Override
     public String swapEvent(String customerID, String newEventID, String newEventType, String oldEventID, String oldEventType) {
-        return null;
+        String response;
+        if (!checkClientExists(customerID)) {
+            response = "Failed: You " + customerID + " Are Not Registered in " + oldEventID;
+            try {
+                Logger.serverLog(serverID, customerID, " CORBA swapEvent ", " oldEventID: " + oldEventID + " oldEventType: " + oldEventType + " newEventID: " + newEventID + " newEventType: " + newEventType + " ", response);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return response;
+        } else {
+            if (clientHasEvent(customerID, oldEventType, oldEventID)) {
+                String bookResp;
+                String cancelResp = "Failed: did not send cancel request for your oldEvent " + oldEventID;
+//                synchronized (this) {
+                bookResp = bookEvent(customerID, newEventID, newEventType);
+                if (bookResp.startsWith("Success:")) {
+                    cancelResp = cancelEvent(customerID, oldEventID, oldEventType);
+                }
+//                }
+                if (bookResp.startsWith("Success:") && cancelResp.startsWith("Success:")) {
+                    response = "Success: Event " + oldEventID + " swapped with " + newEventID;
+                } else if (bookResp.startsWith("Success:") && cancelResp.startsWith("Failed:")) {
+                    cancelEvent(customerID, newEventID, newEventType);
+                    response = "Failed: Your oldEvent " + oldEventID + " Could not be Canceled reason: " + cancelResp;
+                } else if (bookResp.startsWith("Failed:") && cancelResp.startsWith("Success:")) {
+                    //will not happen but just in case
+                    bookEvent(customerID, oldEventID, oldEventType);
+                    response = "Failed: Your newEvent " + newEventID + " Could not be Booked reason: " + bookResp;
+                } else {
+                    response = "Failed: on Both newEvent " + newEventID + " Booking reason: " + bookResp + " and oldEvent " + oldEventID + " Canceling reason: " + cancelResp;
+                }
+                try {
+                    Logger.serverLog(serverID, customerID, " CORBA swapEvent ", " oldEventID: " + oldEventID + " oldEventType: " + oldEventType + " newEventID: " + newEventID + " newEventType: " + newEventType + " ", response);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return response;
+            } else {
+                response = "Failed: You " + customerID + " Are Not Registered in " + oldEventID;
+                try {
+                    Logger.serverLog(serverID, customerID, " CORBA swapEvent ", " oldEventID: " + oldEventID + " oldEventType: " + oldEventType + " newEventID: " + newEventID + " newEventType: " + newEventType + " ", response);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return response;
+            }
+        }
     }
 
     @Override
@@ -418,8 +464,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
      * @return
      */
     public String removeEventUDP(String oldEventID, String eventType, String customerID) {
-        if (!serverClients.containsKey(customerID)) {
-            addNewCustomerToClients(customerID);
+        if (!checkClientExists(customerID)) {
             return "Failed: You " + customerID + " Are Not Registered in " + oldEventID;
         } else {
             if (clientEvents.get(customerID).get(eventType).remove(oldEventID)) {
@@ -582,12 +627,19 @@ public class EventManagement extends ServerObjectInterfacePOA {
     }
 
     private void addCustomersToNextSameEvent(String oldEventID, String eventType, List<String> registeredClients) {
+        String response;
         for (String customerID :
                 registeredClients) {
             if (customerID.substring(0, 3).equals(serverID)) {
                 clientEvents.get(customerID).get(eventType).remove(oldEventID);
                 String nextSameEventResult = getNextSameEvent(allEvents.get(eventType).keySet(), eventType, oldEventID);
                 if (nextSameEventResult.equals("Failed")) {
+                    response = "Acquiring nextSaneEvent :" + nextSameEventResult;
+                    try {
+                        Logger.serverLog(serverID, customerID, " addCustomersToNextSameEvent ", " oldEventID: " + oldEventID + " eventType: " + eventType + " ", response);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     return;
                 } else {
                     bookEvent(customerID, nextSameEventResult, eventType);
@@ -602,8 +654,39 @@ public class EventManagement extends ServerObjectInterfacePOA {
         return allEvents.get(eventType).containsKey(eventID);
     }
 
-    private synchronized boolean eventOfThisServer(String eventID) {
+    private synchronized boolean isEventOfThisServer(String eventID) {
         return EventModel.detectEventServer(eventID).equals(serverName);
+    }
+
+    private synchronized boolean checkClientExists(String customerID) {
+        if (!serverClients.containsKey(customerID)) {
+            addNewCustomerToClients(customerID);
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private synchronized boolean clientHasEvent(String customerID, String eventType, String eventID) {
+        return clientEvents.get(customerID).get(eventType).contains(eventID);
+    }
+
+    private synchronized void addCustomerAndEvent(String customerID, String eventType, String eventID) {
+        Map<String, List<String>> temp = new ConcurrentHashMap<>();
+        List<String> temp2 = new ArrayList<>();
+        temp2.add(eventID);
+        temp.put(eventType, temp2);
+        clientEvents.put(customerID, temp);
+    }
+
+    private synchronized void addEventTypeAndEvent(String customerID, String eventType, String eventID) {
+        List<String> temp = new ArrayList<>();
+        temp.add(eventID);
+        clientEvents.get(customerID).put(eventType, temp);
+    }
+
+    private boolean isCustomerOfThisServer(String customerID) {
+        return customerID.substring(0, 3).equals(serverID);
     }
 
     public Map<String, Map<String, EventModel>> getAllEvents() {
