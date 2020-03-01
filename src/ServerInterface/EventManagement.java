@@ -337,7 +337,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
                     }
                     return response;
                 } else {
-                    if (clientEvents.get(customerID).get(eventType).remove(eventID)) {
+                    if (removeEventIfExists(customerID, eventType, eventID)) {
                         allEvents.get(eventType).get(eventID).removeRegisteredClientID(customerID);
                         response = "Success: Event " + eventID + " Canceled for " + customerID;
                         try {
@@ -378,7 +378,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
         } else {
             if (isCustomerOfThisServer(customerID)) {
                 if (checkClientExists(customerID)) {
-                    if (clientEvents.get(customerID).get(eventType).remove(eventID)) {
+                    if (removeEventIfExists(customerID, eventType, eventID)) {
                         response = sendUDPMessage(getServerPort(eventID.substring(0, 3)), "cancelEvent", customerID, eventType, eventID);
                         try {
                             Logger.serverLog(serverID, customerID, " CORBA cancelEvent ", " eventID: " + eventID + " eventType: " + eventType + " ", response);
@@ -414,12 +414,12 @@ public class EventManagement extends ServerObjectInterfacePOA {
             if (clientHasEvent(customerID, oldEventType, oldEventID)) {
                 String bookResp;
                 String cancelResp = "Failed: did not send cancel request for your oldEvent " + oldEventID;
-//                synchronized (this) {
-                bookResp = bookEvent(customerID, newEventID, newEventType);
-                if (bookResp.startsWith("Success:")) {
-                    cancelResp = cancelEvent(customerID, oldEventID, oldEventType);
+                synchronized (this) {
+                    bookResp = bookEvent(customerID, newEventID, newEventType);
+                    if (bookResp.startsWith("Success:")) {
+                        cancelResp = cancelEvent(customerID, oldEventID, oldEventType);
+                    }
                 }
-//                }
                 if (bookResp.startsWith("Success:") && cancelResp.startsWith("Success:")) {
                     response = "Success: Event " + oldEventID + " swapped with " + newEventID;
                 } else if (bookResp.startsWith("Success:") && cancelResp.startsWith("Failed:")) {
@@ -467,7 +467,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
         if (!checkClientExists(customerID)) {
             return "Failed: You " + customerID + " Are Not Registered in " + oldEventID;
         } else {
-            if (clientEvents.get(customerID).get(eventType).remove(oldEventID)) {
+            if (removeEventIfExists(customerID, eventType, oldEventID)) {
                 return "Success: Event " + oldEventID + " Was Removed from " + customerID + " Schedule";
             } else {
                 return "Failed: You " + customerID + " Are Not Registered in " + oldEventID;
@@ -631,7 +631,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
         for (String customerID :
                 registeredClients) {
             if (customerID.substring(0, 3).equals(serverID)) {
-                clientEvents.get(customerID).get(eventType).remove(oldEventID);
+                removeEventIfExists(customerID, eventType, oldEventID);
                 String nextSameEventResult = getNextSameEvent(allEvents.get(eventType).keySet(), eventType, oldEventID);
                 if (nextSameEventResult.equals("Failed")) {
                     response = "Acquiring nextSaneEvent :" + nextSameEventResult;
@@ -668,7 +668,19 @@ public class EventManagement extends ServerObjectInterfacePOA {
     }
 
     private synchronized boolean clientHasEvent(String customerID, String eventType, String eventID) {
-        return clientEvents.get(customerID).get(eventType).contains(eventID);
+        if (clientEvents.get(customerID).containsKey(eventType)) {
+            return clientEvents.get(customerID).get(eventType).contains(eventID);
+        } else {
+            return false;
+        }
+    }
+
+    private boolean removeEventIfExists(String customerID, String eventType, String eventID) {
+        if (clientEvents.get(customerID).containsKey(eventType)) {
+            return clientEvents.get(customerID).get(eventType).remove(eventID);
+        } else {
+            return false;
+        }
     }
 
     private synchronized void addCustomerAndEvent(String customerID, String eventType, String eventID) {
