@@ -46,6 +46,8 @@ public class Client {
     public static void init(NamingContextExt ncRef) throws Exception {
         input = new Scanner(System.in);
         String userID;
+        System.out.println("*************************************");
+        System.out.println("*************************************");
         System.out.println("Please Enter your UserID(For Concurrency test enter 'ConTest'):");
         userID = input.next().trim().toUpperCase();
         if (userID.equalsIgnoreCase("ConTest")) {
@@ -91,31 +93,66 @@ public class Client {
         System.out.println(response);
         Runnable task1 = () -> {
             String customerID = "MTLC2345";
-            System.out.println("Connecting Montreal Server for " + customerID);
+//            System.out.println("Connecting Montreal Server for " + customerID);
             String res = servant.bookEvent(customerID, eventID, eventType);
             System.out.println("Booking response for " + customerID + " " + res);
+            res = servant.cancelEvent(customerID, eventID, eventType);
+            System.out.println("Canceling response for " + customerID + " " + res);
         };
         Runnable task2 = () -> {
             String customerID = "MTLC3456";
-            System.out.println("Connecting Montreal Server for " + customerID);
+//            System.out.println("Connecting Montreal Server for " + customerID);
             String res = servant.bookEvent(customerID, eventID, eventType);
             System.out.println("Booking response for " + customerID + " " + res);
+            res = servant.cancelEvent(customerID, eventID, eventType);
+            System.out.println("Canceling response for " + customerID + " " + res);
         };
         Runnable task3 = () -> {
             String customerID = "MTLC4567";
-            System.out.println("Connecting Montreal Server for " + customerID);
+//            System.out.println("Connecting Montreal Server for " + customerID);
             String res = servant.bookEvent(customerID, eventID, eventType);
             System.out.println("Booking response for " + customerID + " " + res);
+            res = servant.cancelEvent(customerID, eventID, eventType);
+            System.out.println("Canceling response for " + customerID + " " + res);
+        };
+        Runnable task4 = () -> {
+            String customerID = "MTLC6789";
+//            System.out.println("Connecting Montreal Server for " + customerID);
+            String res = servant.bookEvent(customerID, eventID, eventType);
+            System.out.println("Booking response for " + customerID + " " + res);
+            res = servant.cancelEvent(customerID, eventID, eventType);
+            System.out.println("Canceling response for " + customerID + " " + res);
+        };
+        Runnable task5 = () -> {
+            String customerID = "MTLC7890";
+//            System.out.println("Connecting Montreal Server for " + customerID);
+            String res = servant.bookEvent(customerID, eventID, eventType);
+            System.out.println("Booking response for " + customerID + " " + res);
+            res = servant.cancelEvent(customerID, eventID, eventType);
+            System.out.println("Canceling response for " + customerID + " " + res);
         };
 
         Thread thread1 = new Thread(task1);
         Thread thread2 = new Thread(task2);
         Thread thread3 = new Thread(task3);
+        Thread thread4 = new Thread(task4);
+        Thread thread5 = new Thread(task5);
+//        synchronized (thread1) {
         thread1.start();
         thread2.start();
         thread3.start();
+        thread4.start();
+        thread5.start();
+//        }
+        thread1.join();
+        thread2.join();
+        thread3.join();
+        thread4.join();
+        thread5.join();
+//        if (!thread1.isAlive() && !thread2.isAlive() && !thread3.isAlive() && !thread4.isAlive() && !thread5.isAlive()) {
         System.out.println("Concurrency Test Finished for BookEvent");
         init(ncRef);
+//        }
     }
 
     private static String getServerID(String userID) {

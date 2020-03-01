@@ -2,6 +2,7 @@ package Server;
 
 public class Server {
     public static void main(String[] args) throws Exception {
+        // start orbd -ORBInitialPort 1050
         Runnable task1 = () -> {
             try {
                 ServerInstance SherbrookeServer = new ServerInstance("SHE", args);
