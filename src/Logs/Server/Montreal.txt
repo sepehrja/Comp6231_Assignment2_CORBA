@@ -303,3 +303,69 @@ DATE: 2020-03-01 05:30:26 PM ClientID: MTLC3456 | RequestType:  CORBA cancelEven
 DATE: 2020-03-01 05:30:26 PM ClientID: MTLC6789 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Canceled for MTLC6789
 DATE: 2020-03-01 05:30:26 PM ClientID: MTLC4567 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: You MTLC4567 Are Not Registered in MTLE101020
 DATE: 2020-03-01 05:30:26 PM ClientID: MTLC7890 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: You MTLC7890 Are Not Registered in MTLE101020
+DATE: 2020-03-01 05:35:57 PM ClientID: Event Manager | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-03-01 05:35:57 PM ClientID: Event Manager | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: SHERBROOK Server Conferences:
+ (SHEE080620) in the Evening of 08/06/2020 Total[Remaining] Capacity: 1[1] ||  (SHEE110620) in the Evening of 11/06/2020 Total[Remaining] Capacity: 1[1] || 
+=====================================
+
+DATE: 2020-03-01 05:35:57 PM ClientID: Event Manager | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-03-01 05:35:57 PM ClientID: Event Manager | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: QUEBEC Server Conferences:
+No Events of Type Conferences
+=====================================
+
+DATE: 2020-03-01 05:35:57 PM ClientID: Event Manager | RequestType:  CORBA listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse: MONTREAL Server Conferences:
+ (MTLA090620) in the Afternoon of 09/06/2020 Total[Remaining] Capacity: 2[2] ||  (MTLE101020) in the Evening of 10/10/2020 Total[Remaining] Capacity: 2[2] || 
+=====================================
+SHERBROOK Server Conferences:
+ (SHEE080620) in the Evening of 08/06/2020 Total[Remaining] Capacity: 1[1] ||  (SHEE110620) in the Evening of 11/06/2020 Total[Remaining] Capacity: 1[1] || 
+=====================================
+QUEBEC Server Conferences:
+No Events of Type Conferences
+=====================================
+
+DATE: 2020-03-01 05:36:43 PM ClientID: MTLC1234 | RequestType:  UDP request sent bookEvent  | RequestParameters:  eventID: SHEE080620 eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-03-01 05:36:43 PM ClientID: MTLC1234 | RequestType:  UDP reply receivedbookEvent  | RequestParameters:  eventID: SHEE080620 eventType: Conferences  | ServerResponse: Success: Event SHEE080620 Booked Successfully
+DATE: 2020-03-01 05:36:43 PM ClientID: MTLC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE080620 eventType: Conferences  | ServerResponse: Success: Event SHEE080620 Booked Successfully
+DATE: 2020-03-01 05:37:26 PM ClientID: MTLC1122 | RequestType:  CORBA swapEvent  | RequestParameters:  oldEventID: SHEE080620 oldEventType: Conferences newEventID: SHEE110620 newEventType: Conferences  | ServerResponse: Failed: You MTLC1122 Are Not Registered in SHEE080620
+DATE: 2020-03-01 05:37:59 PM ClientID: MTLC1234 | RequestType:  UDP request sent bookEvent  | RequestParameters:  eventID: SHEE110620 eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-03-01 05:37:59 PM ClientID: MTLC1234 | RequestType:  UDP reply receivedbookEvent  | RequestParameters:  eventID: SHEE110620 eventType: Conferences  | ServerResponse: Success: Event SHEE110620 Booked Successfully
+DATE: 2020-03-01 05:37:59 PM ClientID: MTLC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE110620 eventType: Conferences  | ServerResponse: Success: Event SHEE110620 Booked Successfully
+DATE: 2020-03-01 05:37:59 PM ClientID: MTLC1234 | RequestType:  UDP request sent cancelEvent  | RequestParameters:  eventID: SHEE080620 eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-03-01 05:37:59 PM ClientID: MTLC1234 | RequestType:  UDP reply receivedcancelEvent  | RequestParameters:  eventID: SHEE080620 eventType: Conferences  | ServerResponse: Success: Event SHEE080620 Canceled for MTLC1234
+DATE: 2020-03-01 05:37:59 PM ClientID: MTLC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE080620 eventType: Conferences  | ServerResponse: Success: Event SHEE080620 Canceled for MTLC1234
+DATE: 2020-03-01 05:37:59 PM ClientID: MTLC1234 | RequestType:  CORBA swapEvent  | RequestParameters:  oldEventID: SHEE080620 oldEventType: Conferences newEventID: SHEE110620 newEventType: Conferences  | ServerResponse: Success: Event SHEE080620 swapped with SHEE110620
+DATE: 2020-03-01 05:38:09 PM ClientID: MTLC1234 | RequestType:  CORBA getBookingSchedule  | RequestParameters: null | ServerResponse: Conferences:
+SHEE110620 ||
+=====================================
+
+DATE: 2020-03-01 05:38:40 PM ClientID: MTLC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Booked Successfully
+DATE: 2020-03-01 05:38:40 PM ClientID: MTLC1234 | RequestType:  UDP request sent cancelEvent  | RequestParameters:  eventID: SHEE110620 eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-03-01 05:38:40 PM ClientID: MTLC1234 | RequestType:  UDP reply receivedcancelEvent  | RequestParameters:  eventID: SHEE110620 eventType: Conferences  | ServerResponse: Success: Event SHEE110620 Canceled for MTLC1234
+DATE: 2020-03-01 05:38:40 PM ClientID: MTLC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE110620 eventType: Conferences  | ServerResponse: Success: Event SHEE110620 Canceled for MTLC1234
+DATE: 2020-03-01 05:38:40 PM ClientID: MTLC1234 | RequestType:  CORBA swapEvent  | RequestParameters:  oldEventID: SHEE110620 oldEventType: Conferences newEventID: MTLE101020 newEventType: Conferences  | ServerResponse: Success: Event SHEE110620 swapped with MTLE101020
+DATE: 2020-03-01 05:38:48 PM ClientID: MTLC1234 | RequestType:  CORBA getBookingSchedule  | RequestParameters: null | ServerResponse: Conferences:
+MTLE101020 ||
+=====================================
+
+DATE: 2020-03-01 05:39:10 PM ClientID: Event Manager | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-03-01 05:39:10 PM ClientID: Event Manager | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: SHERBROOK Server Conferences:
+ (SHEE080620) in the Evening of 08/06/2020 Total[Remaining] Capacity: 1[1] ||  (SHEE110620) in the Evening of 11/06/2020 Total[Remaining] Capacity: 1[1] || 
+=====================================
+
+DATE: 2020-03-01 05:39:10 PM ClientID: Event Manager | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-03-01 05:39:10 PM ClientID: Event Manager | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: QUEBEC Server Conferences:
+No Events of Type Conferences
+=====================================
+
+DATE: 2020-03-01 05:39:10 PM ClientID: Event Manager | RequestType:  CORBA listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse: MONTREAL Server Conferences:
+ (MTLA090620) in the Afternoon of 09/06/2020 Total[Remaining] Capacity: 2[2] ||  (MTLE101020) in the Evening of 10/10/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+SHERBROOK Server Conferences:
+ (SHEE080620) in the Evening of 08/06/2020 Total[Remaining] Capacity: 1[1] ||  (SHEE110620) in the Evening of 11/06/2020 Total[Remaining] Capacity: 1[1] || 
+=====================================
+QUEBEC Server Conferences:
+No Events of Type Conferences
+=====================================
+
+DATE: 2020-03-01 05:39:28 PM Exception: org.omg.CORBA.BAD_INV_ORDER:   vmcid: OMG  minor code: 4  completed: No
+DATE: 2020-03-01 05:39:28 PM  Server Shutting down
