@@ -412,12 +412,19 @@ public class EventManagement extends ServerObjectInterfacePOA {
             return response;
         } else {
             if (clientHasEvent(customerID, oldEventType, oldEventID)) {
-                String bookResp;
+                String bookResp = "Failed: did not send book request for your newEvent " + newEventID;
                 String cancelResp = "Failed: did not send cancel request for your oldEvent " + oldEventID;
                 synchronized (this) {
-                    bookResp = bookEvent(customerID, newEventID, newEventType);
-                    if (bookResp.startsWith("Success:")) {
+                    if (onTheSameWeek(newEventID.substring(4), oldEventID) && exceedWeeklyLimit(customerID, newEventID.substring(4))) {
                         cancelResp = cancelEvent(customerID, oldEventID, oldEventType);
+                        if (cancelResp.startsWith("Success:")) {
+                            bookResp = bookEvent(customerID, newEventID, newEventType);
+                        }
+                    } else {
+                        bookResp = bookEvent(customerID, newEventID, newEventType);
+                        if (bookResp.startsWith("Success:")) {
+                            cancelResp = cancelEvent(customerID, oldEventID, oldEventType);
+                        }
                     }
                 }
                 if (bookResp.startsWith("Success:") && cancelResp.startsWith("Success:")) {
@@ -426,7 +433,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
                     cancelEvent(customerID, newEventID, newEventType);
                     response = "Failed: Your oldEvent " + oldEventID + " Could not be Canceled reason: " + cancelResp;
                 } else if (bookResp.startsWith("Failed:") && cancelResp.startsWith("Success:")) {
-                    //will not happen but just in case
+                    //hope this won't happen, but just in case.
                     bookEvent(customerID, oldEventID, oldEventType);
                     response = "Failed: Your newEvent " + newEventID + " Could not be Booked reason: " + bookResp;
                 } else {
@@ -611,13 +618,8 @@ public class EventManagement extends ServerObjectInterfacePOA {
             }
             for (String eventID :
                     registeredIDs) {
-                if (eventID.substring(6, 8).equals(eventDate.substring(2, 4)) && eventID.substring(8, 10).equals(eventDate.substring(4, 6))) {
-                    int week1 = Integer.parseInt(eventID.substring(4, 6)) / 7;
-                    int week2 = Integer.parseInt(eventDate.substring(0, 2)) / 7;
-//                    int diff = Math.abs(day2 - day1);
-                    if (week1 == week2) {
-                        limit++;
-                    }
+                if (onTheSameWeek(eventDate, eventID)) {
+                    limit++;
                 }
                 if (limit == 3)
                     return true;
@@ -699,6 +701,17 @@ public class EventManagement extends ServerObjectInterfacePOA {
 
     private boolean isCustomerOfThisServer(String customerID) {
         return customerID.substring(0, 3).equals(serverID);
+    }
+
+    private boolean onTheSameWeek(String newEventDate, String eventID) {
+        if (eventID.substring(6, 8).equals(newEventDate.substring(2, 4)) && eventID.substring(8, 10).equals(newEventDate.substring(4, 6))) {
+            int week1 = Integer.parseInt(eventID.substring(4, 6)) / 7;
+            int week2 = Integer.parseInt(newEventDate.substring(0, 2)) / 7;
+//                    int diff = Math.abs(day2 - day1);
+            return week1 == week2;
+        } else {
+            return false;
+        }
     }
 
     public Map<String, Map<String, EventModel>> getAllEvents() {
