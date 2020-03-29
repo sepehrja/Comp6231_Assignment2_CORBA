@@ -7,9 +7,6 @@ import org.omg.CosNaming.NamingContextExt;
 import org.omg.CosNaming.NamingContextExtHelper;
 
 public class TestData {
-	public static final String EVENT_TIME_MORNING = "Morning";
-	public static final String EVENT_TIME_AFTERNOON = "Afternoon";
-	public static final String EVENT_TIME_EVENING = "Evening";
 	public static final String CONFERENCES = "Conferences";
 	public static final String SEMINARS = "Seminars";
 	public static final String TRADE_SHOWS = "Trade Shows";
