@@ -64,7 +64,7 @@ public class ServerInstance {
             System.out.println(serverName + " Server is Up & Running");
             Logger.serverLog(serverID, " Server is Up & Running");
 
-            addTestData(servant);
+//            addTestData(servant);
             Runnable task = () -> {
                 listenForRequest(servant, serverUdpPort, serverName, serverID);
             };
