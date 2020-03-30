@@ -735,3 +735,81 @@ DATE: 2020-03-30 02:17:59 PM ClientID: Event Manager | RequestType:  UDP reply s
 No Events of Type Seminars
 =====================================
 ;
+DATE: 2020-03-30 03:39:23 PM  Server is Up & Running
+DATE: 2020-03-30 03:39:23 PM  UDP Server Started at port 8888
+DATE: 2020-03-30 03:39:32 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: MTLA160620 eventType: Conferences bookingCapacity 2  | ServerResponse: Success: Event MTLA160620 added successfully
+DATE: 2020-03-30 03:39:32 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: MTLA150620 eventType: Trade Shows bookingCapacity 1  | ServerResponse: Success: Event MTLA150620 added successfully
+DATE: 2020-03-30 03:39:32 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows bookingCapacity 1  | ServerResponse: Success: Event MTLA170620 added successfully
+DATE: 2020-03-30 03:39:32 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: MTLA160620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 03:39:32 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLA160620 eventType: Conferences  | ServerResponse: Success: Event MTLA160620 Booked Successfully
+DATE: 2020-03-30 03:39:32 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: MTLA160620 eventType: Conferences  | ServerResponse: Success: Event MTLA160620 Booked Successfully;
+DATE: 2020-03-30 03:39:32 PM ClientID: SHEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse:  ...
+DATE: 2020-03-30 03:39:32 PM ClientID: SHEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 03:39:32 PM ClientID: SHEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully;
+DATE: 2020-03-30 03:39:32 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 03:39:32 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: MONTREAL Server Conferences:
+ (MTLA160620) in the Afternoon of 16/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+;
+DATE: 2020-03-30 03:39:32 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Trade Shows  | ServerResponse:  ...
+DATE: 2020-03-30 03:39:32 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Trade Shows  | ServerResponse: MONTREAL Server Trade Shows:
+ (MTLA170620) in the Afternoon of 17/06/2020 Total[Remaining] Capacity: 1[0] ||  (MTLA150620) in the Afternoon of 15/06/2020 Total[Remaining] Capacity: 1[1] || 
+=====================================
+;
+DATE: 2020-03-30 03:39:32 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 03:39:32 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Seminars  | ServerResponse: MONTREAL Server Seminars:
+No Events of Type Seminars
+=====================================
+;
+DATE: 2020-03-30 03:46:22 PM  Server is Up & Running
+DATE: 2020-03-30 03:46:22 PM  UDP Server Started at port 8888
+DATE: 2020-03-30 03:46:31 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: MTLA160620 eventType: Conferences bookingCapacity 2  | ServerResponse: Success: Event MTLA160620 added successfully
+DATE: 2020-03-30 03:46:31 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: MTLA150620 eventType: Trade Shows bookingCapacity 1  | ServerResponse: Success: Event MTLA150620 added successfully
+DATE: 2020-03-30 03:46:31 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows bookingCapacity 1  | ServerResponse: Success: Event MTLA170620 added successfully
+DATE: 2020-03-30 03:46:33 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: MTLA160620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 03:46:33 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLA160620 eventType: Conferences  | ServerResponse: Success: Event MTLA160620 Booked Successfully
+DATE: 2020-03-30 03:46:33 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: MTLA160620 eventType: Conferences  | ServerResponse: Success: Event MTLA160620 Booked Successfully;
+DATE: 2020-03-30 03:46:34 PM ClientID: SHEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse:  ...
+DATE: 2020-03-30 03:46:34 PM ClientID: SHEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 03:46:34 PM ClientID: SHEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully;
+DATE: 2020-03-30 03:46:34 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 03:46:34 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: MONTREAL Server Conferences:
+ (MTLA160620) in the Afternoon of 16/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+;
+DATE: 2020-03-30 03:46:34 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Trade Shows  | ServerResponse:  ...
+DATE: 2020-03-30 03:46:34 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Trade Shows  | ServerResponse: MONTREAL Server Trade Shows:
+ (MTLA170620) in the Afternoon of 17/06/2020 Total[Remaining] Capacity: 1[0] ||  (MTLA150620) in the Afternoon of 15/06/2020 Total[Remaining] Capacity: 1[1] || 
+=====================================
+;
+DATE: 2020-03-30 03:46:34 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 03:46:34 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Seminars  | ServerResponse: MONTREAL Server Seminars:
+No Events of Type Seminars
+=====================================
+;
+DATE: 2020-03-30 03:57:02 PM  Server is Up & Running
+DATE: 2020-03-30 03:57:02 PM  UDP Server Started at port 8888
+DATE: 2020-03-30 03:57:08 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: MTLA160620 eventType: Conferences bookingCapacity 2  | ServerResponse: Success: Event MTLA160620 added successfully
+DATE: 2020-03-30 03:57:08 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: MTLA150620 eventType: Trade Shows bookingCapacity 1  | ServerResponse: Success: Event MTLA150620 added successfully
+DATE: 2020-03-30 03:57:08 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows bookingCapacity 1  | ServerResponse: Success: Event MTLA170620 added successfully
+DATE: 2020-03-30 03:57:08 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: MTLA160620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 03:57:08 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLA160620 eventType: Conferences  | ServerResponse: Success: Event MTLA160620 Booked Successfully
+DATE: 2020-03-30 03:57:08 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: MTLA160620 eventType: Conferences  | ServerResponse: Success: Event MTLA160620 Booked Successfully;
+DATE: 2020-03-30 03:57:08 PM ClientID: SHEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse:  ...
+DATE: 2020-03-30 03:57:08 PM ClientID: SHEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 03:57:08 PM ClientID: SHEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully;
+DATE: 2020-03-30 03:57:08 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 03:57:08 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: MONTREAL Server Conferences:
+ (MTLA160620) in the Afternoon of 16/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+;
+DATE: 2020-03-30 03:57:08 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Trade Shows  | ServerResponse:  ...
+DATE: 2020-03-30 03:57:08 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Trade Shows  | ServerResponse: MONTREAL Server Trade Shows:
+ (MTLA170620) in the Afternoon of 17/06/2020 Total[Remaining] Capacity: 1[0] ||  (MTLA150620) in the Afternoon of 15/06/2020 Total[Remaining] Capacity: 1[1] || 
+=====================================
+;
+DATE: 2020-03-30 03:57:08 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 03:57:08 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Seminars  | ServerResponse: MONTREAL Server Seminars:
+No Events of Type Seminars
+=====================================
+;

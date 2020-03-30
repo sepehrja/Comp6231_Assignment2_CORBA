@@ -1,0 +1,24 @@
+DATE: 2020-03-30 03:43:11 PM  login attempt
+DATE: 2020-03-30 03:43:11 PM  Customer Login successful
+DATE: 2020-03-30 03:43:13 PM  attempting to getBookingSchedule
+DATE: 2020-03-30 03:43:13 PM Client Action:  bookEvent | RequestParameters:  null  | Server Response: Seminars:
+SHEE160620 ||
+=====================================
+Conferences:
+MTLA160620 ||QUEA150620 ||
+=====================================
+
+DATE: 2020-03-30 03:43:30 PM  attempting to bookEvent
+DATE: 2020-03-30 03:43:30 PM Client Action:  bookEvent | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | Server Response: Failed: You Cannot Book Event in Other Servers For This Week(Max Weekly Limit = 3)
+DATE: 2020-03-30 03:50:28 PM  login attempt
+DATE: 2020-03-30 03:50:28 PM  Customer Login successful
+DATE: 2020-03-30 03:50:31 PM  attempting to getBookingSchedule
+DATE: 2020-03-30 03:50:31 PM Client Action:  bookEvent | RequestParameters:  null  | Server Response: Seminars:
+SHEE160620 ||
+=====================================
+Conferences:
+MTLA160620 ||QUEA150620 ||
+=====================================
+
+DATE: 2020-03-30 03:50:50 PM  attempting to bookEvent
+DATE: 2020-03-30 03:53:08 PM Client Action:  bookEvent | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | Server Response: Failed: You Cannot Book Event in Other Servers For This Week(Max Weekly Limit = 3)
