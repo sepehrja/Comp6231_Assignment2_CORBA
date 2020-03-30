@@ -558,3 +558,134 @@ DATE: 2020-03-29 10:42:02 PM ClientID: Event Manager | RequestType:  UDP reply s
  (MTLA150620) in the Afternoon of 15/06/2020 Total[Remaining] Capacity: 12[12] || 
 =====================================
 ;
+DATE: 2020-03-30 01:16:33 AM  Server is Up & Running
+DATE: 2020-03-30 01:16:33 AM  UDP Server Started at port 8888
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: MTLA160620 eventType: Conferences bookingCapacity 2  | ServerResponse: Success: Event MTLA160620 added successfully
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: MTLA150620 eventType: Trade Shows bookingCapacity 1  | ServerResponse: Success: Event MTLA150620 added successfully
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows bookingCapacity 1  | ServerResponse: Success: Event MTLA170620 added successfully
+DATE: 2020-03-30 01:16:39 AM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: MTLA160620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 01:16:39 AM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLA160620 eventType: Conferences  | ServerResponse: Success: Event MTLA160620 Booked Successfully
+DATE: 2020-03-30 01:16:39 AM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: MTLA160620 eventType: Conferences  | ServerResponse: Success: Event MTLA160620 Booked Successfully;
+DATE: 2020-03-30 01:16:39 AM ClientID: SHEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse:  ...
+DATE: 2020-03-30 01:16:39 AM ClientID: SHEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 01:16:39 AM ClientID: SHEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully;
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: MONTREAL Server Conferences:
+ (MTLA160620) in the Afternoon of 16/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+;
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Trade Shows  | ServerResponse:  ...
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Trade Shows  | ServerResponse: MONTREAL Server Trade Shows:
+ (MTLA170620) in the Afternoon of 17/06/2020 Total[Remaining] Capacity: 1[0] ||  (MTLA150620) in the Afternoon of 15/06/2020 Total[Remaining] Capacity: 1[1] || 
+=====================================
+;
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Seminars  | ServerResponse: MONTREAL Server Seminars:
+No Events of Type Seminars
+=====================================
+;
+DATE: 2020-03-30 01:22:39 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences bookingCapacity 2  | ServerResponse: Success: Event MTLE101020 added successfully
+DATE: 2020-03-30 01:22:39 PM ClientID: MTLC6789 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Booked Successfully
+DATE: 2020-03-30 01:22:39 PM ClientID: MTLC7890 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Booked Successfully
+DATE: 2020-03-30 01:22:39 PM ClientID: MTLC2345 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: Event MTLE101020 is Full
+DATE: 2020-03-30 01:22:39 PM ClientID: MTLC3456 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: Event MTLE101020 is Full
+DATE: 2020-03-30 01:22:39 PM ClientID: MTLC4567 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: Event MTLE101020 is Full
+DATE: 2020-03-30 01:22:39 PM ClientID: MTLC6789 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Canceled for MTLC6789
+DATE: 2020-03-30 01:22:39 PM ClientID: MTLC7890 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Canceled for MTLC7890
+DATE: 2020-03-30 01:22:39 PM ClientID: MTLC4567 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: You MTLC4567 Are Not Registered in MTLE101020
+DATE: 2020-03-30 01:22:39 PM ClientID: MTLC3456 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: You MTLC3456 Are Not Registered in MTLE101020
+DATE: 2020-03-30 01:22:39 PM ClientID: MTLC2345 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: You MTLC2345 Are Not Registered in MTLE101020
+DATE: 2020-03-30 01:22:55 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences bookingCapacity 2  | ServerResponse: Success: Event MTLE101020 Capacity increased to 2
+DATE: 2020-03-30 01:22:55 PM ClientID: MTLC4567 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Booked Successfully
+DATE: 2020-03-30 01:22:55 PM ClientID: MTLC6789 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Booked Successfully
+DATE: 2020-03-30 01:22:55 PM ClientID: MTLC7890 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: Event MTLE101020 is Full
+DATE: 2020-03-30 01:22:55 PM ClientID: MTLC2345 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: Event MTLE101020 is Full
+DATE: 2020-03-30 01:22:55 PM ClientID: MTLC3456 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: Event MTLE101020 is Full
+DATE: 2020-03-30 01:22:55 PM ClientID: MTLC4567 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Canceled for MTLC4567
+DATE: 2020-03-30 01:22:55 PM ClientID: MTLC6789 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Canceled for MTLC6789
+DATE: 2020-03-30 01:22:55 PM ClientID: MTLC7890 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: You MTLC7890 Are Not Registered in MTLE101020
+DATE: 2020-03-30 01:22:55 PM ClientID: MTLC3456 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: You MTLC3456 Are Not Registered in MTLE101020
+DATE: 2020-03-30 01:22:55 PM ClientID: MTLC2345 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: You MTLC2345 Are Not Registered in MTLE101020
+DATE: 2020-03-30 01:23:25 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences bookingCapacity 2  | ServerResponse: Success: Event MTLE101020 Capacity increased to 2
+DATE: 2020-03-30 01:23:25 PM ClientID: MTLC7890 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Booked Successfully
+DATE: 2020-03-30 01:23:25 PM ClientID: MTLC4567 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Booked Successfully
+DATE: 2020-03-30 01:23:25 PM ClientID: MTLC6789 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: Event MTLE101020 is Full
+DATE: 2020-03-30 01:23:25 PM ClientID: MTLC2345 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: Event MTLE101020 is Full
+DATE: 2020-03-30 01:23:25 PM ClientID: MTLC3456 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: Event MTLE101020 is Full
+DATE: 2020-03-30 01:23:25 PM ClientID: MTLC4567 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Canceled for MTLC4567
+DATE: 2020-03-30 01:23:25 PM ClientID: MTLC7890 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Canceled for MTLC7890
+DATE: 2020-03-30 01:23:25 PM ClientID: MTLC6789 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: You MTLC6789 Are Not Registered in MTLE101020
+DATE: 2020-03-30 01:23:25 PM ClientID: MTLC2345 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: You MTLC2345 Are Not Registered in MTLE101020
+DATE: 2020-03-30 01:23:25 PM ClientID: MTLC3456 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: You MTLC3456 Are Not Registered in MTLE101020
+DATE: 2020-03-30 01:25:38 PM ClientID: Event Manager | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-03-30 01:25:38 PM ClientID: Event Manager | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: SHERBROOK Server Conferences:
+ (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+
+DATE: 2020-03-30 01:25:38 PM ClientID: Event Manager | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-03-30 01:25:38 PM ClientID: Event Manager | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: QUEBEC Server Conferences:
+ (QUEA150620) in the Afternoon of 15/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+
+DATE: 2020-03-30 01:25:38 PM ClientID: Event Manager | RequestType:  CORBA listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse: MONTREAL Server Conferences:
+ (MTLA160620) in the Afternoon of 16/06/2020 Total[Remaining] Capacity: 2[1] ||  (MTLE101020) in the Evening of 10/10/2020 Total[Remaining] Capacity: 2[2] || 
+=====================================
+SHERBROOK Server Conferences:
+ (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+QUEBEC Server Conferences:
+ (QUEA150620) in the Afternoon of 15/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+
+DATE: 2020-03-30 01:29:19 PM ClientID: Event Manager | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-03-30 01:29:19 PM ClientID: Event Manager | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: SHERBROOK Server Conferences:
+ (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+
+DATE: 2020-03-30 01:29:19 PM ClientID: Event Manager | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-03-30 01:29:19 PM ClientID: Event Manager | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: QUEBEC Server Conferences:
+ (QUEA150620) in the Afternoon of 15/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+
+DATE: 2020-03-30 01:29:19 PM ClientID: Event Manager | RequestType:  CORBA listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse: MONTREAL Server Conferences:
+ (MTLA160620) in the Afternoon of 16/06/2020 Total[Remaining] Capacity: 2[1] ||  (MTLE101020) in the Evening of 10/10/2020 Total[Remaining] Capacity: 2[2] || 
+=====================================
+SHERBROOK Server Conferences:
+ (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+QUEBEC Server Conferences:
+ (QUEA150620) in the Afternoon of 15/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+
+DATE: 2020-03-30 01:29:33 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences bookingCapacity 2  | ServerResponse: Success: Event MTLE101020 Capacity increased to 2
+DATE: 2020-03-30 01:29:33 PM ClientID: MTLC2345 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Booked Successfully
+DATE: 2020-03-30 01:29:33 PM ClientID: MTLC7890 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Booked Successfully
+DATE: 2020-03-30 01:29:33 PM ClientID: MTLC6789 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: Event MTLE101020 is Full
+DATE: 2020-03-30 01:29:33 PM ClientID: MTLC4567 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: Event MTLE101020 is Full
+DATE: 2020-03-30 01:29:33 PM ClientID: MTLC3456 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: Event MTLE101020 is Full
+DATE: 2020-03-30 01:29:33 PM ClientID: MTLC2345 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Canceled for MTLC2345
+DATE: 2020-03-30 01:29:33 PM ClientID: MTLC7890 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event MTLE101020 Canceled for MTLC7890
+DATE: 2020-03-30 01:29:33 PM ClientID: MTLC6789 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: You MTLC6789 Are Not Registered in MTLE101020
+DATE: 2020-03-30 01:29:33 PM ClientID: MTLC4567 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: You MTLC4567 Are Not Registered in MTLE101020
+DATE: 2020-03-30 01:29:33 PM ClientID: MTLC3456 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Failed: You MTLC3456 Are Not Registered in MTLE101020
+DATE: 2020-03-30 01:29:33 PM ClientID: Event Manager | RequestType:  CORBA removeEvent  | RequestParameters:  eventID: MTLE101020 eventType: Conferences  | ServerResponse: Success: Event Removed Successfully
+DATE: 2020-03-30 01:29:47 PM ClientID: Event Manager | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-03-30 01:29:47 PM ClientID: Event Manager | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: SHERBROOK Server Conferences:
+ (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+
+DATE: 2020-03-30 01:29:47 PM ClientID: Event Manager | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-03-30 01:29:47 PM ClientID: Event Manager | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: QUEBEC Server Conferences:
+ (QUEA150620) in the Afternoon of 15/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+
+DATE: 2020-03-30 01:29:47 PM ClientID: Event Manager | RequestType:  CORBA listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse: MONTREAL Server Conferences:
+ (MTLA160620) in the Afternoon of 16/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+SHERBROOK Server Conferences:
+ (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+QUEBEC Server Conferences:
+ (QUEA150620) in the Afternoon of 15/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+

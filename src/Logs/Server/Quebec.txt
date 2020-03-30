@@ -462,3 +462,93 @@ DATE: 2020-03-29 10:42:02 PM ClientID: Event Manager | RequestType:  UDP reply s
 No Events of Type Trade Shows
 =====================================
 ;
+DATE: 2020-03-30 01:16:33 AM  Server is Up & Running
+DATE: 2020-03-30 01:16:33 AM  UDP Server Started at port 7777
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: QUEA150620 eventType: Conferences bookingCapacity 1  | ServerResponse: Success: Event QUEA150620 added successfully
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: QUEA160620 eventType: Seminars bookingCapacity 1  | ServerResponse: Success: Event QUEA160620 added successfully
+DATE: 2020-03-30 01:16:39 AM ClientID: QUEC1234 | RequestType:  UDP request sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-03-30 01:16:39 AM ClientID: QUEC1234 | RequestType:  UDP reply receivedbookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 01:16:39 AM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 01:16:39 AM ClientID: QUEC1234 | RequestType:  UDP request sent bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ... 
+DATE: 2020-03-30 01:16:39 AM ClientID: QUEC1234 | RequestType:  UDP reply receivedbookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully
+DATE: 2020-03-30 01:16:39 AM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully
+DATE: 2020-03-30 01:16:39 AM ClientID: QUEC1234 | RequestType:  UDP request sent bookEvent  | RequestParameters:  eventID: MTLA160620 eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-03-30 01:16:39 AM ClientID: QUEC1234 | RequestType:  UDP reply receivedbookEvent  | RequestParameters:  eventID: MTLA160620 eventType: Conferences  | ServerResponse: Success: Event MTLA160620 Booked Successfully
+DATE: 2020-03-30 01:16:39 AM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLA160620 eventType: Conferences  | ServerResponse: Success: Event MTLA160620 Booked Successfully
+DATE: 2020-03-30 01:16:39 AM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: QUEA150620 eventType: Conferences  | ServerResponse: Success: Event QUEA150620 Booked Successfully
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: MONTREAL Server Conferences:
+ (MTLA160620) in the Afternoon of 16/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse:  ... 
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: SHERBROOK Server Conferences:
+ (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  CORBA listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse: QUEBEC Server Conferences:
+ (QUEA150620) in the Afternoon of 15/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+MONTREAL Server Conferences:
+ (MTLA160620) in the Afternoon of 16/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+SHERBROOK Server Conferences:
+ (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Trade Shows  | ServerResponse:  ... 
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Trade Shows  | ServerResponse: MONTREAL Server Trade Shows:
+ (MTLA170620) in the Afternoon of 17/06/2020 Total[Remaining] Capacity: 1[0] ||  (MTLA150620) in the Afternoon of 15/06/2020 Total[Remaining] Capacity: 1[1] || 
+=====================================
+
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Trade Shows  | ServerResponse:  ... 
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Trade Shows  | ServerResponse: SHERBROOK Server Trade Shows:
+No Events of Type Trade Shows
+=====================================
+
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  CORBA listEventAvailability  | RequestParameters:  eventType: Trade Shows  | ServerResponse: QUEBEC Server Trade Shows:
+No Events of Type Trade Shows
+
+=====================================
+MONTREAL Server Trade Shows:
+ (MTLA170620) in the Afternoon of 17/06/2020 Total[Remaining] Capacity: 1[0] ||  (MTLA150620) in the Afternoon of 15/06/2020 Total[Remaining] Capacity: 1[1] || 
+=====================================
+SHERBROOK Server Trade Shows:
+No Events of Type Trade Shows
+=====================================
+
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Seminars  | ServerResponse:  ... 
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Seminars  | ServerResponse: MONTREAL Server Seminars:
+No Events of Type Seminars
+=====================================
+
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  UDP request sent listEventAvailability  | RequestParameters:  eventID: null eventType: Seminars  | ServerResponse:  ... 
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  UDP reply receivedlistEventAvailability  | RequestParameters:  eventID: null eventType: Seminars  | ServerResponse: SHERBROOK Server Seminars:
+ (SHEE160620) in the Evening of 16/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+
+DATE: 2020-03-30 01:16:39 AM ClientID: Event Manager | RequestType:  CORBA listEventAvailability  | RequestParameters:  eventType: Seminars  | ServerResponse: QUEBEC Server Seminars:
+ (QUEA160620) in the Afternoon of 16/06/2020 Total[Remaining] Capacity: 1[1] || 
+=====================================
+MONTREAL Server Seminars:
+No Events of Type Seminars
+=====================================
+SHERBROOK Server Seminars:
+ (SHEE160620) in the Evening of 16/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+
+DATE: 2020-03-30 01:25:38 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 01:25:38 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: QUEBEC Server Conferences:
+ (QUEA150620) in the Afternoon of 15/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+;
+DATE: 2020-03-30 01:29:19 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 01:29:19 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: QUEBEC Server Conferences:
+ (QUEA150620) in the Afternoon of 15/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+;
+DATE: 2020-03-30 01:29:47 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 01:29:47 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: QUEBEC Server Conferences:
+ (QUEA150620) in the Afternoon of 15/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+;
