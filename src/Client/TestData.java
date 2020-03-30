@@ -1,4 +1,4 @@
-package Server;
+package Client;
 
 import ServerObjectInterfaceApp.ServerObjectInterface;
 import ServerObjectInterfaceApp.ServerObjectInterfaceHelper;

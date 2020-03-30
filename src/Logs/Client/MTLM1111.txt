@@ -88,3 +88,15 @@ QUEBEC Server Conferences:
  (QUEA150620) in the Afternoon of 15/06/2020 Total[Remaining] Capacity: 1[0] || 
 =====================================
 
+DATE: 2020-03-30 02:15:30 PM  attempting to listEventAvailability
+DATE: 2020-03-30 02:15:30 PM Client Action:  listEventAvailability | RequestParameters:  eventType: Conferences  | Server Response: MONTREAL Server Conferences:
+ (MTLA160620) in the Afternoon of 16/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+SHERBROOK Server Conferences:
+ (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+QUEBEC Server Conferences:
+ (QUEA150620) in the Afternoon of 15/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+
+DATE: 2020-03-30 02:15:40 PM attempting to Logout

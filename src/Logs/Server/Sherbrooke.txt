@@ -319,3 +319,36 @@ DATE: 2020-03-30 01:29:47 PM ClientID: Event Manager | RequestType:  UDP reply s
  (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
 =====================================
 ;
+DATE: 2020-03-30 02:15:30 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 02:15:30 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: SHERBROOK Server Conferences:
+ (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+;
+DATE: 2020-03-30 02:17:51 PM  Server is Up & Running
+DATE: 2020-03-30 02:17:51 PM  UDP Server Started at port 6666
+DATE: 2020-03-30 02:17:59 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences bookingCapacity 2  | ServerResponse: Success: Event SHEE150620 added successfully
+DATE: 2020-03-30 02:17:59 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars bookingCapacity 1  | ServerResponse: Success: Event SHEE160620 added successfully
+DATE: 2020-03-30 02:17:59 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 02:17:59 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 02:17:59 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 02:17:59 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 02:17:59 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully
+DATE: 2020-03-30 02:17:59 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully;
+DATE: 2020-03-30 02:17:59 PM ClientID: SHEC1234 | RequestType:  UDP request sent bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse:  ... 
+DATE: 2020-03-30 02:17:59 PM ClientID: SHEC1234 | RequestType:  UDP reply receivedbookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 02:17:59 PM ClientID: SHEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 02:17:59 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 02:17:59 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: SHERBROOK Server Conferences:
+ (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+;
+DATE: 2020-03-30 02:17:59 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Trade Shows  | ServerResponse:  ...
+DATE: 2020-03-30 02:17:59 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Trade Shows  | ServerResponse: SHERBROOK Server Trade Shows:
+No Events of Type Trade Shows
+=====================================
+;
+DATE: 2020-03-30 02:17:59 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 02:17:59 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Seminars  | ServerResponse: SHERBROOK Server Seminars:
+ (SHEE160620) in the Evening of 16/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+;
