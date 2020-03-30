@@ -25,7 +25,7 @@ public class TestData {
 		}
 	}
 
-	private static void addData(NamingContextExt ncRef) throws Exception {
+	private synchronized static void addData(NamingContextExt ncRef) throws Exception {
 		ServerObjectInterface MTLobj = ServerObjectInterfaceHelper.narrow(ncRef.resolve_str("MTL"));
 		ServerObjectInterface QUEobj = ServerObjectInterfaceHelper.narrow(ncRef.resolve_str("QUE"));
 		ServerObjectInterface SHEobj = ServerObjectInterfaceHelper.narrow(ncRef.resolve_str("SHE"));
@@ -62,7 +62,7 @@ public class TestData {
 		System.out.println("QUEC1234 bookEvent:");
 		System.out.println(QUEobj.bookEvent("QUEC1234", "SHEE110620", CONFERENCES));
 		System.out.println("QUEC1234 bookEvent:");
-		System.out.println(QUEobj.bookEvent("QUEC1234", "MTLEE230620", SEMINARS));
+		System.out.println(QUEobj.bookEvent("QUEC1234", "MTLE230620", SEMINARS));
 		System.out.println("*********************************************************");
 
 		System.out.println("Test3");
