@@ -1,0 +1,75 @@
+DSD assignment 2 test case scenarios
+
+Case 1: 
+   new event has no capacity
+  Status: false
+
+Case 2: 
+   Old event doesn’t exists, and given new Event ID exists
+  Status: false
+
+Case 3:
+   Old event exists, and given new Event ID doesn’t exists
+    Status: false
+
+  old eventID city equals to users city
+  new eventID city equals to users city
+
+Case 4:
+    happening in same week 
+    Status: true
+Case 5:
+    Not happening in same week
+    Status: true
+
+  old eventID city not equals to users city
+  new eventID city equals to users city
+
+Case 6:
+  happening in same week 
+  Status: true
+
+Case 7:
+  not happening in same week 
+  Status:true
+
+
+  old eventID city equals to users city
+  new eventID city not equals to users city 
+  
+Case 8:
+  happening in the same week.
+    Limit == 3
+  status: false
+Case 9:
+    happening in the same week 
+   Limit < 3
+  Status:true
+Case 10:
+   not happening in same week.
+    limit == 3
+         Status:false
+Case 11:
+   not happening in same week.
+   limit <3
+  Status: true
+
+  old eventID city not equals to users city
+  new eventID city not equals to users city 
+  
+Case 12:
+  happening in the same week.
+        limit < 3 
+  Status:true
+Case 13:
+  happening in the same week.
+        limit == 3 
+  Status:true
+Case 14:
+  not happening in the same week.
+  limit < 3
+  Status:true
+Case 15:
+  not happening in the same week.
+  limit == 3
+  Status:false

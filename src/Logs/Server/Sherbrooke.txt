@@ -442,3 +442,451 @@ DATE: 2020-03-30 03:57:08 PM ClientID: Event Manager | RequestType:  UDP reply s
  (SHEE160620) in the Evening of 16/06/2020 Total[Remaining] Capacity: 1[0] || 
 =====================================
 ;
+DATE: 2020-03-30 04:14:56 PM  Server is Up & Running
+DATE: 2020-03-30 04:14:56 PM  UDP Server Started at port 6666
+DATE: 2020-03-30 04:15:05 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences bookingCapacity 2  | ServerResponse: Success: Event SHEE150620 added successfully
+DATE: 2020-03-30 04:15:05 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars bookingCapacity 1  | ServerResponse: Success: Event SHEE160620 added successfully
+DATE: 2020-03-30 04:15:05 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 04:15:05 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 04:15:05 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 04:15:05 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 04:15:05 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully
+DATE: 2020-03-30 04:15:05 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully;
+DATE: 2020-03-30 04:15:05 PM ClientID: SHEC1234 | RequestType:  UDP request sent bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse:  ... 
+DATE: 2020-03-30 04:15:05 PM ClientID: SHEC1234 | RequestType:  UDP reply receivedbookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 04:15:05 PM ClientID: SHEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 04:15:05 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 04:15:05 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: SHERBROOK Server Conferences:
+ (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+;
+DATE: 2020-03-30 04:15:05 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Trade Shows  | ServerResponse:  ...
+DATE: 2020-03-30 04:15:05 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Trade Shows  | ServerResponse: SHERBROOK Server Trade Shows:
+No Events of Type Trade Shows
+=====================================
+;
+DATE: 2020-03-30 04:15:05 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 04:15:05 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Seminars  | ServerResponse: SHERBROOK Server Seminars:
+ (SHEE160620) in the Evening of 16/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+;
+DATE: 2020-03-30 04:34:41 PM  Server is Up & Running
+DATE: 2020-03-30 04:34:41 PM  UDP Server Started at port 6666
+DATE: 2020-03-30 04:34:45 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences bookingCapacity 2  | ServerResponse: Success: Event SHEE150620 added successfully
+DATE: 2020-03-30 04:34:45 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars bookingCapacity 1  | ServerResponse: Success: Event SHEE160620 added successfully
+DATE: 2020-03-30 04:34:53 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 04:34:53 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 04:34:53 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 04:34:53 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 04:34:53 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully
+DATE: 2020-03-30 04:34:53 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully;
+DATE: 2020-03-30 04:34:53 PM ClientID: SHEC1234 | RequestType:  UDP request sent bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse:  ... 
+DATE: 2020-03-30 04:34:53 PM ClientID: SHEC1234 | RequestType:  UDP reply receivedbookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 04:34:53 PM ClientID: SHEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 04:34:53 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 04:34:53 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: SHERBROOK Server Conferences:
+ (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+;
+DATE: 2020-03-30 04:34:53 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Trade Shows  | ServerResponse:  ...
+DATE: 2020-03-30 04:34:53 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Trade Shows  | ServerResponse: SHERBROOK Server Trade Shows:
+No Events of Type Trade Shows
+=====================================
+;
+DATE: 2020-03-30 04:34:53 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 04:34:53 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Seminars  | ServerResponse: SHERBROOK Server Seminars:
+ (SHEE160620) in the Evening of 16/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+;
+DATE: 2020-03-30 04:41:38 PM  Server is Up & Running
+DATE: 2020-03-30 04:41:38 PM  UDP Server Started at port 6666
+DATE: 2020-03-30 04:41:44 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences bookingCapacity 2  | ServerResponse: Success: Event SHEE150620 added successfully
+DATE: 2020-03-30 04:41:44 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars bookingCapacity 1  | ServerResponse: Success: Event SHEE160620 added successfully
+DATE: 2020-03-30 04:41:44 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 04:41:44 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 04:41:44 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 04:41:44 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 04:41:44 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully
+DATE: 2020-03-30 04:41:44 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully;
+DATE: 2020-03-30 04:41:44 PM ClientID: SHEC1234 | RequestType:  UDP request sent bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse:  ... 
+DATE: 2020-03-30 04:41:44 PM ClientID: SHEC1234 | RequestType:  UDP reply receivedbookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 04:41:44 PM ClientID: SHEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 04:41:44 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 04:41:44 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: SHERBROOK Server Conferences:
+ (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+;
+DATE: 2020-03-30 04:41:44 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Trade Shows  | ServerResponse:  ...
+DATE: 2020-03-30 04:41:44 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Trade Shows  | ServerResponse: SHERBROOK Server Trade Shows:
+No Events of Type Trade Shows
+=====================================
+;
+DATE: 2020-03-30 04:41:44 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 04:41:44 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Seminars  | ServerResponse: SHERBROOK Server Seminars:
+ (SHEE160620) in the Evening of 16/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+;
+DATE: 2020-03-30 04:41:54 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 04:41:54 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 04:41:54 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 04:44:18 PM  Server is Up & Running
+DATE: 2020-03-30 04:44:18 PM  UDP Server Started at port 6666
+DATE: 2020-03-30 04:45:46 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences bookingCapacity 2  | ServerResponse: Success: Event SHEE150620 added successfully
+DATE: 2020-03-30 04:45:46 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars bookingCapacity 1  | ServerResponse: Success: Event SHEE160620 added successfully
+DATE: 2020-03-30 04:45:46 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 04:45:46 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 04:45:46 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 04:45:46 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 04:45:46 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully
+DATE: 2020-03-30 04:45:46 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully;
+DATE: 2020-03-30 04:45:46 PM ClientID: SHEC1234 | RequestType:  UDP request sent bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse:  ... 
+DATE: 2020-03-30 04:45:46 PM ClientID: SHEC1234 | RequestType:  UDP reply receivedbookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 04:45:46 PM ClientID: SHEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 04:45:46 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 04:45:46 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: SHERBROOK Server Conferences:
+ (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+;
+DATE: 2020-03-30 04:45:46 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Trade Shows  | ServerResponse:  ...
+DATE: 2020-03-30 04:45:46 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Trade Shows  | ServerResponse: SHERBROOK Server Trade Shows:
+No Events of Type Trade Shows
+=====================================
+;
+DATE: 2020-03-30 04:45:46 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 04:45:46 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Seminars  | ServerResponse: SHERBROOK Server Seminars:
+ (SHEE160620) in the Evening of 16/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+;
+DATE: 2020-03-30 04:47:19 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 04:47:19 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 04:47:19 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 04:53:27 PM  Server is Up & Running
+DATE: 2020-03-30 04:53:27 PM  UDP Server Started at port 6666
+DATE: 2020-03-30 04:53:37 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences bookingCapacity 2  | ServerResponse: Success: Event SHEE150620 added successfully
+DATE: 2020-03-30 04:53:37 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars bookingCapacity 1  | ServerResponse: Success: Event SHEE160620 added successfully
+DATE: 2020-03-30 04:53:37 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 04:53:37 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 04:53:37 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 04:53:37 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 04:53:37 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully
+DATE: 2020-03-30 04:53:37 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully;
+DATE: 2020-03-30 04:53:37 PM ClientID: SHEC1234 | RequestType:  UDP request sent bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse:  ... 
+DATE: 2020-03-30 04:53:37 PM ClientID: SHEC1234 | RequestType:  UDP reply receivedbookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 04:53:37 PM ClientID: SHEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 04:53:37 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 04:53:37 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: SHERBROOK Server Conferences:
+ (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+;
+DATE: 2020-03-30 04:53:37 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Trade Shows  | ServerResponse:  ...
+DATE: 2020-03-30 04:53:37 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Trade Shows  | ServerResponse: SHERBROOK Server Trade Shows:
+No Events of Type Trade Shows
+=====================================
+;
+DATE: 2020-03-30 04:53:37 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 04:53:37 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Seminars  | ServerResponse: SHERBROOK Server Seminars:
+ (SHEE160620) in the Evening of 16/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+;
+DATE: 2020-03-30 04:53:56 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 04:53:56 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 04:53:56 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 04:53:56 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 04:53:56 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Failed: Event SHEE150620 Already Booked
+DATE: 2020-03-30 04:53:56 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Failed: Event SHEE150620 Already Booked;
+DATE: 2020-03-30 04:57:45 PM  Server is Up & Running
+DATE: 2020-03-30 04:57:45 PM  UDP Server Started at port 6666
+DATE: 2020-03-30 04:57:50 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences bookingCapacity 2  | ServerResponse: Success: Event SHEE150620 added successfully
+DATE: 2020-03-30 04:57:50 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars bookingCapacity 1  | ServerResponse: Success: Event SHEE160620 added successfully
+DATE: 2020-03-30 04:57:50 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 04:57:50 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 04:57:50 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 04:57:50 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 04:57:50 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully
+DATE: 2020-03-30 04:57:50 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully;
+DATE: 2020-03-30 04:57:50 PM ClientID: SHEC1234 | RequestType:  UDP request sent bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse:  ... 
+DATE: 2020-03-30 04:57:50 PM ClientID: SHEC1234 | RequestType:  UDP reply receivedbookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 04:57:50 PM ClientID: SHEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 04:57:50 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 04:57:50 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: SHERBROOK Server Conferences:
+ (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+;
+DATE: 2020-03-30 04:57:50 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Trade Shows  | ServerResponse:  ...
+DATE: 2020-03-30 04:57:50 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Trade Shows  | ServerResponse: SHERBROOK Server Trade Shows:
+No Events of Type Trade Shows
+=====================================
+;
+DATE: 2020-03-30 04:57:50 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 04:57:50 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Seminars  | ServerResponse: SHERBROOK Server Seminars:
+ (SHEE160620) in the Evening of 16/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+;
+DATE: 2020-03-30 04:57:59 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 04:57:59 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 04:57:59 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 04:57:59 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 04:57:59 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Failed: Event SHEE150620 Already Booked
+DATE: 2020-03-30 04:57:59 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Failed: Event SHEE150620 Already Booked;
+DATE: 2020-03-30 05:11:49 PM  Server is Up & Running
+DATE: 2020-03-30 05:11:49 PM  UDP Server Started at port 6666
+DATE: 2020-03-30 05:12:24 PM  Server is Up & Running
+DATE: 2020-03-30 05:12:24 PM  UDP Server Started at port 6666
+DATE: 2020-03-30 05:12:38 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences bookingCapacity 2  | ServerResponse: Success: Event SHEE150620 added successfully
+DATE: 2020-03-30 05:12:38 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars bookingCapacity 1  | ServerResponse: Success: Event SHEE160620 added successfully
+DATE: 2020-03-30 05:12:38 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 05:12:38 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 05:12:38 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 05:12:38 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 05:12:38 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully
+DATE: 2020-03-30 05:12:38 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully;
+DATE: 2020-03-30 05:12:38 PM ClientID: SHEC1234 | RequestType:  UDP request sent bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse:  ... 
+DATE: 2020-03-30 05:12:38 PM ClientID: SHEC1234 | RequestType:  UDP reply receivedbookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 05:12:38 PM ClientID: SHEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 05:12:39 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 05:12:39 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: SHERBROOK Server Conferences:
+ (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+;
+DATE: 2020-03-30 05:12:39 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Trade Shows  | ServerResponse:  ...
+DATE: 2020-03-30 05:12:39 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Trade Shows  | ServerResponse: SHERBROOK Server Trade Shows:
+No Events of Type Trade Shows
+=====================================
+;
+DATE: 2020-03-30 05:12:39 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 05:12:39 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Seminars  | ServerResponse: SHERBROOK Server Seminars:
+ (SHEE160620) in the Evening of 16/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+;
+DATE: 2020-03-30 05:12:48 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 05:12:48 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 05:12:48 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 05:12:48 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 05:12:48 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 05:12:48 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 05:43:58 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 05:43:58 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 05:43:58 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 05:43:58 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 05:43:58 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 05:43:58 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 05:45:27 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 05:45:27 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 05:45:27 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 05:45:27 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 05:45:27 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 05:45:27 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 05:48:00 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 05:48:00 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 05:48:00 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 05:48:00 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 05:48:00 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 05:48:00 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 05:51:07 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 05:51:07 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 05:51:07 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 05:51:07 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 05:51:07 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 05:51:07 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 05:51:07 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 05:51:07 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 05:51:07 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 05:51:07 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 05:51:07 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 05:51:07 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 05:58:45 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 05:58:45 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 05:58:45 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 05:58:45 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 05:58:45 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 05:58:45 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 05:58:45 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 05:58:45 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 05:58:45 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 05:58:45 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 05:58:45 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 05:58:45 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:02:17 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:02:17 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 06:02:17 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:02:17 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:02:17 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 06:02:17 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:02:17 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:02:17 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 06:02:17 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:02:17 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:02:17 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 06:02:17 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:07:38 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:07:38 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 06:07:38 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:07:38 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:07:38 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 06:07:38 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:07:38 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:07:38 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 06:07:38 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:07:38 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:07:38 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 06:07:38 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:11:18 PM  Server is Up & Running
+DATE: 2020-03-30 06:11:18 PM  UDP Server Started at port 6666
+DATE: 2020-03-30 06:11:28 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences bookingCapacity 2  | ServerResponse: Success: Event SHEE150620 added successfully
+DATE: 2020-03-30 06:11:28 PM ClientID: Event Manager | RequestType:  CORBA addEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars bookingCapacity 1  | ServerResponse: Success: Event SHEE160620 added successfully
+DATE: 2020-03-30 06:11:28 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:11:28 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 06:11:28 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:11:28 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 06:11:28 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully
+DATE: 2020-03-30 06:11:28 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully;
+DATE: 2020-03-30 06:11:28 PM ClientID: SHEC1234 | RequestType:  UDP request sent bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse:  ... 
+DATE: 2020-03-30 06:11:28 PM ClientID: SHEC1234 | RequestType:  UDP reply receivedbookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 06:11:28 PM ClientID: SHEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: MTLA170620 eventType: Trade Shows  | ServerResponse: Success: Event MTLA170620 Booked Successfully
+DATE: 2020-03-30 06:11:28 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:11:28 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Conferences  | ServerResponse: SHERBROOK Server Conferences:
+ (SHEE150620) in the Evening of 15/06/2020 Total[Remaining] Capacity: 2[1] || 
+=====================================
+;
+DATE: 2020-03-30 06:11:28 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Trade Shows  | ServerResponse:  ...
+DATE: 2020-03-30 06:11:28 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Trade Shows  | ServerResponse: SHERBROOK Server Trade Shows:
+No Events of Type Trade Shows
+=====================================
+;
+DATE: 2020-03-30 06:11:28 PM ClientID: Event Manager | RequestType:  UDP request received listEventAvailability  | RequestParameters:  eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 06:11:28 PM ClientID: Event Manager | RequestType:  UDP reply sent listEventAvailability  | RequestParameters:  eventID: null eventType: Seminars  | ServerResponse: SHERBROOK Server Seminars:
+ (SHEE160620) in the Evening of 16/06/2020 Total[Remaining] Capacity: 1[0] || 
+=====================================
+;
+DATE: 2020-03-30 06:11:46 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:11:46 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 06:11:46 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:11:46 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:11:46 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 06:11:46 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:11:46 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:11:46 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 06:11:46 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:11:46 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:11:46 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 06:11:46 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:12:50 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:12:50 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 06:12:50 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:12:50 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:12:50 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 06:12:50 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:12:50 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:12:50 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 06:12:50 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:12:50 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:12:50 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 06:12:50 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:18:22 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:18:22 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 06:18:22 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:18:22 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:18:22 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 06:18:22 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:18:22 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:18:22 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 06:18:22 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:18:22 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:18:22 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 06:18:22 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:21:16 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:21:16 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 06:21:16 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:21:16 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:21:16 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 06:21:16 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:21:16 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:21:16 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 06:21:16 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:21:16 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:21:16 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 06:21:16 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:21:16 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 06:21:16 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Canceled for QUEC1234
+DATE: 2020-03-30 06:21:16 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:21:16 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 06:21:16 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully
+DATE: 2020-03-30 06:21:16 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully;
+DATE: 2020-03-30 06:24:47 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:24:47 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 06:24:47 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:24:47 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:24:47 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 06:24:47 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:24:47 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:24:47 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 06:24:47 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:24:47 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:24:47 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 06:24:47 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:24:47 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 06:24:47 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Canceled for QUEC1234
+DATE: 2020-03-30 06:24:47 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:24:47 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 06:24:47 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully
+DATE: 2020-03-30 06:24:47 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully;
+DATE: 2020-03-30 06:24:48 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 06:24:48 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Canceled for QUEC1234
+DATE: 2020-03-30 06:24:48 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:24:48 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 06:24:48 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully
+DATE: 2020-03-30 06:24:48 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully;
+DATE: 2020-03-30 06:30:33 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:30:33 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 06:30:33 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:30:33 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:30:33 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 06:30:33 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:30:33 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:30:33 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 06:30:33 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:30:34 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:30:34 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 06:30:34 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:30:34 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 06:30:34 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Canceled for QUEC1234
+DATE: 2020-03-30 06:30:34 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:30:34 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 06:30:34 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully
+DATE: 2020-03-30 06:30:34 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully;
+DATE: 2020-03-30 06:30:34 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 06:30:34 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Canceled for QUEC1234
+DATE: 2020-03-30 06:30:34 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:30:34 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 06:30:34 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully
+DATE: 2020-03-30 06:30:34 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully;
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse:  ...
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE150620 eventType: Conferences  | ServerResponse: Success: Event SHEE150620 Booked Successfully;
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Canceled for QUEC1234
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully;
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Canceled for QUEC1234
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully;
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP request received cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  CORBA cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Canceled for QUEC1234
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP reply sent cancelEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Canceled for QUEC1234;
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP request received bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse:  ...
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  CORBA bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully
+DATE: 2020-03-30 06:35:41 PM ClientID: QUEC1234 | RequestType:  UDP reply sent bookEvent  | RequestParameters:  eventID: SHEE160620 eventType: Seminars  | ServerResponse: Success: Event SHEE160620 Booked Successfully;

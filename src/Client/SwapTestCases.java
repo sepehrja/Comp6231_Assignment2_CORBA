@@ -57,6 +57,7 @@ public class SwapTestCases {
          * */
 
         System.out.println("Case0 assuming the new event has no capacity:");
+        System.out.println("swapEvent(\"QUEC1234\", \"MTLA170620\", TRADE_SHOWS, \"SHEE150620\", CONFERENCES)");
         System.out.println("<Fail>");
         System.out.println(QUEobj.swapEvent("QUEC1234", "MTLA170620", TRADE_SHOWS, "SHEE150620", CONFERENCES));
         System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
@@ -66,101 +67,165 @@ public class SwapTestCases {
         System.out.println("Also in every Success situation we rolled back the result to before the swap to have consistent data to work with");
         System.out.println("*********************************************************");
 
-//        System.out.println("Case1 OldEvent Does not exist-newEvent exists:");
-//        System.out.println("<Fail>");
-//        System.out.println(QUEobj.swapEvent("QUEC1234",));
-//        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
-//        System.out.println("*********************************************************");
+        System.out.println("Case1 OldEvent Does not exist-newEvent exists:");
+        System.out.println("swapEvent(\"QUEC1234\",\"MTLA150620\",TRADE_SHOWS, \"QUEA121212\",CONFERENCES)");
+        System.out.println("<Fail>");
+        System.out.println(QUEobj.swapEvent("QUEC1234", "MTLA150620", TRADE_SHOWS, "QUEA121212", CONFERENCES));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println("*********************************************************");
+
+        System.out.println("Case2 OldEvent exists-newEvent does not exist:");
+        System.out.println("<Fail>");
+        System.out.println("swapEvent(\"QUEC1234\",\"QUEA121212\", CONFERENCES,\"SHEE160620\",SEMINARS)");
+        System.out.println(QUEobj.swapEvent("QUEC1234", "QUEA121212", CONFERENCES, "SHEE160620", SEMINARS));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println("*********************************************************");
+
+        System.out.println("Case3 OldEvent and newEvent in user city:");
+        System.out.println("(OldEvent and newEvent in same week)");
+        System.out.println("<Success>");
+        System.out.println("swapEvent(\"QUEC1234\",\"QUEA160620\", SEMINARS, \"QUEA150620\", CONFERENCES)");
+        System.out.println(QUEobj.swapEvent("QUEC1234", "QUEA160620", SEMINARS, "QUEA150620", CONFERENCES));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println(">>>Rolling back the changes...");
+        System.out.println(QUEobj.swapEvent("QUEC1234", "QUEA150620", CONFERENCES, "QUEA160620", SEMINARS));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println("*********************************************************");
 //
-//        System.out.println("Case2 OldEvent exists-newEvent does not exist:");
-//        System.out.println("<Fail>");
-//        System.out.println(QUEobj.swapEvent("QUEC1234",));
-//        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
-//        System.out.println("*********************************************************");
-//
-//        System.out.println("Case3 OldEvent and newEvent in user city:");
-//        System.out.println("(OldEvent and newEvent in same week)");
-//        System.out.println("<Success>");
-//        System.out.println(QUEobj.swapEvent("QUEC1234",));
-//        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
-//        System.out.println("*********************************************************");
-//
-//        System.out.println("Case4 OldEvent and newEvent in user city:");
-//        System.out.println("(OldEvent and newEvent NOT in same week)");
-//        System.out.println("<Success>");
-//        System.out.println(QUEobj.swapEvent("QUEC1234",));
-//        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
-//        System.out.println("*********************************************************");
-//
-//        System.out.println("Case5 OldEvent NOT in user city and newEvent in user city:");
-//        System.out.println("(OldEvent and newEvent in same week)");
-//        System.out.println("<Success>");
-//        System.out.println(QUEobj.swapEvent("QUEC1234",));
-//        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
-//        System.out.println("*********************************************************");
-//
-//        System.out.println("Case6 OldEvent NOT in user city and newEvent in user city:");
-//        System.out.println("(OldEvent and newEvent NOT in same week)");
-//        System.out.println("<Success>");
-//        System.out.println(QUEobj.swapEvent("QUEC1234",));
-//        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
-//        System.out.println("*********************************************************");
-//
-//        System.out.println("Case7 OldEvent in user city and newEvent in OTHER city:");
-//        System.out.println("(in same week && limit == 3)");
-//        System.out.println("<Fail>");
-//        System.out.println(QUEobj.swapEvent("QUEC1234",));
-//        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
-//        System.out.println("*********************************************************");
-//
-//        System.out.println("Case8 OldEvent in user city and newEvent in OTHER city:");
-//        System.out.println("(in same week && limit < 3)");
-//        System.out.println("<Success>");
-//        System.out.println(QUEobj.swapEvent("QUEC1234",));
-//        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
-//        System.out.println("*********************************************************");
-//
-//        System.out.println("Case9 OldEvent in user city and newEvent in OTHER city:");
-//        System.out.println("(NOT in same week && limit == 3)");
-//        System.out.println("<Fail>");
-//        System.out.println(QUEobj.swapEvent("QUEC1234",));
-//        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
-//        System.out.println("*********************************************************");
-//
-//        System.out.println("Case10 OldEvent in user city and newEvent in OTHER city:");
-//        System.out.println("(NOT in same week && limit < 3)");
-//        System.out.println("<Success>");
-//        System.out.println(QUEobj.swapEvent("QUEC1234",));
-//        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
-//        System.out.println("*********************************************************");
-//
-//        System.out.println("Case11 OldEvent and newEvent in OTHER city:");
-//        System.out.println("(in same week && limit == 3)");
-//        System.out.println("<Success>");
-//        System.out.println(QUEobj.swapEvent("QUEC1234",));
-//        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
-//        System.out.println("*********************************************************");
-//
-//        System.out.println("Case12 OldEvent and newEvent in OTHER city:");
-//        System.out.println("(in same week && limit < 3)");
-//        System.out.println("<Success>");
-//        System.out.println(QUEobj.swapEvent("QUEC1234",));
-//        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
-//        System.out.println("*********************************************************");
-//
-//        System.out.println("Case13 OldEvent and newEvent in OTHER city:");
-//        System.out.println("(NOT in same week && limit == 3)");
-//        System.out.println("<Fail>");
-//        System.out.println(QUEobj.swapEvent("QUEC1234",));
-//        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
-//        System.out.println("*********************************************************");
-//
-//        System.out.println("Case14 OldEvent and newEvent in OTHER city:");
-//        System.out.println("(NOT in same week && limit < 3)");
-//        System.out.println("<Success>");
-//        System.out.println(QUEobj.swapEvent("QUEC1234",));
-//        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
-//        System.out.println("*********************************************************");
+        System.out.println("Case4 OldEvent and newEvent in user city:");
+        System.out.println("(OldEvent and newEvent NOT in same week)");
+        System.out.println("<Success>");
+        System.out.println("swapEvent(\"QUEC1234\",\"QUEA160720\", CONFERENCES,\"QUEA150620\", CONFERENCES)");
+        System.out.println(QUEobj.addEvent("QUEA160720", CONFERENCES, 1));
+        System.out.println(QUEobj.swapEvent("QUEC1234", "QUEA160720", CONFERENCES, "QUEA150620", CONFERENCES));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println(">>>Rolling back the changes...");
+        System.out.println(QUEobj.swapEvent("QUEC1234", "QUEA150620", CONFERENCES, "QUEA160720", CONFERENCES));
+        System.out.println(QUEobj.removeEvent("QUEA160720", CONFERENCES));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println("*********************************************************");
+
+        System.out.println("Case5 OldEvent NOT in user city and newEvent in user city:");
+        System.out.println("(OldEvent and newEvent in same week)");
+        System.out.println("<Success>");
+        System.out.println("swapEvent(\"QUEC1234\",\"QUEA160620\",SEMINARS,\"MTLA160620\",CONFERENCES)");
+        System.out.println(QUEobj.swapEvent("QUEC1234", "QUEA160620", SEMINARS, "MTLA160620", CONFERENCES));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println(">>>Rolling back the changes...");
+        System.out.println(QUEobj.swapEvent("QUEC1234", "MTLA160620", CONFERENCES, "QUEA160620", SEMINARS));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println("*********************************************************");
+
+        System.out.println("Case6 OldEvent NOT in user city and newEvent in user city:");
+        System.out.println("(OldEvent and newEvent NOT in same week)");
+        System.out.println("<Success>");
+        System.out.println("swapEvent(\"QUEC1234\",\"QUEA160720\",CONFERENCES,\"MTLA160620\",CONFERENCES)");
+        System.out.println(QUEobj.addEvent("QUEA160720", CONFERENCES, 1));
+        System.out.println(QUEobj.swapEvent("QUEC1234", "QUEA160720", CONFERENCES, "MTLA160620", CONFERENCES));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println(">>>Rolling back the changes...");
+        System.out.println(QUEobj.swapEvent("QUEC1234", "MTLA160620", CONFERENCES, "QUEA160720", CONFERENCES));
+        System.out.println(QUEobj.removeEvent("QUEA160720", CONFERENCES));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println("*********************************************************");
+
+        System.out.println("Case7 OldEvent in user city and newEvent in OTHER city:");
+        System.out.println("(in same week && limit == 3)");
+        System.out.println("<Fail>");
+        System.out.println("swapEvent(\"QUEC1234\",\"MTLA150620\", TRADE_SHOWS, \"QUEA150620\", CONFERENCES)");
+        System.out.println(QUEobj.swapEvent("QUEC1234", "MTLA150620", TRADE_SHOWS, "QUEA150620", CONFERENCES));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println("*********************************************************");
+
+        System.out.println("Case8 OldEvent in user city and newEvent in OTHER city:");
+        System.out.println("(in same week && limit < 3)");
+        System.out.println("<Success>");
+        System.out.println("swapEvent(\"QUEC1234\",\"MTLA150620\", TRADE_SHOWS, \"QUEA150620\", CONFERENCES)");
+        System.out.println(QUEobj.cancelEvent("QUEC1234", "SHEE150620", CONFERENCES));
+        System.out.println(QUEobj.swapEvent("QUEC1234", "MTLA150620", TRADE_SHOWS, "QUEA150620", CONFERENCES));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println(">>>Rolling back the changes...");
+        System.out.println(QUEobj.swapEvent("QUEC1234", "QUEA150620", CONFERENCES, "MTLA150620", TRADE_SHOWS));
+        System.out.println(QUEobj.bookEvent("QUEC1234", "SHEE150620", CONFERENCES));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println("*********************************************************");
+
+        System.out.println("Case9 OldEvent in user city and newEvent in OTHER city:");
+        System.out.println("(NOT in same week && limit == 3)");
+        System.out.println("<Fail>");
+        System.out.println("swapEvent(\"QUEC1234\",\"MTLA150620\",TRADE_SHOWS,\"QUEA160720\",CONFERENCES)");
+        System.out.println(QUEobj.addEvent("QUEA160720", CONFERENCES, 1));
+        System.out.println(QUEobj.bookEvent("QUEC1234", "QUEA160720", CONFERENCES));
+        System.out.println(QUEobj.swapEvent("QUEC1234", "MTLA150620", TRADE_SHOWS, "QUEA160720", CONFERENCES));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println(">>>Rolling back the changes...");
+        System.out.println(QUEobj.cancelEvent("QUEC1234", "QUEA160720", CONFERENCES));
+        System.out.println(QUEobj.removeEvent("QUEA160720", CONFERENCES));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println("*********************************************************");
+
+        System.out.println("Case10 OldEvent in user city and newEvent in OTHER city:");
+        System.out.println("(NOT in same week && limit < 3)");
+        System.out.println("<Success>");
+        System.out.println("swapEvent(\"QUEC1234\",\"MTLA150720\", SEMINARS,\"QUEA150620\", CONFERENCES)");
+        System.out.println(MTLobj.addEvent("MTLA150720", SEMINARS, 1));
+        System.out.println(QUEobj.swapEvent("QUEC1234", "MTLA150720", SEMINARS, "QUEA150620", CONFERENCES));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println(">>>Rolling back the changes...");
+        System.out.println(QUEobj.swapEvent("QUEC1234", "QUEA150620", CONFERENCES, "MTLA150720", SEMINARS));
+        System.out.println(MTLobj.removeEvent("MTLA150720", SEMINARS));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println("*********************************************************");
+
+        System.out.println("Case11 OldEvent and newEvent in OTHER city:");
+        System.out.println("(in same week && limit == 3)");
+        System.out.println("<Success>");
+        System.out.println("swapEvent(\"QUEC1234\",\"MTLA150620\", TRADE_SHOWS,\"SHEE160620\",SEMINARS)");
+        System.out.println(QUEobj.swapEvent("QUEC1234", "MTLA150620", TRADE_SHOWS, "SHEE160620", SEMINARS));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println(">>>Rolling back the changes...");
+        System.out.println(QUEobj.swapEvent("QUEC1234", "SHEE160620", SEMINARS, "MTLA150620", TRADE_SHOWS));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println("*********************************************************");
+
+        System.out.println("Case12 OldEvent and newEvent in OTHER city:");
+        System.out.println("(in same week && limit < 3)");
+        System.out.println("<Success>");
+        System.out.println("swapEvent(\"QUEC1234\",\"MTLA150620\", TRADE_SHOWS,\"SHEE160620\",SEMINARS)");
+        System.out.println(QUEobj.cancelEvent("QUEC1234", "MTLA160620", CONFERENCES));
+        System.out.println(QUEobj.swapEvent("QUEC1234", "MTLA150620", TRADE_SHOWS, "SHEE160620", SEMINARS));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println(">>>Rolling back the changes...");
+        System.out.println(QUEobj.swapEvent("QUEC1234", "SHEE160620", SEMINARS, "MTLA150620", TRADE_SHOWS));
+        System.out.println(QUEobj.bookEvent("QUEC1234", "MTLA160620", CONFERENCES));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println("*********************************************************");
+
+        System.out.println("Case13 OldEvent and newEvent in OTHER city:");
+        System.out.println("(NOT in same week && limit == 3)");
+        System.out.println("<Fail>");
+        System.out.println("swapEvent(\"QUEC1234\",\"MTLA150620\",TRADE_SHOWS,\"MTLA150720\",SEMINARS)");
+        System.out.println(MTLobj.addEvent("MTLA150720", SEMINARS, 1));
+        System.out.println(QUEobj.bookEvent("QUEC1234", "MTLA150720", SEMINARS));
+        System.out.println(QUEobj.swapEvent("QUEC1234", "MTLA150620", TRADE_SHOWS, "MTLA150720", SEMINARS));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println(">>>Rolling back the changes...");
+        System.out.println(QUEobj.cancelEvent("QUEC1234", "MTLA150720", SEMINARS));
+        System.out.println(MTLobj.removeEvent("MTLA150720", SEMINARS));
+        System.out.println("*********************************************************");
+
+        System.out.println("Case14 OldEvent and newEvent in OTHER city:");
+        System.out.println("(NOT in same week && limit < 3)");
+        System.out.println("<Success>");
+        System.out.println("swapEvent(\"QUEC1234\",\"MTLA150720\",SEMINARS,\"SHEE160620\",SEMINARS)");
+        System.out.println(MTLobj.addEvent("MTLA150720", SEMINARS, 1));
+        System.out.println(QUEobj.swapEvent("QUEC1234", "MTLA150720", SEMINARS, "SHEE160620", SEMINARS));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println(">>>Rolling back the changes...");
+        System.out.println(QUEobj.swapEvent("QUEC1234", "SHEE160620", SEMINARS, "MTLA150720", SEMINARS));
+        System.out.println(MTLobj.removeEvent("MTLA150720", SEMINARS));
+        System.out.println(QUEobj.getBookingSchedule("QUEC1234"));
+        System.out.println("*********************************************************");
 
 
     }
