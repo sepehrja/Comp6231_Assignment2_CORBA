@@ -253,7 +253,7 @@ public class EventManagement extends ServerObjectInterfacePOA {
                 return response;
             }
         } else {
-            if (!exceedWeeklyLimit(customerID, eventID.substring(4))) {
+            if (exceedWeeklyLimit(customerID, eventID.substring(4))) {
                 String serverResponse = sendUDPMessage(getServerPort(eventID.substring(0, 3)), "bookEvent", customerID, eventType, eventID);
                 if (serverResponse.startsWith("Success:")) {
                     if (clientEvents.get(customerID).containsKey(eventType)) {
@@ -622,10 +622,10 @@ public class EventManagement extends ServerObjectInterfacePOA {
                     limit++;
                 }
                 if (limit == 3)
-                    return true;
+                    return false;
             }
         }
-        return false;
+        return true;
     }
 
     private void addCustomersToNextSameEvent(String oldEventID, String eventType, List<String> registeredClients) {
